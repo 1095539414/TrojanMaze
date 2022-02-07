@@ -6,6 +6,8 @@ public class SimpleZombie : Zombie {
     [SerializeField] int InitialHealth = 100;
     [SerializeField] float InitialSpeed = 25f;
 
+
+    private float _speed;
     private Rigidbody2D _body;
     private Vector2 _direction;
     private bool _keepMoving;
@@ -15,7 +17,8 @@ public class SimpleZombie : Zombie {
 
     // Start is called before the first frame update
     void Start() {
-        base.Init(InitialHealth, InitialSpeed);
+        base.Init(InitialHealth);
+        _speed = InitialSpeed;
         _body = GetComponent<Rigidbody2D>();
         _turnClockwise = false;
         _direction = transform.right;
@@ -30,7 +33,15 @@ public class SimpleZombie : Zombie {
         if(hit) {
             // if the object is really close and the object is not a player (most likely a wall)
             // stop moving and slowly turn away
-            if(hit.distance < 1.0f && !hit.collider.CompareTag("Player")) {
+            if(hit.collider.CompareTag("Player")) {
+                if(hit.distance < 2.0f) {
+                    _speed = InitialSpeed * 2f;
+                    _keepMoving = true;
+                    _direction = hit.collider.gameObject.transform.position - transform.position;
+                    _direction.Normalize();
+                }
+            } else if(hit.distance < .5f) {
+                _speed = InitialSpeed;
                 _keepMoving = false;
                 int angle = Random.Range(0, 70);
 
@@ -44,16 +55,11 @@ public class SimpleZombie : Zombie {
                 Turn(angle);
             }
 
-            if(hit.distance < 3.0f && hit.collider.CompareTag("Player")) {
-                _keepMoving = true;
-                _direction = hit.collider.gameObject.transform.position - transform.position;
-                _direction.Normalize();
-            }
         }
     }
 
     void FixedUpdate() {
-        Vector2 movement = _direction * speed * Time.deltaTime;
+        Vector2 movement = _direction * _speed * Time.deltaTime;
         if(_keepMoving) {
             _body.velocity = movement;
         } else {
