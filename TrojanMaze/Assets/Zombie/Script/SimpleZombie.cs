@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleZombie : Zombie {
     [SerializeField] int InitialHealth = 100;
-    [SerializeField] float InitialSpeed = 500f;
+    [SerializeField] float InitialSpeed = 750f;
 
     private Rigidbody2D _body;
     private Vector2 _direction;
@@ -17,20 +17,21 @@ public class SimpleZombie : Zombie {
         base.Init(InitialHealth, InitialSpeed);
         _body = GetComponent<Rigidbody2D>();
         turnClockWise = false;
+        _direction = transform.right;
     }
 
     // Update is called once per frame
     void Update() {
-        Vector2 movement = transform.right * Speed * Time.deltaTime;
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position + transform.right, 0.5f, transform.right);
+        Vector2 movement = _direction * Speed * Time.deltaTime;
+        RaycastHit2D hit = Physics2D.CircleCast((Vector2)transform.position + _direction, 0.5f, _direction);
         bool keepMoving = true;
         // Detect if there is something in the front
         if(hit) {
             // if the object is really close and the object is not a player (most likely a wall)
-            // stop moving and slowly turn away (zombie will look like its in idle state)
-            if(hit.distance < 1.0f && !hit.collider.gameObject.CompareTag("Player")) {
+            // stop moving and slowly turn away
+            if(hit.distance < 1.0f) {
                 keepMoving = false;
-                float angle = Random.Range(0, 70);
+                int angle = Random.Range(0, 70);
 
                 float randomAction = Random.Range(0, 10);
                 if(hit.collider.gameObject != prevHit && randomAction < 5) {
@@ -39,10 +40,7 @@ public class SimpleZombie : Zombie {
                 if(turnClockWise) {
                     angle *= -1;
                 }
-
-                Quaternion endRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + angle);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, endRotation, 50 * Time.deltaTime);
-                prevHit = hit.collider.gameObject;
+                Turn(angle);
             } 
         }
 
@@ -51,5 +49,15 @@ public class SimpleZombie : Zombie {
         } else {
             _body.velocity = new Vector2(0, 0);
         }
+    }
+
+    void Turn(int degrees) {
+         float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+         float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+         
+         float tx = _direction.x;
+         float ty = _direction.y;
+         _direction.x = (cos * tx) - (sin * ty);
+         _direction.y = (sin * tx) + (cos * ty);
     }
 }
