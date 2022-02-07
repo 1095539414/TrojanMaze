@@ -7,10 +7,10 @@ public class Zombie : MonoBehaviour {
     private float _speed;
 
     // Getters
-    public int Health {
+    public int health {
         get { return _health; }
     }
-    public float Speed {
+    public float speed {
         get { return _speed; }
     }
 
