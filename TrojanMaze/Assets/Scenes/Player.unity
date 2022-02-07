@@ -670,6 +670,10 @@ PrefabInstance:
       value: Simple Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 4495261256545742895, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742895, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
       propertyPath: m_TagString
       value: Zombie
       objectReference: {fileID: 0}

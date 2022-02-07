@@ -9,10 +9,10 @@ public class SimpleZombie : Zombie {
     private Rigidbody2D _body;
     private Vector2 _direction;
     private bool _keepMoving;
-
-    private GameObject prevHit;
-
+    private GameObject _prevHit;
     private bool _turnClockwise;
+
+
     // Start is called before the first frame update
     void Start() {
         base.Init(InitialHealth, InitialSpeed);
@@ -35,13 +35,19 @@ public class SimpleZombie : Zombie {
                 int angle = Random.Range(0, 70);
 
                 float randomAction = Random.Range(0, 10);
-                if(hit.collider.gameObject != prevHit && randomAction < 5) {
+                if(hit.collider.gameObject != _prevHit && randomAction < 5) {
                     _turnClockwise = !_turnClockwise;
                 }
                 if(_turnClockwise) {
                     angle *= -1;
                 }
                 Turn(angle);
+            }
+
+            if(hit.distance < 3.0f && hit.collider.CompareTag("Player")) {
+                _keepMoving = true;
+                _direction = hit.collider.gameObject.transform.position - transform.position;
+                _direction.Normalize();
             }
         }
     }
