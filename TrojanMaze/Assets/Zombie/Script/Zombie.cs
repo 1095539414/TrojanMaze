@@ -18,6 +18,7 @@ public class Zombie : MonoBehaviour {
     protected void Init(int health, float speed) {
         _health = health;
         _speed = speed;
+        this.gameObject.tag = "Zombie";
     }
 
     // Health calculation 

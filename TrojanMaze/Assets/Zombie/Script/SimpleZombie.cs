@@ -23,11 +23,13 @@ public class SimpleZombie : Zombie {
     void Update() {
         Vector2 movement = transform.right * Speed * Time.deltaTime;
         RaycastHit2D hit = Physics2D.CircleCast(transform.position + transform.right, 0.5f, transform.right);
-
+        bool keepMoving = true;
+        // Detect if there is something in the front
         if(hit) {
-            Debug.Log(hit.collider.gameObject.tag);
+            // if the object is really close and the object is not a player (most likely a wall)
+            // stop moving and slowly turn away (zombie will look like its in idle state)
             if(hit.distance < 1.0f && !hit.collider.gameObject.CompareTag("Player")) {
-                _body.velocity = new Vector2(0, 0);
+                keepMoving = false;
                 float angle = Random.Range(0, 70);
 
                 float randomAction = Random.Range(0, 10);
@@ -39,14 +41,15 @@ public class SimpleZombie : Zombie {
                 }
 
                 Quaternion endRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + angle);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, endRotation, 500 * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, endRotation, 50 * Time.deltaTime);
                 prevHit = hit.collider.gameObject;
-            } else {
-                _body.velocity = movement;
-            }
-        } else {
-            _body.velocity = movement;
+            } 
         }
-        
+
+        if(keepMoving) {
+            _body.velocity = movement;
+        } else {
+            _body.velocity = new Vector2(0, 0);
+        }
     }
 }

@@ -42,7 +42,7 @@ public class Move : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("FakeZombie"))
+        if (col.gameObject.CompareTag("Zombie"))
         {
             HP -= 0.1f;
         }
