@@ -18,8 +18,7 @@ public class Move : MonoBehaviour {
     void Update() {
         Run();
         FlipPlayer();
-        if (HP <= 0)
-        {
+        if(HP <= 0) {
             Destroy(gameObject);
         }
     }
@@ -35,15 +34,13 @@ public class Move : MonoBehaviour {
 
     void FlipPlayer() {
         bool hasHorizontalSpeed = Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon;
-        if (hasHorizontalSpeed) {
+        if(hasHorizontalSpeed) {
             transform.localScale = new Vector2(Mathf.Sign(rigidBody.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Zombie"))
-        {
+    void OnTriggerEnter2D(Collider2D col) {
+        if(col.gameObject.CompareTag("Zombie")) {
             HP -= 0.1f;
         }
     }

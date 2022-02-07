@@ -41,7 +41,7 @@ public class SimpleZombie : Zombie {
                     angle *= -1;
                 }
                 Turn(angle);
-            } 
+            }
         }
 
         if(keepMoving) {
@@ -52,12 +52,12 @@ public class SimpleZombie : Zombie {
     }
 
     void Turn(int degrees) {
-         float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
-         float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
-         
-         float tx = _direction.x;
-         float ty = _direction.y;
-         _direction.x = (cos * tx) - (sin * ty);
-         _direction.y = (sin * tx) + (cos * ty);
+        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+
+        float tx = _direction.x;
+        float ty = _direction.y;
+        _direction.x = (cos * tx) - (sin * ty);
+        _direction.y = (sin * tx) + (cos * ty);
     }
 }

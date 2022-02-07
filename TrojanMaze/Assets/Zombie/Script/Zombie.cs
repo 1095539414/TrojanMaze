@@ -8,10 +8,10 @@ public class Zombie : MonoBehaviour {
 
     // Getters
     public int Health {
-        get {return _health;} 
+        get { return _health; }
     }
     public float Speed {
-        get {return _speed;} 
+        get { return _speed; }
     }
 
     // used by its inheritance
