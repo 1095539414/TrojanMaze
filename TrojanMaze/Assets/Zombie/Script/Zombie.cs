@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour {
     private int _health;
-    private float _speed;
 
     // Getters
     public int health {
         get { return _health; }
     }
-    public float speed {
-        get { return _speed; }
-    }
 
     // used by its inheritance
-    protected void Init(int health, float speed) {
+    protected void Init(int health) {
         _health = health;
-        _speed = speed;
         this.gameObject.tag = "Zombie";
     }
 
