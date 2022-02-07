@@ -29,7 +29,7 @@ public class SimpleZombie : Zombie {
         if(hit) {
             // if the object is really close and the object is not a player (most likely a wall)
             // stop moving and slowly turn away
-            if(hit.distance < 1.0f) {
+            if(hit.distance < 1.0f && !hit.collider.CompareTag("Player")) {
                 keepMoving = false;
                 int angle = Random.Range(0, 70);
 
