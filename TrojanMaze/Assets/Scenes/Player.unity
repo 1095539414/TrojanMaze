@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EasySpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 1363871204251526499, guid: 30535aac82e73e844b174013f342e772, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1363871204251526509, guid: 30535aac82e73e844b174013f342e772, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -291,6 +295,98 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1611923457474655302, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
   m_PrefabInstance: {fileID: 2570957952018953322}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1195869171
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742884, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742888, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: initialSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742895, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_Name
+      value: Simple Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495261256545742895, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+--- !u!1 &1709104302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4495261256545742895, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+  m_PrefabInstance: {fileID: 1195869171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1709104303
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709104302}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.15
+  m_Speed: 1.4
+  m_Acceleration: 4
+  avoidancePriority: 50
+  m_AngularSpeed: 20
+  m_StoppingDistance: 0.3
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.5
+  m_BaseOffset: 0.25
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1941866961
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 278715176062817582, guid: 3e32d6f41a1931f4e83324ca47814784, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 278715176062817582, guid: 3e32d6f41a1931f4e83324ca47814784, type: 3}
       propertyPath: m_LocalPosition.x

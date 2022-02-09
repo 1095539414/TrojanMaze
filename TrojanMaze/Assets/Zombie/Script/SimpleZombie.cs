@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class SimpleZombie : Zombie {
     [SerializeField] int initialHealth = 100;
-    [SerializeField] float initialSpeed = 25f;
+    [SerializeField] float initialSpeed = 0.7f;
 
-    private float _speed;
+
+
     private Rigidbody2D _body;
+    private NavMeshAgent _agent;
     private Vector2 _direction;
-    private bool _keepMoving;
+
     private GameObject _prevHit;
     private bool _turnClockwise;
 
@@ -17,76 +19,89 @@ public class SimpleZombie : Zombie {
 
     private float _detectionRange = 2f;
     private float _followRange = 3f;
+    float _idleTime;
+
+    bool _idled;
 
     // Start is called before the first frame update
     void Start() {
         base.Init(initialHealth);
-        _speed = initialSpeed;
         _body = GetComponent<Rigidbody2D>();
-        _turnClockwise = false;
-        _direction = transform.right;
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
+        _idled = false;
+        _idleTime = 0f;
     }
 
     // Update is called once per frame
     void Update() {
+        _direction = _agent.path.corners[0] - transform.position;
         // If it locks onto a player, it moves toward the player
         // if the player is too far, it loses the target
         if(_target) {
-            if(Vector2.Distance(_target.transform.position, transform.position) >= _followRange) {
+            if(_agent.remainingDistance > _followRange) {
                 _target = null;
+                _agent.SetDestination(transform.position);
+                _agent.speed = initialSpeed;
             } else {
-                _speed = initialSpeed * 2f;
-                _keepMoving = true;
-                _direction = _target.transform.position - transform.position;
-                _direction.Normalize();
+                _agent.SetDestination(_target.transform.position);
+                _agent.speed = initialSpeed*2;
             }
         } else {
-            // Normal behaviour, detecting walls and player in its eye sight.
+            
             RaycastHit2D hit = Physics2D.CircleCast((Vector2)transform.position + _direction, 0.5f, _direction);
-            _keepMoving = true;
-            // Detect if there is something in the front
-            if(hit) {
-                // if the object is really close and the object is not a player (most likely a wall)
-                // stop moving and slowly turn away
-                if(hit.collider.CompareTag("Player")) {
-                    if(hit.distance < _detectionRange) {
-                        _target = hit.collider.gameObject;
+            if(hit && hit.collider.CompareTag("Player") && hit.distance < _detectionRange) {
+                _target = hit.collider.gameObject;
+            } else {
+                if(_agent.remainingDistance <= _agent.stoppingDistance) {
+                    if(_idleTime <= 0) {
+                        if(_idled) {
+                            _idled = false;
+                           Vector2 dest = GetRandomDest();
+                            _agent.SetDestination(dest);
+                            _agent.speed = initialSpeed;
+                        } else {
+                            _idled = true;
+                            _idleTime = Random.Range(3, 6);
+                        }
+                    } else {
+                        _idleTime -= Time.deltaTime;
                     }
-                } else if(hit.distance < .5f) {
-                    _speed = initialSpeed;
-                    _keepMoving = false;
-                    int angle = Random.Range(0, 70);
-
-                    float randomAction = Random.Range(0, 10);
-                    if(hit.collider.gameObject != _prevHit && randomAction < 5) {
-                        _turnClockwise = !_turnClockwise;
-                    }
-                    if(_turnClockwise) {
-                        angle *= -1;
-                    }
-                    Turn(angle);
-                }
+                } 
             }
         }
     }
 
-    void FixedUpdate() {
-        Vector2 movement = _direction * _speed * Time.deltaTime;
-        if(_keepMoving) {
-            _body.velocity = movement;
-        } else {
-            _body.velocity = new Vector2(0, 0);
-        }
+    private bool CanReach(Vector2 position) {
+        NavMeshPath path = new NavMeshPath();
+        _agent.CalculatePath(position, path);
+        return path.status == NavMeshPathStatus.PathComplete;
     }
 
-    void Turn(int degrees) {
-        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
-        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
-
-        float tx = _direction.x;
-        float ty = _direction.y;
-        _direction.x = (cos * tx) - (sin * ty);
-        _direction.y = (sin * tx) + (cos * ty);
-        _direction.Normalize();
+    private Vector2 GetRandomDest() {
+        float r = 3f;
+        float curX = transform.position.x;
+        float curY = transform.position.y;
+        Vector2 dest;
+        int count = 0;
+        do {
+            dest = new Vector2(curX + Random.Range(-r, r), curY + Random.Range(-r, r));
+            count++;
+            if(count > 10) {
+                Debug.LogWarning("Zombie Agent: Could not find a valid path to anywhere");
+                break;
+            }
+        } while(!CanReach(dest));
+        return dest;
+    }
+    private void OnCollisionEnter(Collision other) {
+        if(other.collider.tag.Equals("Player")) {
+            if(_target == null) {
+                _target = other.gameObject;
+            } else {
+                _agent.SetDestination(transform.position);
+            }
+        }
     }
 }
