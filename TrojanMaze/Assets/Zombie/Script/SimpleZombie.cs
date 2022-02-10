@@ -5,6 +5,10 @@ using UnityEngine.AI;
 public class SimpleZombie : Zombie {
     [SerializeField] int initialHealth = 100;
 
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
+    [SerializeField] float fireInterval = 0.5f;
+
     private Rigidbody2D _body;
     private NavMeshAgent _agent;
 
@@ -19,6 +23,7 @@ public class SimpleZombie : Zombie {
     private float _detectionRange = 3f;
     private float _followRange = 7f;
     private float _idleTime = 0f;
+    private float _time;
 
 
 
@@ -34,6 +39,7 @@ public class SimpleZombie : Zombie {
         _player = GameObject.FindWithTag("Player");
         // set a random destination to start
         moveTo(GetRandomDest(), _speed, _acceleration);
+        _time = 0f;
     }
 
     // Update is called once per frame
@@ -41,6 +47,11 @@ public class SimpleZombie : Zombie {
 
         // chase after the player if the zombie is targeting the player
         if(_target) {
+            _time += Time.deltaTime;
+            if(_time >= fireInterval) {
+                FireBullet();
+                _time -= fireInterval;
+            }
             // stop chasing when player is too far
             if(_agent.remainingDistance > _followRange) {
                 _target = null;
@@ -133,5 +144,10 @@ public class SimpleZombie : Zombie {
             // keep chasing player
             _agent.isStopped = false;
         }
+    }
+
+    void FireBullet() {
+        Debug.Log("FireBullet");
+        Instantiate(bullet, gun.position, gun.rotation);
     }
 }
