@@ -10,7 +10,7 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     private Mesh mesh;
     private Vector3 origin;
-    float viewDistance;
+    static float viewDistance;
     void Start()
     {
         mesh = new Mesh();
@@ -70,11 +70,11 @@ public class FieldOfView : MonoBehaviour
         this.origin = origin;
     }
 
-    public void ResetViewDistance(){
-        this.viewDistance = normalViewDistance;
+    public static void ResetViewDistance(){
+        viewDistance = normalViewDistance;
     }
 
-    public void BoostViewDistance(){
-        this.viewDistance = boostViewDistance;
+    public static void BoostViewDistance(){
+        viewDistance = boostViewDistance;
     }
 }
