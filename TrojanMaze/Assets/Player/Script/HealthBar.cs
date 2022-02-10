@@ -12,10 +12,10 @@ public class HealthBar : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        localScale.x = Move.HP;
+        localScale.x = Move.GetHP();
         transform.localScale = localScale;
         //new
-        if (Move.HP <= 0)
+        if (Move.GetHP() <= 0)
         {
             
             SceneManager.LoadSceneAsync("Player");

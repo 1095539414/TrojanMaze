@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    private const float normalViewDistance = 1.5f;
-    private const float boostViewDistance = 2f;
+    private const float normalViewDistance = 2f;
+    private const float boostViewDistance = 3f;
 
     [SerializeField] LayerMask layerMask;
     private Mesh mesh;
@@ -37,11 +37,8 @@ public class FieldOfView : MonoBehaviour
             RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, layerMask);
             if(raycastHit2D.collider == null){
                 vertex = origin + GetVectorFromAngle(angle) * viewDistance;
-                // Debug.Log("sadsda");
             }else{
-                // Debug.Log("name:"+raycastHit2D.collider.tag);
                 vertex = raycastHit2D.point;
-                // Debug.Log("111");
             }
             vertices[vertexIndex] = vertex;
 
@@ -73,11 +70,11 @@ public class FieldOfView : MonoBehaviour
         this.origin = origin;
     }
 
-    public void ResetViewDistance(Vector3 origin){
+    public void ResetViewDistance(){
         this.viewDistance = normalViewDistance;
     }
 
-    public void BoostViewDistance(Vector3 origin){
+    public void BoostViewDistance(){
         this.viewDistance = boostViewDistance;
     }
 }

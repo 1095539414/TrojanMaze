@@ -9,11 +9,12 @@ public class Move : MonoBehaviour {
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
-    public static float HP;
+    const float MAX_HP = 1f;
+    static float HP;
 
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
-        HP = 1;
+        HP = MAX_HP;
     }
 
     void Update() {
@@ -50,8 +51,27 @@ public class Move : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col) {
         if(col.gameObject.CompareTag("Zombie")) {
-            HP -= 0.1f;
+            DecreaseHP(0.1f);
         }
+    }
+
+    public static void IncreaseHP(float value){
+        if(HP < MAX_HP){
+            HP += value;
+        }
+        if(HP > MAX_HP){
+            HP = MAX_HP;
+        }
+    }
+
+    public static void DecreaseHP(float value){
+        if(HP > 0){
+            HP -= value;
+        }
+    }
+
+    public static float GetHP(){
+        return HP;
     }
 
 }

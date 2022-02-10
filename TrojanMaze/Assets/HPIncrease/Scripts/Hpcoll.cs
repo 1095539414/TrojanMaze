@@ -21,7 +21,7 @@ public class Hpcoll : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            Move.HP += 0.2f;  //HP Increase 
+            Move.IncreaseHP(0.2f);  //HP Increase 
         }
     }
 }
