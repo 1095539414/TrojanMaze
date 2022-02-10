@@ -20,9 +20,16 @@ public class Move : MonoBehaviour {
         Run();
         FlipPlayer();
         filedOfView.SetOrigin(transform.position);
-        if(HP <= 0) {
+        
+        if (HP > 1)
+        {
+            HP = 1;
+        }
+        
+        if (HP <= 0) {
             Destroy(gameObject);
         }
+
     }
 
     void Run() {

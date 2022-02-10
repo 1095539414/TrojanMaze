@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Zombie
   - Walls
+  - Hpincrease
   layers:
   - Default
   - TransparentFX
