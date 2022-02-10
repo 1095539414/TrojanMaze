@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Move : MonoBehaviour {
     [SerializeField] float speed = 10f;
+    [SerializeField] private FieldOfView filedOfView;
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
@@ -18,6 +19,7 @@ public class Move : MonoBehaviour {
     void Update() {
         Run();
         FlipPlayer();
+        filedOfView.SetOrigin(transform.position);
         if(HP <= 0) {
             Destroy(gameObject);
         }
