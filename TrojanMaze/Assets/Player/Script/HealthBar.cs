@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,9 +15,10 @@ public class HealthBar : MonoBehaviour {
         localScale.x = Move.HP;
         transform.localScale = localScale;
         //new
-        if (localScale.x < 0)
+        if (Move.HP <= 0)
         {
-            SceneManager.LoadScene("Player");
+            
+            SceneManager.LoadSceneAsync("Player");
         }
         
     }

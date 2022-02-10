@@ -25,10 +25,10 @@ public class Move : MonoBehaviour {
         {
             HP = 1;
         }
-        
-        if (HP <= 0) {
+        // mute it because if it is kept,when hp is reduced to 0 by a trap, cannot reload the scene and send the player to the start position
+        /*if (HP <= 0) {
             Destroy(gameObject);
-        }
+        }*/
 
     }
 

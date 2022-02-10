@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 134470518}
   - component: {fileID: 134470519}
   - component: {fileID: 134470520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: erwer (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1139,7 @@ GameObject:
   - component: {fileID: 1847728795}
   - component: {fileID: 1847728796}
   - component: {fileID: 1847728797}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: erwer (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1450,9 +1450,9 @@ GameObject:
   - component: {fileID: 2063635539}
   - component: {fileID: 2063635540}
   - component: {fileID: 2063635541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: erwer
-  m_TagString: Untagged
+  m_TagString: Hpincrease
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
