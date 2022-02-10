@@ -96,5 +96,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieTypes:
-  - {fileID: 4495261256545742888, guid: 7e65882309711f0418417a17a7c882b9, type: 3}
+  - {fileID: 1772109597317683053, guid: 57dd6ca4611353c4db27e0e9df54bbf0, type: 3}
   zombieAmount: 03000000

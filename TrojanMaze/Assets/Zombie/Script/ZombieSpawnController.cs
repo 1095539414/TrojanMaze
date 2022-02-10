@@ -11,7 +11,7 @@ public class ZombieSpawnController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         if(zombieTypes.Count != zombieAmount.Count) {
-            Debug.LogWarning("Wrong configuration for spawning Zombies: size of zombieTypes and zombieAmount should match");
+            Debug.LogWarning("Zombie Spawn Controller: Size of zombieTypes and zombieAmount should match");
             return;
         }
         float centerX = transform.position.x;
