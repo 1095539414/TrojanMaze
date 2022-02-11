@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface iDamageable
 {
-    bool reduceHealth(float amount); 
+    bool ReduceHealth(float amount); 
 }

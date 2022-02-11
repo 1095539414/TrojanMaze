@@ -21,9 +21,8 @@ public class Move : MonoBehaviour {
         Run();
         FlipPlayer();
         filedOfView.SetOrigin(transform.position);
-        
-        if (HP > 1)
-        {
+
+        if(HP > 1) {
             HP = 1;
         }
         // mute it because if it is kept,when hp is reduced to 0 by a trap, cannot reload the scene and send the player to the start position
@@ -55,22 +54,22 @@ public class Move : MonoBehaviour {
         }
     }
 
-    public static void IncreaseHP(float value){
-        if(HP < MAX_HP){
+    public static void IncreaseHP(float value) {
+        if(HP < MAX_HP) {
             HP += value;
         }
-        if(HP > MAX_HP){
+        if(HP > MAX_HP) {
             HP = MAX_HP;
         }
     }
 
-    public static void DecreaseHP(float value){
-        if(HP > 0){
+    public static void DecreaseHP(float value) {
+        if(HP > 0) {
             HP -= value;
         }
     }
 
-    public static float GetHP(){
+    public static float GetHP() {
         return HP;
     }
 
