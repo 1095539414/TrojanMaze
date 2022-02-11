@@ -40,6 +40,7 @@ public class SimpleZombie : Zombie {
         // set a random destination to start
         moveTo(GetRandomDest(), _speed, _acceleration);
         _time = 0f;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     // Update is called once per frame
