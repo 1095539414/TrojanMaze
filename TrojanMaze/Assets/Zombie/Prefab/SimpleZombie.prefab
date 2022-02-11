@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8666439797591268703}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1772109597317683052}
   - component: {fileID: 1772109597317683053}
   - component: {fileID: 2807339066407467033}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SimpleZombie
   m_TagString: Zombie
   m_Icon: {fileID: 0}
