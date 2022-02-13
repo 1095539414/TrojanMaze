@@ -7,7 +7,7 @@ public class SimpleZombie : Zombie {
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
-    [SerializeField] float fireInterval = 0.5f;
+    [SerializeField] float fireInterval = 1f;
 
     private Rigidbody2D _body;
     private NavMeshAgent _agent;

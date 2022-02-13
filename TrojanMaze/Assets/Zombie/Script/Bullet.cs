@@ -5,11 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody2D bulletRigidbody;
-    [SerializeField] float bulletSpeed = 8f;
+    [SerializeField] float bulletSpeed = 10f;
     SimpleZombie zombie;
     bool speedSet = false;
     private Vector2 _direction;
     private float _time;
+
+     private Vector2 dirToPlayer;
 
 
     void Start()
@@ -37,7 +39,8 @@ public class Bullet : MonoBehaviour
         } 
 
         if(speedSet == false & _time > 10 * Time.deltaTime) {
-            bulletRigidbody.velocity = new Vector2(bulletSpeed, 0);
+            bulletRigidbody.velocity = new Vector2(Random.Range(0, 10) > 5 ? bulletSpeed : -bulletSpeed, 0);
+            speedSet = true;
         }
     }
 
