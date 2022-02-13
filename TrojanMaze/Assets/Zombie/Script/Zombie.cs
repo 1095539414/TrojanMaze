@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zombie : MonoBehaviour {
-    private int _health;
+public class Zombie : MonoBehaviour, iDamageable {
+    private float _health;
 
     // Getters
-    public int health {
+    public float health {
         get { return _health; }
     }
 
@@ -18,7 +18,7 @@ public class Zombie : MonoBehaviour {
 
     // Health calculation 
     // other factors that are influenced by helath could be done here
-    protected bool ReduceHealth(int amount) {
+    bool iDamageable.ReduceHealth(float amount) {
         _health -= amount;
         if(_health <= 0) {
             StartCoroutine(Die());

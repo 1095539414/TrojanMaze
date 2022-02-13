@@ -37,6 +37,7 @@ public class SimpleZombie : Zombie {
         _speed = _agent.speed;
         _acceleration = _agent.acceleration;
         _player = GameObject.FindWithTag("Player");
+
         // set a random destination to start
         moveTo(GetRandomDest(), _speed, _acceleration);
         _time = 0f;
