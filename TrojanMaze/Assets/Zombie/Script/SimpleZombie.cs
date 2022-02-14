@@ -90,7 +90,7 @@ public class SimpleZombie : Zombie {
             } else {
                 _idleTime -= Time.deltaTime;
             }
-        } else if(_agent.remainingDistance <= _agent.stoppingDistance) {
+        } else if(!_target && _agent.remainingDistance <= _agent.stoppingDistance) {
             Idle();
         }
 
@@ -145,6 +145,7 @@ public class SimpleZombie : Zombie {
             if(_target == null) {
                 _target = _player;
             }
+
             // prevent zombie from pushing players
             _agent.isStopped = true;
             _attacking = true;
