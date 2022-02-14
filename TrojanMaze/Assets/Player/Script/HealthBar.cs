@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class HealthBar : MonoBehaviour {
     Vector3 localScale;
 
@@ -15,8 +15,5 @@ public class HealthBar : MonoBehaviour {
         localScale.x = Move.GetHP();
         transform.localScale = localScale;
         //new
-        if(Move.GetHP() <= 0) {
-            SceneManager.LoadSceneAsync("Intro");
-        }
     }
 }

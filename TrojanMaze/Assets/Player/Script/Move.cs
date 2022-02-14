@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] float speed = 10f;
@@ -65,6 +67,16 @@ public class Move : MonoBehaviour, iDamageable {
     public bool ReduceHealth(float value) {
         if(HP > 0) {
             HP -= value;
+            if(HP <= 0) {
+                AnalyticsResult analyticsResult = Analytics.CustomEvent(
+                    "LevelDied", 
+                    new Dictionary<string, object>{
+                        {"Level", SceneManager.GetActiveScene().name}
+                    }
+                );
+                Debug.Log(analyticsResult);
+                SceneManager.LoadSceneAsync("Intro");
+            }
             return true;
         }
         return false;

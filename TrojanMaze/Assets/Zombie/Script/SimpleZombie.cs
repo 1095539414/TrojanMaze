@@ -18,12 +18,10 @@ public class SimpleZombie : Zombie {
     private float _acceleration;
     private Vector2 _direction;
     private Vector2 _dirToPlayer;
-    private float _attackDamage = 0.1f;
+    private float _attackDamage = 0.05f;
     private bool _attacking;
-    private float _attackInterval = 1f;   // attack once every second
-    private float _attackTime; 
-
-
+    private float _attackInterval = 0.5f;   // attack once every second
+    private float _attackTime;
 
     private float _detectionRange = 3f;
     private float _followRange = 7f;
@@ -60,8 +58,7 @@ public class SimpleZombie : Zombie {
                 base.Attack(_player, _attackDamage);
                 _attackTime = 0;
             }
-        }
-        else if(_target) {
+        } else if(_target) {
             _fireTime += Time.deltaTime;
             if(_fireTime >= fireInterval) {
                 FireBullet();
@@ -80,7 +77,6 @@ public class SimpleZombie : Zombie {
             if(Vector2.Dot(_dirToPlayer, _direction) >= Mathf.Cos(90 / 2)) {
                 _target = _player;
                 _agent.isStopped = false;
-                moveTo(_target.transform.position, _speed * 2, _acceleration * 10);
             }
         }
 
