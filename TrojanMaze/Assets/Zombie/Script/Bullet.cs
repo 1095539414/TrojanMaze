@@ -6,43 +6,36 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody2D bulletRigidbody;
     [SerializeField] float bulletSpeed = 10f;
-    float bulletDamage = 0.05f;
-    SimpleZombie zombie;
+    float bulletDamage = 0.02f;
     bool speedSet = false;
     private Vector2 _direction;
-    private float _time;
 
-     private Vector2 dirToPlayer;
+    private Vector2 dirToPlayer;
+    private GameObject _player;
+
+    private Vector2 GunPosition;
+    private float xSpeed = 0f, ySpeed = 0f;
 
 
     void Start()
     {
+        GunPosition = transform.position;
         bulletRigidbody = GetComponent<Rigidbody2D>();
-        zombie = FindObjectOfType<SimpleZombie>();
-        _direction = zombie.transform.right;
-        _time = 0;
+        _player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        _time += Time.deltaTime;
-        RaycastHit2D hit = Physics2D.CircleCast((Vector2)zombie.transform.position + _direction, 5f, _direction);
-        if(hit && hit.collider.CompareTag("Player")) {
-            _direction = hit.collider.gameObject.transform.position - transform.position;
-            _direction.Normalize();
-            if(speedSet == false) {
-                float ySpeed = _direction.y*bulletSpeed;
-                float xSpeed = _direction.x == 0 ? bulletSpeed : _direction.x*bulletSpeed;
-                bulletRigidbody.velocity = new Vector2(xSpeed, ySpeed);
-                speedSet = true;
-            }
-        } 
-
-        if(speedSet == false & _time > 10 * Time.deltaTime) {
-            bulletRigidbody.velocity = new Vector2(Random.Range(0, 10) > 5 ? bulletSpeed : -bulletSpeed, 0);
+        dirToPlayer = (Vector2)_player.transform.position - GunPosition;
+        dirToPlayer.Normalize();
+        if(speedSet == false) {
+            ySpeed = dirToPlayer.y*bulletSpeed;
+            xSpeed = dirToPlayer.x*bulletSpeed;
+            // Debug.Log("" + dirToPlayer.x + "  " + dirToPlayer.y);
             speedSet = true;
         }
+        bulletRigidbody.velocity = new Vector2(xSpeed, ySpeed);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

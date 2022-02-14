@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 10
+  gun: {fileID: 1772109597317683050, guid: 57dd6ca4611353c4db27e0e9df54bbf0, type: 3}
 --- !u!50 &2303654097524286027
 Rigidbody2D:
   serializedVersion: 4

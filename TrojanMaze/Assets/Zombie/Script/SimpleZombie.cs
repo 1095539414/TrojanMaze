@@ -7,7 +7,7 @@ public class SimpleZombie : Zombie {
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
-    [SerializeField] float fireInterval = 1f;
+    [SerializeField] float fireInterval = 3f;
 
     private Rigidbody2D _body;
     private NavMeshAgent _agent;
@@ -51,6 +51,7 @@ public class SimpleZombie : Zombie {
     // Update is called once per frame
     void Update() {
 
+        _fireTime += Time.deltaTime;
         // chase after the player if the zombie is targeting the player
         if(_attacking) {
             _attackTime += Time.deltaTime;
@@ -58,8 +59,8 @@ public class SimpleZombie : Zombie {
                 base.Attack(_player, _attackDamage);
                 _attackTime = 0;
             }
-        } else if(_target) {
-            _fireTime += Time.deltaTime;
+        }
+        else if(_target) {
             if(_fireTime >= fireInterval) {
                 FireBullet();
                 _fireTime = 0;
@@ -73,6 +74,7 @@ public class SimpleZombie : Zombie {
         } else if(_player && Vector2.Distance(_player.transform.position, transform.position) <= _detectionRange) {
             _dirToPlayer = _player.transform.position - transform.position;
             _dirToPlayer.Normalize();
+
             // if there is no target and player appears in the zombies walking direction (90 degree vision)
             if(Vector2.Dot(_dirToPlayer, _direction) >= Mathf.Cos(90 / 2)) {
                 _target = _player;

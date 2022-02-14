@@ -74,7 +74,6 @@ public class Move : MonoBehaviour, iDamageable {
                         {"Level", SceneManager.GetActiveScene().name}
                     }
                 );
-                Debug.Log(analyticsResult);
                 SceneManager.LoadSceneAsync("Intro");
             }
             return true;

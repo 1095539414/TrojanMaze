@@ -169,7 +169,7 @@ MonoBehaviour:
   initialHealth: 100
   bullet: {fileID: 8861455048163486839, guid: ba51b193768c94d43afd0185530c7b86, type: 3}
   gun: {fileID: 8666439797591268703}
-  fireInterval: 1
+  fireInterval: 3
 --- !u!195 &2807339066407467033
 NavMeshAgent:
   m_ObjectHideFlags: 0
