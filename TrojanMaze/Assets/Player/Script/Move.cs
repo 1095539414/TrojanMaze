@@ -75,5 +75,4 @@ public class Move : MonoBehaviour {
     public static float GetHP() {
         return HP;
     }
-
 }
