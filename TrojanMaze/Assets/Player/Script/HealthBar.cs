@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour {
         transform.localScale = localScale;
         //new
         if(Move.GetHP() <= 0) {
-            SceneManager.LoadSceneAsync("Player");
+            SceneManager.LoadSceneAsync("Intro");
         }
     }
 }
