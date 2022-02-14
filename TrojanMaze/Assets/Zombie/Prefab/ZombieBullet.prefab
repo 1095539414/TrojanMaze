@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 481970056822670675}
   m_Layer: 7
   m_Name: ZombieBullet
-  m_TagString: Zombie
+  m_TagString: ZombieBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

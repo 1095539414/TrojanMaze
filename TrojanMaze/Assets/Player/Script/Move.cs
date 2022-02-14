@@ -51,7 +51,7 @@ public class Move : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.CompareTag("Zombie"))
+        if (col.gameObject.CompareTag("Zombie") || col.gameObject.CompareTag("ZombieBullet"))
         {
             DecreaseHP(0.1f);
         } 
