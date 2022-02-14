@@ -53,6 +53,14 @@ public class SimpleZombie : Zombie {
     // Update is called once per frame
     void Update() {
 
+        _fireTime += Time.deltaTime;
+        if(_target) {
+            if(_fireTime >= fireInterval) {
+                FireBullet();
+                _fireTime = 0;
+            }
+        }
+
         // chase after the player if the zombie is targeting the player
         if(_attacking) {
             _attackTime += Time.deltaTime;
@@ -62,11 +70,7 @@ public class SimpleZombie : Zombie {
             }
         }
         else if(_target) {
-            _fireTime += Time.deltaTime;
-            if(_fireTime >= fireInterval) {
-                FireBullet();
-                _fireTime = 0;
-            }
+
             // stop chasing when player is too far
             moveTo(_target.transform.position, _speed * 2, _acceleration * 10);
             if(_agent.remainingDistance > _followRange) {
@@ -76,6 +80,7 @@ public class SimpleZombie : Zombie {
         } else if(_player && Vector2.Distance(_player.transform.position, transform.position) <= _detectionRange) {
             _dirToPlayer = _player.transform.position - transform.position;
             _dirToPlayer.Normalize();
+
             // if there is no target and player appears in the zombies walking direction (90 degree vision)
             if(Vector2.Dot(_dirToPlayer, _direction) >= Mathf.Cos(90 / 2)) {
                 _target = _player;
