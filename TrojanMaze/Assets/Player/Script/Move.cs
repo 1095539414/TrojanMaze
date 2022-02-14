@@ -53,10 +53,6 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-
-    }
-
     public static void IncreaseHP(float value) {
         if(HP < MAX_HP) {
             HP += value;
