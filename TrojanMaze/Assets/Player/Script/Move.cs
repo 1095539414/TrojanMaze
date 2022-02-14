@@ -9,6 +9,8 @@ public class Move : MonoBehaviour {
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
+    bool isBouncing = false;
+
     const float MAX_HP = 1f;
     static float HP;
 
@@ -22,7 +24,7 @@ public class Move : MonoBehaviour {
         FlipPlayer();
         filedOfView.SetOrigin(transform.position);
 
-        if(HP > 1) {
+        if (HP > 1) {
             HP = 1;
         }
         // mute it because if it is kept,when hp is reduced to 0 by a trap, cannot reload the scene and send the player to the start position
@@ -49,9 +51,10 @@ public class Move : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if(col.gameObject.CompareTag("Zombie")) {
+        if (col.gameObject.CompareTag("Zombie"))
+        {
             DecreaseHP(0.1f);
-        }
+        } 
     }
 
     public static void IncreaseHP(float value) {
