@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody2D bulletRigidbody;
     [SerializeField] float bulletSpeed = 10f;
-    float bulletDamage = 0.05f;
+    float bulletDamage = 0.02f;
     bool speedSet = false;
     private Vector2 _direction;
 
