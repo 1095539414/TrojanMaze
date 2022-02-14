@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody2D bulletRigidbody;
     [SerializeField] float bulletSpeed = 10f;
+    float bulletDamage = 0.05f;
     SimpleZombie zombie;
     bool speedSet = false;
     private Vector2 _direction;
@@ -45,14 +46,18 @@ public class Bullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("OnTriggerEnter2D");
-        Destroy(gameObject);
+
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("OnCollisionEnter2D");
         if(other.gameObject.tag != "Zombie") {
             Destroy(gameObject);
+        }
+        if(other.collider.CompareTag("Player")) {
+            iDamageable damageableObj = other.collider.gameObject.GetComponent<iDamageable>();
+            if(damageableObj != null) {
+                damageableObj.ReduceHealth(bulletDamage);
+            }
         }
     }
 }

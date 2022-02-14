@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Move : MonoBehaviour {
+public class Move : MonoBehaviour, iDamageable {
     [SerializeField] float speed = 10f;
     [SerializeField] private FieldOfView filedOfView;
     Vector2 moveInput;
@@ -20,11 +20,10 @@ public class Move : MonoBehaviour {
     }
 
     void Update() {
-        Run();
         FlipPlayer();
         filedOfView.SetOrigin(transform.position);
 
-        if (HP > 1) {
+        if(HP > 1) {
             HP = 1;
         }
         // mute it because if it is kept,when hp is reduced to 0 by a trap, cannot reload the scene and send the player to the start position
@@ -34,8 +33,12 @@ public class Move : MonoBehaviour {
 
     }
 
+    void FixedUpdate() {
+        Run();
+    }
+
     void Run() {
-        Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed);
+        Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;
         rigidBody.velocity = moveSpeed;
     }
 
@@ -51,10 +54,7 @@ public class Move : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.CompareTag("Zombie") || col.gameObject.CompareTag("ZombieBullet"))
-        {
-            DecreaseHP(0.1f);
-        } 
+
     }
 
     public static void IncreaseHP(float value) {
@@ -66,10 +66,12 @@ public class Move : MonoBehaviour {
         }
     }
 
-    public static void DecreaseHP(float value) {
+    public bool ReduceHealth(float value) {
         if(HP > 0) {
             HP -= value;
+            return true;
         }
+        return false;
     }
 
     public static float GetHP() {

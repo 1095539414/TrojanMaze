@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hpcoll : MonoBehaviour
-{
+public class Hpcoll : MonoBehaviour {
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
+    void OnTriggerEnter2D(Collider2D other) {
         //Destroy it when player collide it
-        if (other.gameObject.CompareTag("Player"))
-        {
+        if(other.gameObject.CompareTag("Player")) {
             Destroy(gameObject);
-            Move.IncreaseHP(0.2f);  //HP Increase 
+            Move.IncreaseHP(0.3f);  //HP Increase 
         }
     }
 }

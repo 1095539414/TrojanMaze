@@ -18,12 +18,20 @@ public class Zombie : MonoBehaviour, iDamageable {
 
     // Health calculation 
     // other factors that are influenced by helath could be done here
-    bool iDamageable.ReduceHealth(float amount) {
+    public bool ReduceHealth(float amount) {
         _health -= amount;
         if(_health <= 0) {
             StartCoroutine(Die());
         }
         return true;
+    }
+
+    protected bool Attack(GameObject obj, float damage) {
+        iDamageable damageableObj = obj.GetComponent<iDamageable>();
+        if(damageableObj != null) {
+            return damageableObj.ReduceHealth(damage);
+        }
+        return false;
     }
 
     private IEnumerator Die() {
