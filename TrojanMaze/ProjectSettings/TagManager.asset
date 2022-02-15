@@ -45,6 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2901534745
+    locked: 0
+  - name: Zombie
+    uniqueID: 2939172029
+    locked: 0
   - name: Player
     uniqueID: 3427055391
     locked: 0

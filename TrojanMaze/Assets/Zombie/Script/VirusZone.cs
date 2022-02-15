@@ -8,7 +8,7 @@ public class VirusZone : MonoBehaviour
     [SerializeField] float ValidityPeriod = 1f;
     private float _time = 0f;
 
-    [SerializeField] float virusDamage = 5f;
+    [SerializeField] float virusDamage = 0.02f;
     void Start()
     {
         
@@ -23,11 +23,10 @@ public class VirusZone : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.CompareTag("Player")) {
-            iDamageable damageableObj = other.collider.gameObject.GetComponent<iDamageable>();
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Player")) {
+            iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
-                Debug.Log("HHHHHHH");
                 damageableObj.ReduceHealth(virusDamage);
             }
         }

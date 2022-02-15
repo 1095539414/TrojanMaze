@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ValidityPeriod: 2
+  virusDamage: 0.02
 --- !u!70 &-2836111063260918167
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
