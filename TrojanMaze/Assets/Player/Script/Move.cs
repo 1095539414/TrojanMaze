@@ -8,6 +8,11 @@ using UnityEngine.Analytics;
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] float speed = 10f;
     [SerializeField] private FieldOfView filedOfView;
+    
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
+    [SerializeField] float fireInterval = 1f;
+    
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
@@ -24,7 +29,10 @@ public class Move : MonoBehaviour, iDamageable {
     void Update() {
         FlipPlayer();
         filedOfView.SetOrigin(transform.position);
-
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            //Debug.LogError("Update Space");
+            Instantiate(bullet, gun.position, gun.rotation);
+        }
         if(HP > 1) {
             HP = 1;
         }

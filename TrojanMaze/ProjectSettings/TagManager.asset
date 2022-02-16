@@ -8,6 +8,7 @@ TagManager:
   - Walls
   - Hpincrease
   - ZombieBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
