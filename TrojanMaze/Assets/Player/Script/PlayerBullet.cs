@@ -68,22 +68,18 @@ public class PlayerBullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-
-    }
-
-    void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag != "Player") {
             Destroy(gameObject);
         }
-        else
-        {
-            Physics2D.IgnoreCollision(other.collider,this.gameObject.GetComponent<CapsuleCollider2D>());
-        }
-        if(other.collider.CompareTag("Zombie")) {
-            iDamageable damageableObj = other.collider.gameObject.GetComponent<iDamageable>();
+        if(other.CompareTag("Zombie")) {
+            iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
                 damageableObj.ReduceHealth(bulletDamage);
             }
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+
     }
 }
