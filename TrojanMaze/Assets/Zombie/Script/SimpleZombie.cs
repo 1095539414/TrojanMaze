@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 public class SimpleZombie : Zombie {
-    [SerializeField] int initialHealth = 100;
+    [SerializeField] int initialHealth = 1;
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
