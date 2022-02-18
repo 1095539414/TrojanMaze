@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4ae7608a7b9f249bf8744e4a95f9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 600
+  speed: 300
   filedOfView: {fileID: 0}
   bullet: {fileID: 3572178453297475688, guid: a4ea8840c412293488d1a3ab8cb9842a, type: 3}
   gun: {fileID: 8889695693845426544}
