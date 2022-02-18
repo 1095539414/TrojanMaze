@@ -20,7 +20,6 @@ public class Zombie : MonoBehaviour, iDamageable {
     // other factors that are influenced by helath could be done here
     public bool ReduceHealth(float amount) {
         _health -= amount;
-        Debug.Log(_health);
         if(_health <= 0) {
             StartCoroutine(Die());
         }
