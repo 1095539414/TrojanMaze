@@ -5,15 +5,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 
-public class Move : MonoBehaviour, iDamageable
-{
-    public float speed = 300;   //make it public for further deployment
+public class Move : MonoBehaviour, iDamageable {
+    [SerializeField] float speed = 10f;
     [SerializeField] private FieldOfView filedOfView;
-
+    
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
     [SerializeField] float fireInterval = 1f;
-
+    
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
@@ -22,32 +21,19 @@ public class Move : MonoBehaviour, iDamageable
     const float MAX_HP = 1f;
     static float HP;
 
-    /// <summary>
-    /// //
-    /// </summary>
-    public static Move _move;
-
-    private void Awake()
-    {
-        _move = this;//static this scirpts for other scripts to deploy
-    }
-    void Start()
-    {
+    void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         HP = MAX_HP;
     }
 
-    void Update()
-    {
+    void Update() {
         FlipPlayer();
         filedOfView.SetOrigin(transform.position);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             //Debug.LogError("Update Space");
             Instantiate(bullet, gun.position, gun.rotation);
         }
-        if (HP > 1)
-        {
+        if(HP > 1) {
             HP = 1;
         }
         // mute it because if it is kept,when hp is reduced to 0 by a trap, cannot reload the scene and send the player to the start position
@@ -57,52 +43,41 @@ public class Move : MonoBehaviour, iDamageable
 
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         Run();
     }
 
-    void Run()
-    {
+    void Run() {
         Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;
         rigidBody.velocity = moveSpeed;
     }
 
-    void OnMove(InputValue value)
-    {
+    void OnMove(InputValue value) {
         moveInput = value.Get<Vector2>();
     }
 
-    void FlipPlayer()
-    {
+    void FlipPlayer() {
         bool hasHorizontalSpeed = Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon;
-        if (hasHorizontalSpeed)
-        {
+        if(hasHorizontalSpeed) {
             transform.localScale = new Vector2(Mathf.Sign(rigidBody.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
         }
     }
 
-    public static void IncreaseHP(float value)
-    {
-        if (HP < MAX_HP)
-        {
+    public static void IncreaseHP(float value) {
+        if(HP < MAX_HP) {
             HP += value;
         }
-        if (HP > MAX_HP)
-        {
+        if(HP > MAX_HP) {
             HP = MAX_HP;
         }
     }
 
-    public bool ReduceHealth(float value)
-    {
-        if (HP > 0)
-        {
+    public bool ReduceHealth(float value) {
+        if(HP > 0) {
             HP -= value;
-            if (HP <= 0)
-            {
+            if(HP <= 0) {
                 AnalyticsResult analyticsResult = Analytics.CustomEvent(
-                    "LevelDied",
+                    "LevelDied", 
                     new Dictionary<string, object>{
                         {"Level", SceneManager.GetActiveScene().name}
                     }
@@ -114,8 +89,7 @@ public class Move : MonoBehaviour, iDamageable
         return false;
     }
 
-    public static float GetHP()
-    {
+    public static float GetHP() {
         return HP;
     }
 }
