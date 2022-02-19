@@ -9,6 +9,7 @@ TagManager:
   - Hpincrease
   - ZombieBullet
   - PlayerBullet
+  - speed
   layers:
   - Default
   - TransparentFX
