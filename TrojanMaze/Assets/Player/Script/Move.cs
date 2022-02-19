@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 
 public class Move : MonoBehaviour, iDamageable {
-    [SerializeField] float speed = 10f;
+    [SerializeField] public float speed = 10f;
     [SerializeField] private FieldOfView filedOfView;
     
     [SerializeField] GameObject bullet;
@@ -20,6 +20,13 @@ public class Move : MonoBehaviour, iDamageable {
 
     const float MAX_HP = 1f;
     static float HP;
+
+    public static Move _move;
+
+    private void Awake()
+    {
+        _move = this;//static this scirpts for other scripts to deploy
+    }
 
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
