@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc8f499e230f47bf86c3918730a24f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ValidityPeriod: 2
-  virusDamage: 0.02
+  ValidityPeriod: 2.5
+  virusDamage: 0.005
 --- !u!70 &-2836111063260918167
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
