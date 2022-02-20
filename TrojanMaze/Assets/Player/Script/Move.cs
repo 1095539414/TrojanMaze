@@ -89,7 +89,7 @@ public class Move : MonoBehaviour, iDamageable {
                         {"Level", SceneManager.GetActiveScene().name}
                     }
                 );
-                SceneManager.LoadSceneAsync("Intro");
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             }
             return true;
         }
