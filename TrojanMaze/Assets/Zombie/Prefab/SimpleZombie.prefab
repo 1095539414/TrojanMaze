@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1772109597317683052}
   - component: {fileID: 1772109597317683053}
   - component: {fileID: 2807339066407467033}
+  - component: {fileID: 2230903734163059683}
   m_Layer: 7
   m_Name: SimpleZombie
   m_TagString: Zombie
@@ -192,3 +193,19 @@ NavMeshAgent:
   m_BaseOffset: 0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!70 &2230903734163059683
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772109597317683050}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000003241262, y: -0.01931107}
+  m_Size: {x: 0.21837555, y: 0.47585627}
+  m_Direction: 0
