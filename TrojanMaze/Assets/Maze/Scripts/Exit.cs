@@ -16,9 +16,12 @@ public class Exit : MonoBehaviour
         AnalyticsResult analyticsResult = Analytics.CustomEvent(
             "LevelSolved", 
             new Dictionary<string, object>{
-                {SceneManager.GetActiveScene().name, Time.timeSinceLevelLoad}
+                {"Level Name", SceneManager.GetActiveScene().name},
+                {"Time", Time.timeSinceLevelLoad},
+                {"Remaining HP", Move.GetHP()}
             }
         );
+
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
         if(nextSceneIndex == SceneManager.sceneCountInBuildSettings){

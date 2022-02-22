@@ -428,17 +428,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8095899708655789046, guid: 4fe28878c895db446a5980515fa18f3b, type: 3}
   m_PrefabInstance: {fileID: 2008834904}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &291323814 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1343304805487502224, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
-  m_PrefabInstance: {fileID: 606154006}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1307dd05a6c153e41a591d83c2f0ab1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &321815287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5394079456117065982, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
@@ -1053,6 +1042,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1932537372, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932537372, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1343304804784855936, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1284,11 +1281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5394079456117065982, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.79
+      value: -19.93
       objectReference: {fileID: 0}
     - target: {fileID: 5394079456117065982, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: -1.67
       objectReference: {fileID: 0}
     - target: {fileID: 5394079456117065982, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1679,11 +1676,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 501089880552232205, guid: b5ebf326a2260c54a96f0b22b2f70db6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.49
+      value: -26.09
       objectReference: {fileID: 0}
     - target: {fileID: 501089880552232205, guid: b5ebf326a2260c54a96f0b22b2f70db6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.94
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 501089880552232205, guid: b5ebf326a2260c54a96f0b22b2f70db6, type: 3}
       propertyPath: m_LocalPosition.z
