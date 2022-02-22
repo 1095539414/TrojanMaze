@@ -1053,14 +1053,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1343304804128457753, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 291323814}
-    - target: {fileID: 1343304804128457753, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitScene
-      objectReference: {fileID: 0}
     - target: {fileID: 1343304804784855936, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
       propertyPath: m_Pivot.x
       value: 0
