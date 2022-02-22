@@ -8,11 +8,11 @@ using UnityEngine.Analytics;
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] public float speed = 10f;
     [SerializeField] private FieldOfView filedOfView;
-    
+
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
     [SerializeField] float fireInterval = 1f;
-    
+
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
@@ -23,8 +23,7 @@ public class Move : MonoBehaviour, iDamageable {
 
     public static Move _move;
 
-    private void Awake()
-    {
+    private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
 
@@ -36,7 +35,7 @@ public class Move : MonoBehaviour, iDamageable {
     void Update() {
         FlipPlayer();
         filedOfView.SetOrigin(transform.position);
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if(Input.GetKeyDown(KeyCode.Space)) {
             //Debug.LogError("Update Space");
             Instantiate(bullet, gun.position, gun.rotation);
         }
@@ -52,6 +51,10 @@ public class Move : MonoBehaviour, iDamageable {
 
     void FixedUpdate() {
         Run();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        // Debug.Log(other.collider.name);
     }
 
     void Run() {
@@ -84,7 +87,7 @@ public class Move : MonoBehaviour, iDamageable {
             HP -= value;
             if(HP <= 0) {
                 AnalyticsResult analyticsResult = Analytics.CustomEvent(
-                    "LevelDied", 
+                    "LevelDied",
                     new Dictionary<string, object>{
                         {"Level", SceneManager.GetActiveScene().name}
                     }
