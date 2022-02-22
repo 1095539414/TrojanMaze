@@ -25,16 +25,13 @@ public class SpeedDecrease : MonoBehaviour {
         Debug.Log(Move._move.speed);
     }
     void OnTriggerEnter2D(Collider2D other) {
-        //Destroy it when player collide it
+        // Destroy it when player collide it
         if(other.gameObject.CompareTag("Player")) {
 
             Move._move.speed = newMove;
-            Invoke("oldmove", time);// // deploy this to return to the old speed in 3s
+            Invoke("oldmove", time); // deploy this to return to the old speed in 3s
 
-            GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);////change to transparency to(0, 0, 0, 0) 
-
-
-
+            GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0); //change to transparency to(0, 0, 0, 0) 
         }
     }
 

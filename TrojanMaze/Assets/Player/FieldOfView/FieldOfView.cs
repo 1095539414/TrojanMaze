@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FieldOfView : MonoBehaviour
-{
+public class FieldOfView : MonoBehaviour {
     private const float normalViewDistance = 2f;
     private const float boostViewDistance = 3f;
 
@@ -11,14 +10,13 @@ public class FieldOfView : MonoBehaviour
     private Mesh mesh;
     private Vector3 origin;
     static float viewDistance;
-    void Start()
-    {
+    void Start() {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         viewDistance = normalViewDistance;
     }
 
-    void LateUpdate(){
+    void LateUpdate() {
         float fov = 360f;
         int rayCount = 100;
         float angle = 0f;
@@ -32,22 +30,22 @@ public class FieldOfView : MonoBehaviour
 
         int vertexIndex = 1;
         int triangleIndex = 0;
-        for(int i=0;i <= rayCount; i++){
+        for(int i = 0; i <= rayCount; i++) {
             Vector3 vertex;
             RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, layerMask);
-            if(raycastHit2D.collider == null){
+            if(raycastHit2D.collider == null) {
                 vertex = origin + GetVectorFromAngle(angle) * viewDistance;
-            }else{
+            } else {
                 vertex = raycastHit2D.point;
             }
             vertices[vertexIndex] = vertex;
 
-            if(i > 0){
+            if(i > 0) {
                 triangles[triangleIndex + 0] = 0;
                 triangles[triangleIndex + 1] = vertexIndex - 1;
                 triangles[triangleIndex + 2] = vertexIndex;
 
-                triangleIndex +=3;
+                triangleIndex += 3;
             }
 
 
@@ -58,23 +56,23 @@ public class FieldOfView : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
-        mesh.bounds = new Bounds(origin, Vector3.one *1000f);
+        mesh.bounds = new Bounds(origin, Vector3.one * 1000f);
     }
 
-    Vector3 GetVectorFromAngle(float angle){
-        float angleRad = angle * (Mathf.PI/180f);
+    Vector3 GetVectorFromAngle(float angle) {
+        float angleRad = angle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
 
-    public void SetOrigin(Vector3 origin){
+    public void SetOrigin(Vector3 origin) {
         this.origin = origin;
     }
 
-    public static void ResetViewDistance(){
+    public static void ResetViewDistance() {
         viewDistance = normalViewDistance;
     }
 
-    public static void BoostViewDistance(){
+    public static void BoostViewDistance() {
         viewDistance = boostViewDistance;
     }
 }
