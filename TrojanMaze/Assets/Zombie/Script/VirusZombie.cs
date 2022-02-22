@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VirusZombie : Zombie {
-    [SerializeField] int initialHealth = 100;
+    [SerializeField] int initialHealth = 2;
     [SerializeField] float moveSpeed = 0.02f;
     [SerializeField] float releaseInterval = 0.2f;
 
@@ -16,6 +16,7 @@ public class VirusZombie : Zombie {
     private float _time = 0f;
 
     void Start() {
+        base.Init(initialHealth);
         _body = GetComponent<Rigidbody2D>();
         _initialPos = transform.position;
     }

@@ -4,38 +4,22 @@ using UnityEngine;
 /// <summary>
 ///speed increase
 /// </summary>
-public class SpeedIncrease : MonoBehaviour {
+public class SpeedIncrease : BuffItem {
     public float time = 3f;
 
-    float newMove = 500f;
+    float increaseRatio = 2f;
 
-
-    /// <summary>
-    /// //
-    /// </summary>
-    public static SpeedIncrease _speedIncrease;
-
-
-    void test() {
-        Debug.Log(SpeedDecrease._speedDecrease.time);
-    }
-    private void Awake() {
-        _speedIncrease = this;//static this scirpts for other scripts to deploy
+    protected override bool AddBuff() {
+        Move._move.speed *= increaseRatio;
+        return true;
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        //Destroy it when player collide it
-        if(other.gameObject.CompareTag("Player")) {
-
-            Move._move.speed = newMove;
-            Invoke("oldmove", time);   //deploy this to return to the old speed in 3s
-            GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0);//change to transparency to(0, 0, 0, 0) 
-        }
+    protected override bool RemoveBuff() {
+        Move._move.speed /= increaseRatio;
+        return true;
     }
 
-    void oldmove() {
-        newMove = 300f;
-        Move._move.speed = newMove;
-        Destroy(gameObject);
+    protected override float GetDuration() {
+        return time;
     }
 }

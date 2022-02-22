@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9139e60d8417243808684cf28793eb69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 100
+  initialHealth: 2
   moveSpeed: 0.02
   releaseInterval: 0.2
   VirusZone: {fileID: 338173870643118009, guid: bc21a4ca1cd1849b4bb00ced3a4e52f4, type: 3}
