@@ -7,7 +7,6 @@ public class SimpleZombie : Zombie {
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
-    [SerializeField] float fireInterval = 3f;
 
     private Rigidbody2D _body;
     private NavMeshAgent _agent;
@@ -26,6 +25,7 @@ public class SimpleZombie : Zombie {
     private float _detectionRange = 3f;
     private float _followRange = 7f;
     private float _idleTime = 0f;
+    float _fireInterval = 5f;
     private float _fireTime;
 
 
@@ -61,9 +61,10 @@ public class SimpleZombie : Zombie {
             }
         }
         else if(_target) {
-            if(_fireTime >= fireInterval) {
+            if(_fireTime >= _fireInterval) {
                 FireBullet();
                 _fireTime = 0;
+                _fireInterval = Random.Range(4f, 7f);
             }
             // stop chasing when player is too far
             moveTo(_target.transform.position, _speed * 2, _acceleration * 10);

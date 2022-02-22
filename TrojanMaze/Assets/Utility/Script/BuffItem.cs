@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 
 public abstract class BuffItem : MonoBehaviour {
+    protected GameObject buffTarget;
     // Start is called before the first frame update
     void Start() {
 
@@ -22,13 +23,16 @@ public abstract class BuffItem : MonoBehaviour {
     protected abstract bool RemoveBuff();
     // How long this buff lasts
     protected abstract float GetDuration();
-    private void OnTriggerEnter2D(Collider2D other) {
+    protected void OnTriggerEnter2D(Collider2D other) {
+        buffTarget = other.gameObject;
         if(other.gameObject.CompareTag("Player")) {
-            AddBuff();
+            if(AddBuff()) {
+                Invoke("RemoveBuff", GetDuration());
+            }
             this.gameObject.SetActive(false);
-            Invoke("RemoveBuff", GetDuration());
-
             SendAnalytic();
+        } else if(other.gameObject.CompareTag("Walls")) {
+            this.gameObject.SetActive(false);
         }
     }
 
