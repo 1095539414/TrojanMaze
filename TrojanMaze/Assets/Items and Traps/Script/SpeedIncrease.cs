@@ -11,11 +11,14 @@ public class SpeedIncrease : BuffItem {
 
     protected override bool AddBuff() {
         Move._move.speed *= increaseRatio;
+        name = gameObject.name;
+        state.AddBuff(spriteR,name);
         return true;
     }
 
     protected override bool RemoveBuff() {
         Move._move.speed /= increaseRatio;
+        state.RemoveBuff(name);
         return true;
     }
 
