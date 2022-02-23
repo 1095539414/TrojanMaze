@@ -59,7 +59,9 @@ public class BuffItem : MonoBehaviour {
                 Invoke("RemoveBuff", GetDuration());
             }
             this.gameObject.SetActive(false);
-            SendAnalytic();
+            if(!this.CompareTag("ZombieBullet")) {
+                SendAnalytic();
+            }
         } else if(other.gameObject.CompareTag("Walls")) {
             this.gameObject.SetActive(false);
         }
