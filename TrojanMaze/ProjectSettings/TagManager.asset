@@ -9,6 +9,8 @@ TagManager:
   - Hpincrease
   - ZombieBullet
   - PlayerBullet
+  - speed
+  - sword
   layers:
   - Default
   - TransparentFX

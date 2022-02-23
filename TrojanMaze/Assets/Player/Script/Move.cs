@@ -33,7 +33,7 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
-        FlipPlayer();
+        //FlipPlayer();
         filedOfView.SetOrigin(transform.position);
         if(Input.GetKeyDown(KeyCode.Space)) {
             //Debug.LogError("Update Space");
