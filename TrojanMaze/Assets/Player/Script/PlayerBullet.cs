@@ -37,20 +37,13 @@ public class PlayerBullet : MonoBehaviour {
         if(speedSet == false) {
             Rigidbody2D playSpeed = player.GetComponent<Rigidbody2D>();
             Vector2 playerSpeed = playSpeed.velocity;
-            if(playerSpeed.x != 0 && Math.Abs(playerSpeed.x) > 1) last_x = playerSpeed.x;
-            if(playerSpeed.y != 0 && Math.Abs(playerSpeed.y) > 1) last_y = playerSpeed.y;
-            float ySpeed = 0;
-            float xSpeed = 0;
-            if(Math.Abs(last_x) >= Math.Abs(last_y)) {
-                ySpeed = 0;
-                xSpeed = last_x >= 0 ? bulletSpeed : -1 * bulletSpeed;
+            
+            Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            diff.Normalize();
+            float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
-            } else {
-                ySpeed = last_y >= 0 ? bulletSpeed : -1 * bulletSpeed;
-                xSpeed = 0;
-            }
-
-            bulletRigidbody.velocity = new Vector2(xSpeed, ySpeed);
+            bulletRigidbody.velocity = new Vector2(diff.x*bulletSpeed, diff.y*bulletSpeed);
             speedSet = true;
         }
         // } 
