@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-///speed increase
-/// </summary>
-public class SpeedIncrease : BuffItem {
+
+public class VisionExpand : BuffItem
+{
+    // Start is called before the first frame update
     public float time = 3f;
 
-    float increaseRatio = 1.5f;
 
     protected override bool AddBuff() {
-        Move._move.speed *= increaseRatio;
+        FieldOfView.BoostViewDistance();
         name = gameObject.name;
-        state.AddBuff(spriteR, name);
+        state.AddBuff(spriteR,name);
         return true;
     }
 
     protected override bool RemoveBuff() {
-        Move._move.speed /= increaseRatio;
+        FieldOfView.ResetViewDistance();
         state.RemoveBuff(name);
         return true;
     }
