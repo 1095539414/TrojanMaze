@@ -10,46 +10,42 @@ public class BuffItem : MonoBehaviour {
     protected GameObject buffTarget;
 
     protected State state;
-
-    public string name;
-
-    [SerializeField]
     protected SpriteRenderer spriteR;
 
     // [SerializeField]
     // private Image durationImg;
-    
-    [SerializeField]
-    private Image icon;
 
-    public void Initialize(SpriteRenderer spriteR,string name){
+    //[SerializeField]
+    public Image icon;
+
+    public void Initialize(SpriteRenderer spriteR, string name) {
         this.icon.sprite = spriteR.sprite;
         this.icon.color = spriteR.color;
         this.name = name;
-        //this.durationImg.fillAmount = 0;
     }
 
     // Start is called before the first frame update
     void Start() {
         GameObject canvas = GameObject.Find("Canvas");
         state = canvas.GetComponent<State>();
+        spriteR = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update() {
         //durationImg.fillAmount = 
     }
-    
+
     // how do I apply the buff
-    protected virtual bool AddBuff(){
+    protected virtual bool AddBuff() {
         return false;
     }
     // how do I take off the buff
-    protected virtual bool RemoveBuff(){
+    protected virtual bool RemoveBuff() {
         return false;
     }
     // How long this buff lasts
-    protected virtual float GetDuration(){
+    protected virtual float GetDuration() {
         return 0;
     }
     protected void OnTriggerEnter2D(Collider2D other) {

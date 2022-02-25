@@ -12,12 +12,12 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
     [SerializeField] float fireInterval = 1f;
-
+    [SerializeField] GameObject swordPivot;
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
     bool isBouncing = false;
-
+    public bool useSword;
     const float MAX_HP = 1f;
     static float HP;
 
@@ -29,6 +29,7 @@ public class Move : MonoBehaviour, iDamageable {
 
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
+        swordPivot.SetActive(false);
         HP = MAX_HP;
     }
 
@@ -101,5 +102,10 @@ public class Move : MonoBehaviour, iDamageable {
 
     public static float GetHP() {
         return HP;
+    }
+
+    public bool enableSword() {
+        this.swordPivot.SetActive(true);
+        return true;
     }
 }
