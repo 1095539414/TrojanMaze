@@ -14,6 +14,10 @@ public class Menu : MonoBehaviour
         StartCoroutine(loadScene("Maze1"));
     }
 
+    public void PlayLevel2(){
+        StartCoroutine(loadScene("Maze1.2"));
+    }
+
     public void QuitScene(){
         StartCoroutine(loadScene("menu"));
     }

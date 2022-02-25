@@ -17,7 +17,7 @@ public class Move : MonoBehaviour, iDamageable {
     Rigidbody2D rigidBody;
 
     bool isBouncing = false;
-    public bool useSword;
+    public bool gunEnabled;
     const float MAX_HP = 1f;
     static float HP;
 
@@ -36,10 +36,10 @@ public class Move : MonoBehaviour, iDamageable {
     void Update() {
         //FlipPlayer();
         filedOfView.SetOrigin(transform.position);
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            //Debug.LogError("Update Space");
+        if(gunEnabled && Input.GetKeyDown(KeyCode.Space)) {
             Instantiate(bullet, gun.position, gun.rotation);
         }
+
         if(HP > 1) {
             HP = 1;
         }
@@ -47,7 +47,6 @@ public class Move : MonoBehaviour, iDamageable {
         /*if (HP <= 0) {
             Destroy(gameObject);
         }*/
-
     }
 
     void FixedUpdate() {
@@ -104,8 +103,20 @@ public class Move : MonoBehaviour, iDamageable {
         return HP;
     }
 
-    public bool enableSword() {
+    public bool EnableSword() {
         this.swordPivot.SetActive(true);
         return true;
+    }
+
+    public bool EnableGun() {
+        gunEnabled = true;
+        return true;
+    }
+
+    public bool SwordEnabled() {
+        return this.swordPivot.activeSelf;
+    }
+    public bool GunEnabled() {
+        return gunEnabled;
     }
 }

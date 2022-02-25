@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordItem : BuffItem {
+public class GunItem : BuffItem {
     // Start is called before the first frame update
     float healAmount = 0.3f;
     protected override bool AddBuff() {
-        if(!buffTarget.GetComponent<Move>().SwordEnabled()) {
-            buffTarget.GetComponent<Move>().EnableSword();
+        if(!buffTarget.GetComponent<Move>().GunEnabled()) {
+            buffTarget.GetComponent<Move>().EnableGun();
             name = gameObject.name;
             state.AddBuff(spriteR, name);
             return true;
