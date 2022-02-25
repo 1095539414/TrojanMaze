@@ -39,14 +39,6 @@ public class Move : MonoBehaviour, iDamageable {
         if(gunEnabled && Input.GetKeyDown(KeyCode.Space)) {
             Instantiate(bullet, gun.position, gun.rotation);
         }
-
-        if(HP > 1) {
-            HP = 1;
-        }
-        // mute it because if it is kept,when hp is reduced to 0 by a trap, cannot reload the scene and send the player to the start position
-        /*if (HP <= 0) {
-            Destroy(gameObject);
-        }*/
     }
 
     void FixedUpdate() {
