@@ -7,7 +7,7 @@ using UnityEngine;
 public class SpeedIncrease : BuffItem {
     public float time = 3f;
 
-    float increaseRatio = 2f;
+    float increaseRatio = 1.5f;
 
     protected override bool AddBuff() {
         Move._move.speed *= increaseRatio;

@@ -1482,11 +1482,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1704680417 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 548594345, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
-  m_PrefabInstance: {fileID: 2570957952018953322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1725511267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8095899708655789046, guid: 4fe28878c895db446a5980515fa18f3b, type: 3}
@@ -2329,14 +2324,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 548594347, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
-      propertyPath: myPlayer
-      value: 
-      objectReference: {fileID: 957944881}
-    - target: {fileID: 1404535109907744525, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
-      propertyPath: swordPivot
-      value: 
-      objectReference: {fileID: 1704680417}
     - target: {fileID: 1404535109907744525, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
       propertyPath: filedOfView
       value: 
