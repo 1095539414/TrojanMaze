@@ -8,6 +8,7 @@ public class GunItem : BuffItem {
     protected override bool AddBuff() {
         if(!buffTarget.GetComponent<Move>().GunEnabled()) {
             buffTarget.GetComponent<Move>().EnableGun();
+            buffTarget.GetComponent<Move>().bulletNum += 20;
             name = gameObject.name;
             state.AddBuff(spriteR, name);
             return true;
