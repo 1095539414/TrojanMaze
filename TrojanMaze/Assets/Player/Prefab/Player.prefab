@@ -363,6 +363,8 @@ MonoBehaviour:
   gun: {fileID: 8889695693845426544}
   fireInterval: 1
   swordPivot: {fileID: 548594345}
+  bulletNum: -1
+  BulletText: {fileID: 0}
   gunEnabled: 0
 --- !u!50 &464544809
 Rigidbody2D:

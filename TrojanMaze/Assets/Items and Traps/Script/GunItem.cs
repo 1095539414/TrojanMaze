@@ -6,13 +6,14 @@ public class GunItem : BuffItem {
     // Start is called before the first frame update
     float healAmount = 0.3f;
     protected override bool AddBuff() {
-        if(!buffTarget.GetComponent<Move>().GunEnabled()) {
             buffTarget.GetComponent<Move>().EnableGun();
+            if(buffTarget.GetComponent<Move>().bulletNum == -1){
+                name = gameObject.name;
+                state.AddBuff(spriteR, name);
+                buffTarget.GetComponent<Move>().bulletNum ++;
+            }
             buffTarget.GetComponent<Move>().bulletNum += 20;
-            name = gameObject.name;
-            state.AddBuff(spriteR, name);
             return true;
-        }
         return false;
     }
 

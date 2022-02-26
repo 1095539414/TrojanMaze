@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
+using TMPro;
 
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] public float speed = 10f;
@@ -13,10 +14,13 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] Transform gun;
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
-    [SerializeField] public int bulletNum=0;
+    public int bulletNum = -1;
     Vector2 moveInput;
     Rigidbody2D rigidBody;
     
+
+    [SerializeField]
+    private TextMeshProUGUI BulletText;
 
     bool isBouncing = false;
     public bool gunEnabled;
@@ -34,17 +38,23 @@ public class Move : MonoBehaviour, iDamageable {
         rigidBody = GetComponent<Rigidbody2D>();
         swordPivot.SetActive(false);
         HP = MAX_HP;
+
+        BulletText.text = "";
     }
 
     void Update() {
         //FlipPlayer();
         filedOfView.SetOrigin(transform.position);
-        if (bulletNum == 0) gunEnabled = false;
+        if (bulletNum <= 0) gunEnabled = false;
         if(gunEnabled && Input.GetMouseButton(0) && Time.time>=nextShootTime)
         {
             nextShootTime = Time.time + 0.6f;
             bulletNum--;
             Instantiate(bullet, gun.position, gun.rotation);
+        }
+
+        if(bulletNum > -1){
+            BulletText.text = bulletNum.ToString();
         }
     }
 
