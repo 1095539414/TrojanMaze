@@ -13,6 +13,7 @@ TagManager:
   - sword
   - vision
   - Spike
+  - Armor
   layers:
   - Default
   - TransparentFX
