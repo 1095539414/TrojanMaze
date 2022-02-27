@@ -543,11 +543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.14
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.53
+      value: -5.46
       objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: 8c6c745fe83fc7346a84b5965199e0ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -796,7 +796,7 @@ TextMesh:
   m_GameObject: {fileID: 982852955}
   m_Text: 'You found a gun!
 
-    Press ''Space'' to shoot'
+    Left click to shoot'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
