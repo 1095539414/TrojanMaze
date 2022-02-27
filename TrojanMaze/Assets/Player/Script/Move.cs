@@ -8,16 +8,13 @@ using TMPro;
 
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] public float speed = 10f;
-    [SerializeField] private FieldOfView filedOfView;
-
-    [SerializeField] GameObject bullet;
-    [SerializeField] Transform gun;
+    [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
-    public int bulletNum = -1;
+    [SerializeField] GameObject playerBullet;
     Vector2 moveInput;
     Rigidbody2D rigidBody;
-    
+
 
     [SerializeField]
     private TextMeshProUGUI BulletText;
@@ -27,6 +24,8 @@ public class Move : MonoBehaviour, iDamageable {
     const float MAX_HP = 1f;
     static float HP;
     private float nextShootTime;
+    private int bulletNum = 0;
+    private GameObject gun;
 
     public static Move _move;
 
@@ -37,24 +36,23 @@ public class Move : MonoBehaviour, iDamageable {
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         swordPivot.SetActive(false);
+        gunEnabled = false;
         HP = MAX_HP;
-
-        BulletText.text = "";
     }
 
     void Update() {
         //FlipPlayer();
-        filedOfView.SetOrigin(transform.position);
-        if (bulletNum <= 0) gunEnabled = false;
-        if(gunEnabled && Input.GetMouseButton(0) && Time.time>=nextShootTime)
-        {
+        fieldOfView.SetOrigin(transform.position);
+        if(bulletNum > 0 && Input.GetMouseButton(0) && Time.time >= nextShootTime) {
             nextShootTime = Time.time + 0.6f;
             bulletNum--;
-            Instantiate(bullet, gun.position, gun.rotation);
+            Instantiate(playerBullet, this.transform.position, this.transform.rotation);
         }
 
-        if(bulletNum > -1){
+        if(bulletNum > 0) {
             BulletText.text = bulletNum.ToString();
+        } else {
+            BulletText.text = "";
         }
     }
 
@@ -117,7 +115,8 @@ public class Move : MonoBehaviour, iDamageable {
         return true;
     }
 
-    public bool EnableGun() {
+    public bool EnableGun(GameObject gun) {
+        bulletNum += 20;
         gunEnabled = true;
         return true;
     }

@@ -34,6 +34,7 @@ public class Zombie : MonoBehaviour, iDamageable {
         return false;
     }
 
+
     private IEnumerator Die() {
         // Death Animation here
         Destroy(this.gameObject);

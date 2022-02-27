@@ -9,7 +9,7 @@ public class SwordItem : BuffItem {
         if(!buffTarget.GetComponent<Move>().SwordEnabled()) {
             buffTarget.GetComponent<Move>().EnableSword();
             name = gameObject.name;
-            state.AddBuff(spriteR, name);
+            status.AddBuff(spriteR, name);
             return true;
         }
         return false;

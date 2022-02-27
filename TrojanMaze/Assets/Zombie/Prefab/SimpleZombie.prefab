@@ -167,10 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc56ed41a371194e84527429de7219e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 1
+  initialHealth: 3
   bullet: {fileID: 8861455048163486839, guid: ba51b193768c94d43afd0185530c7b86, type: 3}
   gun: {fileID: 8666439797591268703}
-  fireInterval: 3
 --- !u!195 &2807339066407467033
 NavMeshAgent:
   m_ObjectHideFlags: 0

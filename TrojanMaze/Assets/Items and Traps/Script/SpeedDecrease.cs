@@ -12,13 +12,13 @@ public class SpeedDecrease : BuffItem {
     protected override bool AddBuff() {
         Move._move.speed /= decreaseRatio;
         name = gameObject.name;
-        state.AddBuff(spriteR,name);
+        status.AddBuff(spriteR,name);
         return true;
     }
 
     protected override bool RemoveBuff() {
         Move._move.speed *= decreaseRatio;
-        state.RemoveBuff(name);
+        status.RemoveBuff(name);
         return true;
     }
 
