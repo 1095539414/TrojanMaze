@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class BuffItem : MonoBehaviour {
     protected GameObject buffTarget;
 
-    protected State state;
+    protected State status;
     protected SpriteRenderer spriteR;
 
     // [SerializeField]
@@ -27,7 +27,7 @@ public class BuffItem : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         GameObject canvas = GameObject.Find("Canvas");
-        state = canvas.GetComponent<State>();
+        status = canvas.GetComponent<State>();
         spriteR = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
@@ -50,7 +50,7 @@ public class BuffItem : MonoBehaviour {
     }
     protected void OnTriggerEnter2D(Collider2D other) {
         buffTarget = other.gameObject;
-        if(other.gameObject.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Armor")){
             if(AddBuff()) {
                 Invoke("RemoveBuff", GetDuration());
             }

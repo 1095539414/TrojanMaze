@@ -11,13 +11,13 @@ public class VisionExpand : BuffItem
     protected override bool AddBuff() {
         FieldOfView.BoostViewDistance();
         name = gameObject.name;
-        state.AddBuff(spriteR,name);
+        status.AddBuff(spriteR,name);
         return true;
     }
 
     protected override bool RemoveBuff() {
         FieldOfView.ResetViewDistance();
-        state.RemoveBuff(name);
+        status.RemoveBuff(name);
         return true;
     }
 

@@ -12,6 +12,8 @@ TagManager:
   - speed
   - sword
   - vision
+  - Spike
+  - Armor
   layers:
   - Default
   - TransparentFX

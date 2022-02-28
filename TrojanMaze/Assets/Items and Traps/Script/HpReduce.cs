@@ -14,9 +14,11 @@ public class HpReduce : MonoBehaviour {
 
     }
     void OnTriggerEnter2D(Collider2D other) {
-        iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
-        if(damageableObj != null) {
-            damageableObj.ReduceHealth(_damage);
+        if(other.tag == "Player") {
+            iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
+            if(damageableObj != null) {
+                damageableObj.ReduceHealth(_damage);
+            }
         }
     }
 }
