@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4ae7608a7b9f249bf8744e4a95f9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
+  speed: 150
   fieldOfView: {fileID: 4964059437341398581, guid: 6084db1fc6ffd52418297f13d885bc86, type: 3}
   fireInterval: 1
   swordPivot: {fileID: 548594345}
