@@ -45,7 +45,7 @@ public class Zombie : MonoBehaviour, iDamageable {
                 {"Zombie", this.name},
             }
         );
-        Debug.Log(analyticsResult);
+        // Debug.Log(analyticsResult);
         // Death Animation here
         Destroy(this.gameObject);
         // wait for a bit before erasing the zombie
