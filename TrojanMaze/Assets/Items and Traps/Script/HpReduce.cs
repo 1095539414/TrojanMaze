@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HpReduce : MonoBehaviour {
-    private float _damage = 0.5f;
+    private float _damage = 0.25f;
     // Start is called before the first frame update
     void Start() {
 
