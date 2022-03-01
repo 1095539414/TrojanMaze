@@ -27,6 +27,9 @@ public class Move : MonoBehaviour, iDamageable {
     private int bulletNum = 0;
     private GameObject gun;
 
+    public static float totalHpReduced;
+    public static float dmgBySword;
+    public static float dmgByGun;
     public static Move _move;
 
     private void Awake() {
@@ -92,6 +95,7 @@ public class Move : MonoBehaviour, iDamageable {
     public bool ReduceHealth(float value) {
         if(HP > 0) {
             HP -= value;
+            totalHpReduced += value;
             if(HP <= 0) {
                 AnalyticsResult analyticsResult = Analytics.CustomEvent(
                     "LevelDied",
