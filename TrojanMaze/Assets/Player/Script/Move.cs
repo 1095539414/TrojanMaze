@@ -43,7 +43,7 @@ public class Move : MonoBehaviour, iDamageable {
     void Update() {
         //FlipPlayer();
         fieldOfView.SetOrigin(transform.position);
-        if(bulletNum > 0 && Input.GetMouseButton(0) && Time.time >= nextShootTime) {
+        if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
             nextShootTime = Time.time + 0.6f;
             bulletNum--;
             Instantiate(playerBullet, this.transform.position, this.transform.rotation);
