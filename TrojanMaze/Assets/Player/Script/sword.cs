@@ -10,7 +10,7 @@ public class sword : MonoBehaviour {
         if(other.CompareTag("Zombie") || other.CompareTag("Walls")) {
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
-                if(damageableObj.ReduceHealth(swordDamage)) {
+                if(damageableObj.ReduceHealth(swordDamage, this.gameObject)) {
                     Move.dmgBySword += swordDamage;
                 }
             }

@@ -17,7 +17,7 @@ public class HpReduce : MonoBehaviour {
         if(other.tag == "Player") {
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
-                damageableObj.ReduceHealth(_damage);
+                damageableObj.ReduceHealth(_damage, this.gameObject);
             }
         }
     }

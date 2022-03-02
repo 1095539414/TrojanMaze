@@ -39,7 +39,7 @@ public class Bullet : BuffItem {
     protected override bool AddBuff() {
         iDamageable damageableObj = buffTarget.gameObject.GetComponent<iDamageable>();
         if(damageableObj != null) {
-            damageableObj.ReduceHealth(bulletDamage);
+            damageableObj.ReduceHealth(bulletDamage, this.gameObject);
             Move._move.speed /= _speedDecreaseRatio;
             return true;
         }

@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface iDamageable {
-    bool ReduceHealth(float amount);
+    bool ReduceHealth(float amount, GameObject from);
 }

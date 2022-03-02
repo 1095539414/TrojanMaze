@@ -26,9 +26,8 @@ public class PlayerBullet : MonoBehaviour {
             Destroy(gameObject);
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
-                if(damageableObj.ReduceHealth(bulletDamage)) {
+                if(damageableObj.ReduceHealth(bulletDamage, this.gameObject)) {
                     Move.dmgByGun += bulletDamage;
-
                 }
             }
         }

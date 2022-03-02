@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Analytics;
 using TMPro;
 
 public class Move : MonoBehaviour, iDamageable {
@@ -27,10 +26,12 @@ public class Move : MonoBehaviour, iDamageable {
     private int bulletNum = 0;
     private GameObject gun;
 
-    public static float totalHpReduced;
-    public static float dmgBySword;
-    public static float dmgByGun;
+    public static float totalHpReduced = 0f;
+    public static float dmgBySword = 0f;
+    public static float dmgByGun = 0f;
     public static Move _move;
+
+    public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
 
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
@@ -92,17 +93,17 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
-    public bool ReduceHealth(float value) {
+    public bool ReduceHealth(float value, GameObject from) {
         if(HP > 0) {
             HP -= value;
             totalHpReduced += value;
+            if(!damagedFrom.ContainsKey(from.name)) {
+                damagedFrom.Add(from.name, 0f);
+            }
+            damagedFrom[from.name] += value;
+
             if(HP <= 0) {
-                AnalyticsResult analyticsResult = Analytics.CustomEvent(
-                    "LevelDied",
-                    new Dictionary<string, object>{
-                        {"Level", SceneManager.GetActiveScene().name}
-                    }
-                );
+                UnityAnalytics.sendLevelDied();
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             }
             return true;

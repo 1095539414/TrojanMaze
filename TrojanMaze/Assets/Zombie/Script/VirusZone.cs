@@ -23,7 +23,7 @@ public class VirusZone : MonoBehaviour {
             if(_damageTime >= _damageInterval) {
                 iDamageable damageableObj = _damageTarget.gameObject.GetComponent<iDamageable>();
                 if(damageableObj != null) {
-                    damageableObj.ReduceHealth(virusDamage);
+                    damageableObj.ReduceHealth(virusDamage, this.gameObject);
                 }
                 _damageTime = 0f;
             }

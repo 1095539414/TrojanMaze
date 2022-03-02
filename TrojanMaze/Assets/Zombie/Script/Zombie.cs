@@ -20,7 +20,7 @@ public class Zombie : MonoBehaviour, iDamageable {
 
     // Health calculation 
     // other factors that are influenced by helath could be done here
-    public bool ReduceHealth(float amount) {
+    public bool ReduceHealth(float amount, GameObject from) {
         _health -= amount;
         if(_health <= 0) {
             StartCoroutine(Die());
@@ -31,20 +31,14 @@ public class Zombie : MonoBehaviour, iDamageable {
     protected bool Attack(GameObject obj, float damage) {
         iDamageable damageableObj = obj.GetComponent<iDamageable>();
         if(damageableObj != null) {
-            return damageableObj.ReduceHealth(damage);
+            return damageableObj.ReduceHealth(damage, this.gameObject);
         }
         return false;
     }
 
 
     private IEnumerator Die() {
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "ZombieKilled",
-            new Dictionary<string, object>{
-                {"Level", SceneManager.GetActiveScene().name},
-                {"Zombie", this.name},
-            }
-        );
+        UnityAnalytics.sendZombieKilled(this.name);
         Debug.Log(this.name);
         // Death Animation here
         Destroy(this.gameObject);

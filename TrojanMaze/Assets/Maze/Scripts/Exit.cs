@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Analytics;
 
 public class Exit : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 1f;
@@ -14,18 +13,8 @@ public class Exit : MonoBehaviour {
     }
     IEnumerator LoadNextLevel() {
         yield return new WaitForSecondsRealtime(levelLoadDelay);
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "LevelSolved",
-            new Dictionary<string, object>{
-                {"Level Name", SceneManager.GetActiveScene().name},
-                {"Time", Time.timeSinceLevelLoad},
-                {"Remaining HP", Move.GetHP()},
-                {"Received Damage", Move.totalHpReduced},
-                {"Gun Damage", Move.dmgByGun},
-                {"Sword Damage", Move.dmgBySword}
-            }
-        );
-
+        UnityAnalytics.sendLevelSolved();
+        UnityAnalytics.sendDamagedFrom();
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
         if(nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
@@ -33,4 +22,9 @@ public class Exit : MonoBehaviour {
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
+
+    public void OnApplicationQuit() {
+        UnityAnalytics.sendDamagedFrom();
+    }
+
 }
