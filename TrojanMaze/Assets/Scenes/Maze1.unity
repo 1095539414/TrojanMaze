@@ -2173,7 +2173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4088460237326637217, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_Name
-      value: VisionExpand (1)
+      value: BoostView
       objectReference: {fileID: 0}
     - target: {fileID: 4088460237326637217, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_TagString
@@ -3707,7 +3707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4088460237326637217, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_Name
-      value: VisionExpand
+      value: BoostView
       objectReference: {fileID: 0}
     - target: {fileID: 4088460237326637217, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_TagString
