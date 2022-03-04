@@ -184,10 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 150
-  fieldOfView: {fileID: 4964059437341398581, guid: 6084db1fc6ffd52418297f13d885bc86, type: 3}
+  fieldOfView: {fileID: 0}
   fireInterval: 1
   swordPivot: {fileID: 548594345}
-  playerBullet: {fileID: 3572178453297475688, guid: a4ea8840c412293488d1a3ab8cb9842a, type: 3}
+  playerBullet: {fileID: 3572178453297475688, guid: 331976b73e7ac414c99b70b0e9c1bf3b, type: 3}
+  menuPanel: {fileID: 0}
   BulletText: {fileID: 0}
   gunEnabled: 0
 --- !u!50 &464544809

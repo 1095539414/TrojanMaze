@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
     }
 
     public void QuitScene(){
+        Time.timeScale = 1f;
         StartCoroutine(loadScene("menu"));
     }
 

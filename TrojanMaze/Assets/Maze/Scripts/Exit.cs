@@ -5,12 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 1f;
+    [SerializeField] GameObject menuPanel;
+
+    void Start(){
+        menuPanel.SetActive(false);
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
-            StartCoroutine(LoadNextLevel());
+            Time.timeScale = 0f;
+            menuPanel.SetActive(true);
         }
     }
+
+
+    public void OnLoadNextLevel(){
+        Time.timeScale = 1f;
+        StartCoroutine(LoadNextLevel());
+    }
+
     IEnumerator LoadNextLevel() {
         yield return new WaitForSecondsRealtime(levelLoadDelay);
         UnityAnalytics.sendLevelSolved();
@@ -24,7 +37,13 @@ public class Exit : MonoBehaviour {
     }
 
     public void OnApplicationQuit() {
+        Time.timeScale = 1f;
         UnityAnalytics.sendDamagedFrom();
+    }
+
+    public void OnRestart(){
+        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
