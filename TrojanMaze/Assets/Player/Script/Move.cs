@@ -11,6 +11,7 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
     [SerializeField] GameObject playerBullet;
+    [SerializeField] GameObject menuPanel;
     Vector2 moveInput;
     Rigidbody2D rigidBody;
 
@@ -42,6 +43,7 @@ public class Move : MonoBehaviour, iDamageable {
         swordPivot.SetActive(false);
         gunEnabled = false;
         HP = MAX_HP;
+        menuPanel.SetActive(false);
     }
 
     void Update() {
@@ -104,7 +106,8 @@ public class Move : MonoBehaviour, iDamageable {
 
             if(HP <= 0) {
                 UnityAnalytics.sendLevelDied();
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+                Time.timeScale = 0f;
+                menuPanel.SetActive(true);
             }
             return true;
         }
