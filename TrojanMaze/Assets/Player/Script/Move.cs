@@ -32,6 +32,12 @@ public class Move : MonoBehaviour, iDamageable {
     public static float dmgByGun = 0f;
     public static Move _move;
 
+    // footprints-related variables
+    private Vector2 _prevPos;
+    private Vector2 _curPos;
+    [SerializeField] GameObject FootPrint;
+    [SerializeField] float FootprintGap = 1f;
+
     public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
 
     private void Awake() {
@@ -44,6 +50,7 @@ public class Move : MonoBehaviour, iDamageable {
         gunEnabled = false;
         HP = MAX_HP;
         menuPanel.SetActive(false);
+        _prevPos = transform.position;
     }
 
     void Update() {
@@ -60,6 +67,8 @@ public class Move : MonoBehaviour, iDamageable {
         } else {
             BulletText.text = "";
         }
+
+        DropFootprint();
     }
 
     void FixedUpdate() {
@@ -134,5 +143,16 @@ public class Move : MonoBehaviour, iDamageable {
     }
     public bool GunEnabled() {
         return gunEnabled;
+    }
+
+    private void DropFootprint() {
+        _curPos = transform.position;
+        float dist = Mathf.Sqrt(Mathf.Pow(_curPos.x - _prevPos.x, 2) + Mathf.Pow(_curPos.y - _prevPos.y, 2));
+        if (dist > FootprintGap) {
+            float tanVal = (_curPos.y - _prevPos.y) / (_curPos.x - _prevPos.x);
+            float rotationAngle = Mathf.Atan(tanVal)*(180/Mathf.PI) + ((_curPos.x - _prevPos.x) < 0 ? 180: 0);
+            Instantiate(FootPrint, transform.position, Quaternion.Euler(new Vector3(0, 0, rotationAngle)));
+            _prevPos = _curPos;
+        }
     }
 }

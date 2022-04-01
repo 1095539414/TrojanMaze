@@ -191,6 +191,8 @@ MonoBehaviour:
   menuPanel: {fileID: 0}
   BulletText: {fileID: 0}
   gunEnabled: 0
+  FootPrint: {fileID: 2560464115760370760, guid: 01f7cd74fc72e4dcebc256b3d6d8348a, type: 3}
+  FootprintGap: 1
 --- !u!50 &464544809
 Rigidbody2D:
   serializedVersion: 4
