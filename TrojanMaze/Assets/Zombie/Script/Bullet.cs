@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : BuffItem {
     Rigidbody2D bulletRigidbody;
     [SerializeField] float bulletSpeed = 10f;
-    float bulletDamage = 0.01f;
+    float bulletDamage = 0.1f;
     bool speedSet = false;
     private Vector2 _direction;
 
@@ -21,19 +21,21 @@ public class Bullet : BuffItem {
         GunPosition = transform.position;
         bulletRigidbody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindWithTag("Player");
+        dirToPlayer = (Vector2)_player.transform.position - GunPosition;
+        // transform.rotation = Quaternion.LookRotation(Vector3.forward, dirToPlayer);
+        if(dirToPlayer.x < 0) {
+            Vector3 scale = transform.localScale;
+            scale.y *= -1;
+            transform.localScale = scale;
+        }
     }
 
     // Update is called once per frame
-    void Update() {
-        dirToPlayer = (Vector2)_player.transform.position - GunPosition;
+    void FixedUpdate() {
+        float angle = Mathf.Atan2(dirToPlayer.y, dirToPlayer.x) * Mathf.Rad2Deg;
         dirToPlayer.Normalize();
-        if(speedSet == false) {
-            ySpeed = dirToPlayer.y * bulletSpeed;
-            xSpeed = dirToPlayer.x * bulletSpeed;
-            // Debug.Log("" + dirToPlayer.x + "  " + dirToPlayer.y);
-            speedSet = true;
-        }
-        bulletRigidbody.velocity = new Vector2(xSpeed, ySpeed);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        bulletRigidbody.velocity = new Vector2(dirToPlayer.x * bulletSpeed, dirToPlayer.y * bulletSpeed);
     }
 
     protected override bool AddBuff() {

@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pivot : MonoBehaviour
-{
+public class Pivot : MonoBehaviour {
 
     public GameObject myPlayer;
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         diff.Normalize();

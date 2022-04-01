@@ -7,7 +7,7 @@ public class sword : MonoBehaviour {
     float swordDamage = 0.2f;
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Zombie") || other.CompareTag("Walls")) {
+        if(other.CompareTag("Zombie") && !other.isTrigger) {
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
                 if(damageableObj.ReduceHealth(swordDamage, this.gameObject)) {
