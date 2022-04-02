@@ -8,22 +8,26 @@ public class Tower : MonoBehaviour
     float initialCamera;
     float boostCamera = 10f;
     float cameraZoom;
+    bool activate;
     // Start is called before the first frame update
     void Start()
     {
         myCamera = Camera.main;
         initialCamera = myCamera.orthographicSize;
         cameraZoom = initialCamera;
+        activate = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         zoom();
+        Debug.Log(cameraZoom);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
+            activate = true;
             cameraZoom = boostCamera;
         }
     }
@@ -35,6 +39,7 @@ public class Tower : MonoBehaviour
     }
 
     private void zoom(){
+        if(!activate) return ;
         float cameraZoomDifference = cameraZoom - myCamera.orthographicSize;
         float cameraZoomSpeed= 1f;
 
@@ -47,6 +52,7 @@ public class Tower : MonoBehaviour
         }else{
             if(myCamera.orthographicSize < cameraZoom){
                 myCamera.orthographicSize = cameraZoom;
+                activate = false; 
             }
         }
     }

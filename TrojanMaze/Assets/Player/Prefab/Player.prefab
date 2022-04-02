@@ -111,6 +111,7 @@ MonoBehaviour:
   FootPrint: {fileID: 2560464115760370760, guid: 01f7cd74fc72e4dcebc256b3d6d8348a, type: 3}
   FootprintGap: 1
   Portal: {fileID: 1482466758426759666, guid: ca01b08ade8ea41c0a59216c35fdc54c, type: 3}
+  NumOfProtals: 3
 --- !u!50 &464544809
 Rigidbody2D:
   serializedVersion: 4
@@ -219,9 +220,13 @@ PrefabInstance:
       propertyPath: m_Direction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7273016644190423154, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_Name
-      value: sword
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 7273016644190423155, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_LocalScale.x
