@@ -38,6 +38,10 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject FootPrint;
     [SerializeField] float FootprintGap = 1f;
 
+    // Portal-related variables
+    [SerializeField] GameObject Portal;
+    [SerializeField] int NumOfProtals = 3;
+
     public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
 
     private void Awake() {
@@ -69,6 +73,7 @@ public class Move : MonoBehaviour, iDamageable {
         }
 
         DropFootprint();
+        MarkLocation();
     }
 
     void FixedUpdate() {
@@ -153,6 +158,14 @@ public class Move : MonoBehaviour, iDamageable {
             float rotationAngle = Mathf.Atan(tanVal)*(180/Mathf.PI) + ((_curPos.x - _prevPos.x) < 0 ? 180: 0);
             Instantiate(FootPrint, transform.position, Quaternion.Euler(new Vector3(0, 0, rotationAngle)));
             _prevPos = _curPos;
+        }
+    }
+
+    private void MarkLocation() {
+        if(Input.GetKeyDown(KeyCode.M) &&  NumOfProtals > 0) {
+            // Debug.Log("Press the M");
+            NumOfProtals--;
+            Instantiate(Portal, transform.position, transform.rotation);
         }
     }
 }

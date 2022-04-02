@@ -193,6 +193,7 @@ MonoBehaviour:
   gunEnabled: 0
   FootPrint: {fileID: 2560464115760370760, guid: 01f7cd74fc72e4dcebc256b3d6d8348a, type: 3}
   FootprintGap: 1
+  Portal: {fileID: 1482466758426759666, guid: ca01b08ade8ea41c0a59216c35fdc54c, type: 3}
 --- !u!50 &464544809
 Rigidbody2D:
   serializedVersion: 4
