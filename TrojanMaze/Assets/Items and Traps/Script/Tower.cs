@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
-{
+public class Tower : MonoBehaviour {
     private Camera myCamera;
     float initialCamera;
     float boostCamera = 10f;
     float cameraZoom;
     bool activate;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         myCamera = Camera.main;
         initialCamera = myCamera.orthographicSize;
         cameraZoom = initialCamera;
@@ -19,10 +17,8 @@ public class Tower : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         zoom();
-        Debug.Log(cameraZoom);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -38,21 +34,21 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void zoom(){
-        if(!activate) return ;
+    private void zoom() {
+        if(!activate) return;
         float cameraZoomDifference = cameraZoom - myCamera.orthographicSize;
-        float cameraZoomSpeed= 1f;
+        float cameraZoomSpeed = 1f;
 
         myCamera.orthographicSize += cameraZoomDifference * cameraZoomSpeed * Time.deltaTime;
 
-        if(cameraZoomDifference > 0 ){
-            if(myCamera.orthographicSize > cameraZoom){
+        if(cameraZoomDifference > 0) {
+            if(myCamera.orthographicSize > cameraZoom) {
                 myCamera.orthographicSize = cameraZoom;
             }
-        }else{
-            if(myCamera.orthographicSize < cameraZoom){
+        } else {
+            if(myCamera.orthographicSize < cameraZoom) {
                 myCamera.orthographicSize = cameraZoom;
-                activate = false; 
+                activate = false;
             }
         }
     }

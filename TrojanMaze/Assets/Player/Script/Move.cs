@@ -13,7 +13,7 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject playerBullet;
     [SerializeField] GameObject menuPanel;
     Vector2 moveInput;
-    Rigidbody2D rigidBody;
+    Rigidbody2D _body;
 
 
     [SerializeField]
@@ -49,7 +49,7 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Start() {
-        rigidBody = GetComponent<Rigidbody2D>();
+        _body = GetComponent<Rigidbody2D>();
         swordPivot.SetActive(false);
         gunEnabled = false;
         HP = MAX_HP;
@@ -86,7 +86,7 @@ public class Move : MonoBehaviour, iDamageable {
 
     void Run() {
         Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;
-        rigidBody.velocity = moveSpeed;
+        _body.velocity = moveSpeed;
     }
 
     void OnMove(InputValue value) {
@@ -94,9 +94,9 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void FlipPlayer() {
-        bool hasHorizontalSpeed = Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon;
+        bool hasHorizontalSpeed = Mathf.Abs(_body.velocity.x) > Mathf.Epsilon;
         if(hasHorizontalSpeed) {
-            transform.localScale = new Vector2(Mathf.Sign(rigidBody.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            transform.localScale = new Vector2(Mathf.Sign(_body.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
         }
     }
 

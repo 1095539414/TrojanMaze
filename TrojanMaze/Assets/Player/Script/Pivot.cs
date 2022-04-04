@@ -9,22 +9,22 @@ public class Pivot : MonoBehaviour {
 
     private void FixedUpdate() {
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
+        if(diff.x < 0) {
+            Quaternion rotation = myPlayer.transform.rotation;
+            rotation.y = 180;
+            myPlayer.transform.rotation = rotation;
+        } else if(diff.x > 0){
+            Quaternion rotation = myPlayer.transform.rotation;
+            rotation.y = 0;
+            myPlayer.transform.rotation = rotation;
+        }
         diff.Normalize();
 
         float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
-        
-        if (rotationZ < -90 || rotationZ > 90)
-        {
-            if (myPlayer.transform.eulerAngles.y == 0)
-            {
-                transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
-                
-            } else if (myPlayer.transform.eulerAngles.y == 180) {
-                transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
-            }
+
+        if(rotationZ < -90 || rotationZ > 90) {
+            transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
         }
     }
 
