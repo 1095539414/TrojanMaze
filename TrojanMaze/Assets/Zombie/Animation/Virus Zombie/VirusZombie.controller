@@ -41,7 +41,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Hurt
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Dying
+    m_ConditionEvent: Dead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2215708449259253328}
@@ -153,7 +153,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Dying
+    m_ConditionEvent: Dead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8561128087268983216}
@@ -190,7 +190,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Dying
+  - m_Name: Dead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -224,7 +224,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Hurt
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Dying
+    m_ConditionEvent: Dead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4256919848544745828}
@@ -278,7 +278,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Hurt
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Dying
+    m_ConditionEvent: Dead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1958170118393258615}

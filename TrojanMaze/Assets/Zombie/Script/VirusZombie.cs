@@ -17,6 +17,7 @@ public class VirusZombie : Zombie {
     private float _time = 0f;
     private Animator _animator;
     private Vector3 _velocity;
+    bool _dead = false;
     void Start() {
         base.Init(initialHealth);
         _body = GetComponent<Rigidbody2D>();
@@ -26,6 +27,10 @@ public class VirusZombie : Zombie {
 
     // Update is called once per frame
     void Update() {
+        if(_dead) {
+            _velocity = Vector3.zero;
+            return;
+        }
         if(_body.velocity.x > 0) {
             Vector3 theScale = transform.localScale;
             if(theScale.x < 0) {
@@ -87,5 +92,21 @@ public class VirusZombie : Zombie {
 
     void ReleaseVirus() {
         Instantiate(VirusZone, center.position, center.rotation);
+    }
+
+    public override IEnumerator Die() {
+        _dead = true;
+
+        _animator.SetBool("Dead", true);
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(base.Die());
+    }
+
+    public override IEnumerator Hurt() {
+        _velocity = Vector3.zero;
+        _animator.SetBool("Hurt", true);
+        yield return new WaitForSeconds(0.3f);
+        _animator.SetBool("Hurt", false);
+        StartCoroutine(base.Hurt());
     }
 }
