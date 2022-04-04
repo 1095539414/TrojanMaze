@@ -15,9 +15,9 @@ public class Pivot : MonoBehaviour {
         float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
-       // if(rotationZ < -90 || rotationZ > 90) {
-        //    transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
-       // }
+        if(rotationZ < -90 || rotationZ > 90) {
+            transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
+        }
     }
 
 }
