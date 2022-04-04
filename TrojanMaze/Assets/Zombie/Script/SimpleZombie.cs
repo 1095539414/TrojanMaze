@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
+public enum SimpleZombieState {
+    Idle = 1,
+    Walking = 2,
+    Running = 3,
+    Attacking = 4,
+    Dying = 5,
+    Shooting = 6
+}
+
 public class SimpleZombie : Zombie {
-    [SerializeField] int initialHealth = 1;
+    [SerializeField] float initialHealth = 1;
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
@@ -18,7 +28,7 @@ public class SimpleZombie : Zombie {
     private Vector2 _direction;
     private Vector2 _dirToPlayer;
     private float _attackDamage = 0.05f;
-    private bool _attacking;
+    private bool _attacking = false;
     private float _attackInterval = 0.5f;   // attack once every second
     private float _attackTime;
 
@@ -28,6 +38,9 @@ public class SimpleZombie : Zombie {
     float _fireInterval = 5f;
     private float _fireTime;
 
+    private bool _dead = false;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
 
     // Start is called before the first frame update
@@ -46,10 +59,34 @@ public class SimpleZombie : Zombie {
         moveTo(GetRandomDest(), _speed, _acceleration);
         _fireTime = 0f;
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update() {
+        if(_dead) {
+            _agent.velocity = Vector3.zero;
+            _agent.isStopped = true;
+            _attacking = false;
+            _target = null;
+            return;
+        }
+        _animator.SetBool("Attacking", _attacking);
+        _animator.SetFloat("Speed", Vector3.Magnitude(_agent.velocity));
+        if(_agent.velocity.x > 0) {
+            Vector3 theScale = transform.localScale;
+            if(theScale.x < 0) {
+                theScale.x *= -1;
+            }
+            transform.localScale = theScale;
+        } else if(_agent.velocity.x < 0) {
+            Vector3 theScale = transform.localScale;
+            if(theScale.x > 0) {
+                theScale.x *= -1;
+            }
+            transform.localScale = theScale;
+        }
 
         _fireTime += Time.deltaTime;
         // chase after the player if the zombie is targeting the player
@@ -59,10 +96,9 @@ public class SimpleZombie : Zombie {
                 base.Attack(_player, _attackDamage);
                 _attackTime = 0;
             }
-        }
-        else if(_target) {
+        } else if(_target) {
             if(_fireTime >= _fireInterval) {
-                FireBullet();
+                StartCoroutine(Throwing());
                 _fireTime = 0;
                 _fireInterval = Random.Range(4f, 7f);
             }
@@ -141,8 +177,8 @@ public class SimpleZombie : Zombie {
         return dest;
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.CompareTag("Player")) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Player")) {
             if(_target == null) {
                 _target = _player;
             }
@@ -153,16 +189,35 @@ public class SimpleZombie : Zombie {
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.collider.CompareTag("Player")) {
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Player")) {
             // keep chasing player
             _agent.isStopped = false;
             _attacking = false;
         }
     }
 
-    void FireBullet() {
-        //Debug.Log("FireBullet");
+    public override IEnumerator Die() {
+        _dead = true;
+
+        _animator.SetBool("Dead", true);
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(base.Die());
+    }
+
+    public override IEnumerator Hurt() {
+        _agent.velocity = Vector3.zero;
+        _animator.SetBool("Hurt", true);
+        yield return new WaitForSeconds(0.3f);
+        _animator.SetBool("Hurt", false);
+        StartCoroutine(base.Hurt());
+    }
+
+    private IEnumerator Throwing() {
+        _agent.velocity = Vector3.zero;
         Instantiate(bullet, gun.position, gun.rotation);
+        _animator.SetBool("Throwing", true);
+        yield return new WaitForSeconds(0.3f);
+        _animator.SetBool("Throwing", false);
     }
 }

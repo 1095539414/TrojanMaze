@@ -6,24 +6,30 @@ using UnityEngine.Analytics;
 
 public class Zombie : MonoBehaviour, iDamageable {
     private float _health;
-
+    private Coroutine _hurtCoroutine;
+    private bool _hurt = false;
     // Getters
     public float health {
         get { return _health; }
     }
 
     // used by its inheritance
-    protected void Init(int health) {
+    protected void Init(float health) {
         _health = health;
         this.gameObject.tag = "Zombie";
     }
 
     // Health calculation 
     // other factors that are influenced by helath could be done here
-    public bool ReduceHealth(float amount) {
-        _health -= amount;
-        if(_health <= 0) {
-            StartCoroutine(Die());
+    public bool ReduceHealth(float amount, GameObject from) {
+        if(_health > 0 && !_hurt) {
+            _health -= amount;
+            if(_health <= 0.001) {
+                StartCoroutine(Die());
+            } else {
+                _hurt = true;
+                _hurtCoroutine = StartCoroutine(Hurt());
+            }
         }
         return true;
     }
@@ -31,25 +37,20 @@ public class Zombie : MonoBehaviour, iDamageable {
     protected bool Attack(GameObject obj, float damage) {
         iDamageable damageableObj = obj.GetComponent<iDamageable>();
         if(damageableObj != null) {
-            return damageableObj.ReduceHealth(damage);
+            return damageableObj.ReduceHealth(damage, this.gameObject);
         }
         return false;
     }
 
 
-    private IEnumerator Die() {
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "ZombieKilled",
-            new Dictionary<string, object>{
-                {"Level", SceneManager.GetActiveScene().name},
-                {"Zombie", this.name},
-            }
-        );
-        Debug.Log(analyticsResult);
-        // Death Animation here
+    public virtual IEnumerator Die() {
+        UnityAnalytics.sendZombieKilled(this.name);
         Destroy(this.gameObject);
-        // wait for a bit before erasing the zombie
-        yield return new WaitForSeconds(1.5f);
+        yield return null;
+    }
 
+    public virtual IEnumerator Hurt() {
+        _hurt = false;
+        yield return null;
     }
 }

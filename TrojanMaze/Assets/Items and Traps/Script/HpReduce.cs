@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HpReduce : MonoBehaviour {
-    private float _damage = 0.5f;
+    private float _damage = 0.25f;
     // Start is called before the first frame update
     void Start() {
 
@@ -17,7 +17,7 @@ public class HpReduce : MonoBehaviour {
         if(other.tag == "Player") {
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
-                damageableObj.ReduceHealth(_damage);
+                damageableObj.ReduceHealth(_damage, this.gameObject);
             }
         }
     }

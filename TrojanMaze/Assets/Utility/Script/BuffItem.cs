@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -56,20 +54,11 @@ public class BuffItem : MonoBehaviour {
             }
             this.gameObject.SetActive(false);
             if(!this.CompareTag("ZombieBullet")) {
-                SendAnalytic();
+                UnityAnalytics.sendItemCollected(this.name);
             }
         } else if(other.gameObject.CompareTag("Walls")) {
             this.gameObject.SetActive(false);
         }
     }
 
-    private void SendAnalytic() {
-        // Analytics counting the amount of times each item is used in each level
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "ItemCollected",
-            new Dictionary<string, object>{
-                {SceneManager.GetActiveScene().name, this.gameObject.name}
-            }
-        );
-    }
 }

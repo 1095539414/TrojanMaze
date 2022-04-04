@@ -18,7 +18,7 @@ public class PlayerBullet : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        bulletRigidbody.velocity = _direction*bulletSpeed*Time.deltaTime;
+        bulletRigidbody.velocity = _direction * bulletSpeed * Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -26,7 +26,9 @@ public class PlayerBullet : MonoBehaviour {
             Destroy(gameObject);
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
-                damageableObj.ReduceHealth(bulletDamage);
+                if(damageableObj.ReduceHealth(bulletDamage, this.gameObject)) {
+                    Move.dmgByGun += bulletDamage;
+                }
             }
         }
     }

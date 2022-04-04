@@ -2,33 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Analytics;
 
-public class Exit : MonoBehaviour
-{
+public class Exit : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 1f;
-    
+    [SerializeField] GameObject menuPanel;
+
+    void Start(){
+        menuPanel.SetActive(false);
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player"){
-            StartCoroutine(LoadNextLevel());
+        if(other.tag == "Player") {
+            Time.timeScale = 0f;
+            menuPanel.SetActive(true);
         }
     }
-    IEnumerator LoadNextLevel(){
-        yield return new WaitForSecondsRealtime(levelLoadDelay);
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "LevelSolved", 
-            new Dictionary<string, object>{
-                {"Level Name", SceneManager.GetActiveScene().name},
-                {"Time", Time.timeSinceLevelLoad},
-                {"Remaining HP", Move.GetHP()}
-            }
-        );
 
+
+    public void OnLoadNextLevel(){
+        Time.timeScale = 1f;
+        StartCoroutine(LoadNextLevel());
+    }
+
+    IEnumerator LoadNextLevel() {
+        yield return new WaitForSecondsRealtime(levelLoadDelay);
+        UnityAnalytics.sendLevelSolved();
+        UnityAnalytics.sendDamagedFrom();
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
-        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings){
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
             nextSceneIndex = 0;
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
+
+    public void OnApplicationQuit() {
+        Time.timeScale = 1f;
+        UnityAnalytics.sendDamagedFrom();
+    }
+
+    public void OnRestart(){
+        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }
