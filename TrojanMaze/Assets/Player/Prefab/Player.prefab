@@ -107,6 +107,7 @@ MonoBehaviour:
   playerBullet: {fileID: 3572178453297475688, guid: 331976b73e7ac414c99b70b0e9c1bf3b, type: 3}
   menuPanel: {fileID: 0}
   BulletText: {fileID: 0}
+  ProtalText: {fileID: 0}
   gunEnabled: 0
   FootPrint: {fileID: 2560464115760370760, guid: 01f7cd74fc72e4dcebc256b3d6d8348a, type: 3}
   FootprintGap: 1

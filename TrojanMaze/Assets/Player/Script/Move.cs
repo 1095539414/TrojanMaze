@@ -18,6 +18,8 @@ public class Move : MonoBehaviour, iDamageable {
 
     [SerializeField]
     private TextMeshProUGUI BulletText;
+    [SerializeField]
+    private TextMeshProUGUI ProtalText;
 
     bool isBouncing = false;
     public bool gunEnabled;
@@ -71,6 +73,8 @@ public class Move : MonoBehaviour, iDamageable {
         } else {
             BulletText.text = "";
         }
+
+        ProtalText.text = NumOfProtals.ToString();
 
         DropFootprint();
         MarkLocation();

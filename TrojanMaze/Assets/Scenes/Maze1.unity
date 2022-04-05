@@ -779,6 +779,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8095899708655789046, guid: 4fe28878c895db446a5980515fa18f3b, type: 3}
   m_PrefabInstance: {fileID: 391792596}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &395725320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 610321726066880025, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+  m_PrefabInstance: {fileID: 606154006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &422442064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2035,6 +2046,10 @@ PrefabInstance:
       propertyPath: BulletText
       value: 
       objectReference: {fileID: 606154007}
+    - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: ProtalText
+      value: 
+      objectReference: {fileID: 395725320}
     - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: fieldOfView
       value: 
