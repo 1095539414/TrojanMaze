@@ -2,48 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour {
+public class Tower : MonoBehaviour
+{
     private Camera myCamera;
-    float initialCamera;
+    float initialCamera = 4f;
     float boostCamera = 8f;
-    float cameraZoom;
-    float cameraZoomSpeed = 0.1f;
+    float cameraZoomSpeed= 4f;
+    float activate = 0f;
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         myCamera = Camera.main;
-        initialCamera = myCamera.orthographicSize;
-        cameraZoom = initialCamera;
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         zoom();
-        Debug.Log(myCamera.orthographicSize);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player") {  
-            cameraZoom = boostCamera;
-            StartCoroutine(zoom());
+        if(other.tag == "Player") {
+            activate = 1.0f;
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player") {
-            cameraZoom = initialCamera;
-            StartCoroutine(zoom());
+            activate = -1.0f;
         }
     }
 
-    IEnumerator zoom(){
-        float cameraZoomDifference = Mathf.Abs(cameraZoom - myCamera.orthographicSize);
-        while(myCamera.orthographicSize != cameraZoom) {
-            if (myCamera.orthographicSize < cameraZoom) {
-                myCamera.orthographicSize +=  cameraZoomSpeed * Time.deltaTime;
-            } else {
-                myCamera.orthographicSize -=  cameraZoomSpeed * Time.deltaTime; 
-            }
-            yield return new WaitForSeconds (0.0f); 
+    private void zoom(){
+        float cameraZoomSpeed= 4f;
+
+        myCamera.orthographicSize +=  activate* cameraZoomSpeed * Time.deltaTime;
+
+        if(myCamera.orthographicSize > boostCamera){
+            myCamera.orthographicSize = boostCamera;
+            activate = 0f;
+        }
+        if(myCamera.orthographicSize < initialCamera){
+            myCamera.orthographicSize = initialCamera;
+            activate = 0f;
         }
     }
 }
