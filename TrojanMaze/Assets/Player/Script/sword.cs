@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class sword : MonoBehaviour {
 
-    float swordDamage = 0.2f;
+    float swordDamage = 0.5f;
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Zombie") && !other.isTrigger) {
