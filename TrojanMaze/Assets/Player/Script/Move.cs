@@ -60,7 +60,21 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
-        FlipPlayer();
+        if(!swordPivot.activeSelf) {
+            FlipPlayer();
+        } else {
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            if(diff.x < 0) {
+                Quaternion rotation = transform.rotation;
+                rotation.y = 180;
+                transform.rotation = rotation;
+            } else if(diff.x > 0){
+                Quaternion rotation = transform.rotation;
+                rotation.y = 0;
+                transform.rotation = rotation;
+            }
+        }
         fieldOfView.SetOrigin(transform.position);
         if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
             nextShootTime = Time.time + 0.6f;
@@ -157,16 +171,16 @@ public class Move : MonoBehaviour, iDamageable {
     private void DropFootprint() {
         _curPos = transform.position;
         float dist = Mathf.Sqrt(Mathf.Pow(_curPos.x - _prevPos.x, 2) + Mathf.Pow(_curPos.y - _prevPos.y, 2));
-        if (dist > FootprintGap) {
+        if(dist > FootprintGap) {
             float tanVal = (_curPos.y - _prevPos.y) / (_curPos.x - _prevPos.x);
-            float rotationAngle = Mathf.Atan(tanVal)*(180/Mathf.PI) + ((_curPos.x - _prevPos.x) < 0 ? 180: 0);
+            float rotationAngle = Mathf.Atan(tanVal) * (180 / Mathf.PI) + ((_curPos.x - _prevPos.x) < 0 ? 180 : 0);
             Instantiate(FootPrint, transform.position, Quaternion.Euler(new Vector3(0, 0, rotationAngle)));
             _prevPos = _curPos;
         }
     }
 
     private void MarkLocation() {
-        if(Input.GetKeyDown(KeyCode.M) &&  NumOfProtals > 0) {
+        if(Input.GetKeyDown(KeyCode.M) && NumOfProtals > 0) {
             // Debug.Log("Press the M");
             NumOfProtals--;
             Instantiate(Portal, transform.position, transform.rotation);

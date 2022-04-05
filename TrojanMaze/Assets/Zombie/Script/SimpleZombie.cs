@@ -66,8 +66,7 @@ public class SimpleZombie : Zombie {
     // Update is called once per frame
     void Update() {
         if(_dead) {
-            _agent.velocity = Vector3.zero;
-            _agent.isStopped = true;
+            _agent.enabled = false;
             _attacking = false;
             _target = null;
             return;
@@ -178,7 +177,7 @@ public class SimpleZombie : Zombie {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")) {
+        if(other.CompareTag("Player") && _agent.enabled) {
             if(_target == null) {
                 _target = _player;
             }
@@ -190,7 +189,7 @@ public class SimpleZombie : Zombie {
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.CompareTag("Player")) {
+        if(other.CompareTag("Player") && _agent.enabled) {
             // keep chasing player
             _agent.isStopped = false;
             _attacking = false;
