@@ -43,10 +43,13 @@ public class Move : MonoBehaviour, iDamageable {
     // Portal-related variables
     [SerializeField] GameObject Portal;
     private GameObject _portal;
-    public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
-
+    private float _holdTimerTarget = 1.5f;
     private float _holdTimer = 0f;
     private bool _isHolding = false;
+
+    public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
+
+
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
@@ -68,12 +71,19 @@ public class Move : MonoBehaviour, iDamageable {
                 _isHolding = true;
             }
         }
-        holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat("_Arc2", 360f - _holdTimer * 360f);
+        if(_isHolding) {
 
-        if(_isHolding && _portal != null) {
+        }
+
+        if(_isHolding) {
+            holdingProgress.SetActive(true);
+            holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat(
+                "_Arc2", 360f - _holdTimer / _holdTimerTarget * 360f
+            );
+
             _holdTimer += Time.deltaTime;
             _body.velocity = Vector3.zero;
-            if(_holdTimer >= 1f) {
+            if(_holdTimer >= _holdTimerTarget) {
                 transform.position = _portal.GetComponent<Portal>().GetLocation();
                 Destroy(_portal);
                 _portal = null;
@@ -81,13 +91,17 @@ public class Move : MonoBehaviour, iDamageable {
                 _holdTimer = 0f;
             }
             return;
+        } else {
+            holdingProgress.SetActive(false);
+            holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat("_Arc2", 360f);
+
         }
 
         if(Input.GetKeyUp(KeyCode.R)) {
             _isHolding = false;
             _holdTimer = 0f;
         }
-        
+
         if(!swordPivot.activeSelf) {
             FlipPlayer();
         } else {
