@@ -210,6 +210,10 @@ public class SimpleZombie : Zombie {
         yield return new WaitForSeconds(0.3f);
         _animator.SetBool("Hurt", false);
         StartCoroutine(base.Hurt());
+        if(_target == null) {
+            _target = _player;
+            _agent.isStopped = false;
+        }
     }
 
     private IEnumerator Throwing() {

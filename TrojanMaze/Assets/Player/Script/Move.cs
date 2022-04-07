@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] public float speed = 10f;
@@ -12,15 +13,14 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject swordPivot;
     [SerializeField] GameObject playerBullet;
     [SerializeField] GameObject menuPanel;
+    [SerializeField] GameObject holdingProgress;
     Vector2 moveInput;
     Rigidbody2D _body;
 
 
-    [SerializeField]
-    private TextMeshProUGUI BulletText;
-    [SerializeField]
-    private TextMeshProUGUI ProtalText;
+    [SerializeField] private TextMeshProUGUI BulletText;
 
+    [SerializeField] private Image PortalImage;
     bool isBouncing = false;
     public bool gunEnabled;
     const float MAX_HP = 1f;
@@ -42,10 +42,11 @@ public class Move : MonoBehaviour, iDamageable {
 
     // Portal-related variables
     [SerializeField] GameObject Portal;
-    [SerializeField] int NumOfProtals = 3;
-
+    private GameObject _portal;
     public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
 
+    private float _holdTimer = 0f;
+    private bool _isHolding = false;
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
@@ -60,6 +61,33 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
+        if(Input.GetKeyDown(KeyCode.R)) {
+            if(_portal == null) {
+                _portal = Instantiate(Portal, transform.position, transform.rotation);
+            } else {
+                _isHolding = true;
+            }
+        }
+        holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat("_Arc2", 360f - _holdTimer * 360f);
+
+        if(_isHolding && _portal != null) {
+            _holdTimer += Time.deltaTime;
+            _body.velocity = Vector3.zero;
+            if(_holdTimer >= 1f) {
+                transform.position = _portal.GetComponent<Portal>().GetLocation();
+                Destroy(_portal);
+                _portal = null;
+                _isHolding = false;
+                _holdTimer = 0f;
+            }
+            return;
+        }
+
+        if(Input.GetKeyUp(KeyCode.R)) {
+            _isHolding = false;
+            _holdTimer = 0f;
+        }
+        
         if(!swordPivot.activeSelf) {
             FlipPlayer();
         } else {
@@ -69,7 +97,7 @@ public class Move : MonoBehaviour, iDamageable {
                 Quaternion rotation = transform.rotation;
                 rotation.y = 180;
                 transform.rotation = rotation;
-            } else if(diff.x > 0){
+            } else if(diff.x > 0) {
                 Quaternion rotation = transform.rotation;
                 rotation.y = 0;
                 transform.rotation = rotation;
@@ -87,15 +115,16 @@ public class Move : MonoBehaviour, iDamageable {
         } else {
             BulletText.text = "";
         }
-
-        ProtalText.text = NumOfProtals.ToString();
-
+        PortalImage.enabled = _portal == null;
         DropFootprint();
-        MarkLocation();
+
+
     }
 
     void FixedUpdate() {
-        Run();
+        if(!_isHolding) {
+            Run();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -176,14 +205,6 @@ public class Move : MonoBehaviour, iDamageable {
             float rotationAngle = Mathf.Atan(tanVal) * (180 / Mathf.PI) + ((_curPos.x - _prevPos.x) < 0 ? 180 : 0);
             Instantiate(FootPrint, transform.position, Quaternion.Euler(new Vector3(0, 0, rotationAngle)));
             _prevPos = _curPos;
-        }
-    }
-
-    private void MarkLocation() {
-        if(Input.GetKeyDown(KeyCode.M) && NumOfProtals > 0) {
-            // Debug.Log("Press the M");
-            NumOfProtals--;
-            Instantiate(Portal, transform.position, transform.rotation);
         }
     }
 }
