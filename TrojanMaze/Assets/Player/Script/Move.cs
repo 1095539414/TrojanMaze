@@ -47,6 +47,8 @@ public class Move : MonoBehaviour, iDamageable {
     private float _holdTimer = 0f;
     private bool _isHolding = false;
 
+    private SpriteRenderer _renderer;
+    private float _hurtTimer = 0f;
     public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
 
 
@@ -61,6 +63,7 @@ public class Move : MonoBehaviour, iDamageable {
         HP = MAX_HP;
         menuPanel.SetActive(false);
         _prevPos = transform.position;
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     void Update() {
@@ -128,6 +131,14 @@ public class Move : MonoBehaviour, iDamageable {
             BulletText.text = bulletNum.ToString();
         } else {
             BulletText.text = "";
+        }
+        
+        if(_hurtTimer > 0) {
+            _hurtTimer -= Time.deltaTime;
+            if(_hurtTimer < 0) {
+                StartCoroutine(StopHurtAnimation());
+                _hurtTimer = 0f;
+            }
         }
         PortalUI.SetActive(_portal == null);
         DropFootprint();
@@ -207,8 +218,37 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
+    IEnumerator StartHurtAnimation() {
+        float elapsedTime = 0f;
+        float waitTime = 0.15f;
+        Color originalColor = new Color(1, 1, 1);
+        Color finalColor = new Color(1, 0, 0);
+        while(elapsedTime <= waitTime) {
+            elapsedTime += Time.deltaTime;
+            _renderer.color = Color.Lerp(originalColor, finalColor, elapsedTime / waitTime);
+            yield return null;
+        }
+    }
+
+    
+    IEnumerator StopHurtAnimation() {
+        float elapsedTime = 0f;
+        float waitTime = 0.15f;
+        Color originalColor = new Color(1, 1, 1);
+        Color finalColor = new Color(1, 0, 0);
+        while(elapsedTime <= waitTime) {
+            elapsedTime += Time.deltaTime;
+            _renderer.color = Color.Lerp(finalColor, originalColor, elapsedTime / waitTime);
+            yield return null;
+        }
+    }
     public bool ReduceHealth(float value, GameObject from) {
         if(HP > 0) {
+            if(_hurtTimer == 0f) {
+                StartCoroutine(StartHurtAnimation());
+            }
+            _hurtTimer = 0.15f;
+
             HP -= value;
             totalHpReduced += value;
             if(!damagedFrom.ContainsKey(from.name)) {
