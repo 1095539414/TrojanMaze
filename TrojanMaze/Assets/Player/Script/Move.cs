@@ -64,13 +64,15 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
+        // make sure the loading progress always display corectly
         if(transform.localScale.x <= 0 && holdingProgress.transform.localScale.x >= 0 ||
             transform.localScale.x >= 0 && holdingProgress.transform.localScale.x <= 0) {
             Vector3 scale = holdingProgress.transform.localScale;
             scale.x *= -1;
             holdingProgress.transform.localScale = scale;
         } 
-        
+
+        // channeling the portal/etc.
         if(Input.GetKeyDown(KeyCode.R)) {
             if(_portal == null) {
                 _portal = Instantiate(Portal, transform.position, transform.rotation);
@@ -79,11 +81,13 @@ public class Move : MonoBehaviour, iDamageable {
             }
         }
 
+        // reset the channeling
         if(Input.GetKeyUp(KeyCode.R)) {
-            Debug.Log("hi");
             _isHolding = false;
             _holdTimer = 0f;
         }
+        
+        // update channeling status
         if(_isHolding) {
             holdingProgress.SetActive(true);
             holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat(
