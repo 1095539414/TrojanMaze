@@ -43,7 +43,7 @@ public class Move : MonoBehaviour, iDamageable {
     // Portal-related variables
     [SerializeField] GameObject Portal;
     private GameObject _portal;
-    private float _holdTimerTarget = 1.5f;
+    private float _holdTimerTarget = 1f;
     private float _holdTimer = 0f;
     private bool _isHolding = false;
 
@@ -97,11 +97,8 @@ public class Move : MonoBehaviour, iDamageable {
             _holdTimer += Time.deltaTime;
             _body.velocity = Vector3.zero;
             if(_holdTimer >= _holdTimerTarget) {
-                transform.position = _portal.GetComponent<Portal>().GetLocation();
-                Destroy(_portal);
-                _portal = null;
-                _isHolding = false;
-                _holdTimer = 0f;
+                _holdTimer = -100f;
+                StartCoroutine(TeleportBack());
             }
             return;
         } else {
@@ -115,7 +112,7 @@ public class Move : MonoBehaviour, iDamageable {
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
             Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.localScale = new Vector2(
-                Mathf.Sign(diff.x) * Mathf.Abs(transform.localScale.x), 
+                Mathf.Sign(diff.x) * Mathf.Abs(transform.localScale.x),
                 transform.localScale.y
             );
         }
@@ -134,6 +131,45 @@ public class Move : MonoBehaviour, iDamageable {
         }
         PortalImage.enabled = _portal == null;
         DropFootprint();
+    }
+    
+    IEnumerator TeleportBack() {
+        float elapsedTime = 0f;
+        float waitTime = 0.05f;
+        Vector3 originalScale = transform.localScale;
+        Vector3 finalScale = new Vector3(0, originalScale.y * 1.5f, originalScale.z);
+        while(elapsedTime <= waitTime) {
+            elapsedTime += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(originalScale, finalScale, elapsedTime / waitTime);
+            yield return null;
+        }
+        fieldOfView.enabled = false;
+        
+        yield return new WaitForSeconds(0.2f);
+
+        Vector3 originalLocation = transform.position;
+        Vector3 finalLocation = _portal.GetComponent<Portal>().GetLocation();
+
+        elapsedTime = 0f;
+        waitTime = 0.5f;
+        while(elapsedTime <= waitTime) {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(originalLocation, finalLocation, elapsedTime / waitTime);
+            yield return null;
+        }
+
+        elapsedTime = 0f;
+        waitTime = 0.05f;
+        while(elapsedTime <= waitTime) {
+            elapsedTime += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(finalScale, originalScale, elapsedTime / waitTime);
+            yield return null;
+        }
+        fieldOfView.enabled = true;
+        Destroy(_portal);
+        _portal = null;
+        _isHolding = false;
+        _holdTimer = 0f;
     }
 
     void FixedUpdate() {
