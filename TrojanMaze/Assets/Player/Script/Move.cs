@@ -70,7 +70,7 @@ public class Move : MonoBehaviour, iDamageable {
             Vector3 scale = holdingProgress.transform.localScale;
             scale.x *= -1;
             holdingProgress.transform.localScale = scale;
-        } 
+        }
 
         // channeling the portal/etc.
         if(Input.GetKeyDown(KeyCode.R)) {
@@ -86,7 +86,7 @@ public class Move : MonoBehaviour, iDamageable {
             _isHolding = false;
             _holdTimer = 0f;
         }
-        
+
         // update channeling status
         if(_isHolding) {
             holdingProgress.SetActive(true);
@@ -114,16 +114,12 @@ public class Move : MonoBehaviour, iDamageable {
         } else {
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
             Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            if(diff.x < 0) {
-                Quaternion rotation = transform.rotation;
-                rotation.y = 180;
-                transform.rotation = rotation;
-            } else if(diff.x > 0) {
-                Quaternion rotation = transform.rotation;
-                rotation.y = 0;
-                transform.rotation = rotation;
-            }
+            transform.localScale = new Vector2(
+                Mathf.Sign(diff.x) * Mathf.Abs(transform.localScale.x), 
+                transform.localScale.y
+            );
         }
+
         fieldOfView.SetOrigin(transform.position);
         if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
             nextShootTime = Time.time + 0.6f;
