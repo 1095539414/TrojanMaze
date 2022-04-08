@@ -135,7 +135,7 @@ public class Move : MonoBehaviour, iDamageable {
 
     IEnumerator TeleportBack() {
         float elapsedTime = 0f;
-        float waitTime = 0.05f;
+        float waitTime = 0.08f;
         Vector3 originalScale = transform.localScale;
         Vector3 finalScale = new Vector3(0, originalScale.y * 1.5f, originalScale.z);
         while(elapsedTime <= waitTime) {
@@ -157,15 +157,15 @@ public class Move : MonoBehaviour, iDamageable {
             transform.position = Vector3.Lerp(originalLocation, finalLocation, elapsedTime / waitTime);
             yield return null;
         }
-
+        yield return new WaitForSeconds(0.2f);
+        fieldOfView.enabled = true;
         elapsedTime = 0f;
-        waitTime = 0.05f;
+        waitTime = 0.08f;
         while(elapsedTime <= waitTime) {
             elapsedTime += Time.deltaTime;
             transform.localScale = Vector3.Lerp(finalScale, originalScale, elapsedTime / waitTime);
             yield return null;
         }
-        fieldOfView.enabled = true;
         Destroy(_portal);
         _portal = null;
         _isHolding = false;
