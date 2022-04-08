@@ -319,6 +319,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: PortalUI
+      value: 
+      objectReference: {fileID: 2003817375}
+    - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: menuPanel
       value: 
       objectReference: {fileID: 1854894810}
@@ -2308,6 +2312,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7141577405830077292, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
   m_PrefabInstance: {fileID: 1952194821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2003817375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1560762847, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+  m_PrefabInstance: {fileID: 1854894808}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2040360323
 PrefabInstance:

@@ -20,7 +20,7 @@ public class Move : MonoBehaviour, iDamageable {
 
     [SerializeField] private TextMeshProUGUI BulletText;
 
-    [SerializeField] private Image PortalImage;
+    [SerializeField] private GameObject PortalUI;
     bool isBouncing = false;
     public bool gunEnabled;
     const float MAX_HP = 1f;
@@ -129,10 +129,10 @@ public class Move : MonoBehaviour, iDamageable {
         } else {
             BulletText.text = "";
         }
-        PortalImage.enabled = _portal == null;
+        PortalUI.SetActive(_portal == null);
         DropFootprint();
     }
-    
+
     IEnumerator TeleportBack() {
         float elapsedTime = 0f;
         float waitTime = 0.05f;
