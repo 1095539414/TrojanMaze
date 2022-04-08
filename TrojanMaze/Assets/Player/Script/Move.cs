@@ -64,6 +64,13 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
+        if(transform.localScale.x <= 0 && holdingProgress.transform.localScale.x >= 0 ||
+            transform.localScale.x >= 0 && holdingProgress.transform.localScale.x <= 0) {
+            Vector3 scale = holdingProgress.transform.localScale;
+            scale.x *= -1;
+            holdingProgress.transform.localScale = scale;
+        } 
+        
         if(Input.GetKeyDown(KeyCode.R)) {
             if(_portal == null) {
                 _portal = Instantiate(Portal, transform.position, transform.rotation);
@@ -71,10 +78,12 @@ public class Move : MonoBehaviour, iDamageable {
                 _isHolding = true;
             }
         }
-        if(_isHolding) {
 
+        if(Input.GetKeyUp(KeyCode.R)) {
+            Debug.Log("hi");
+            _isHolding = false;
+            _holdTimer = 0f;
         }
-
         if(_isHolding) {
             holdingProgress.SetActive(true);
             holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat(
@@ -94,12 +103,6 @@ public class Move : MonoBehaviour, iDamageable {
         } else {
             holdingProgress.SetActive(false);
             holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat("_Arc2", 360f);
-
-        }
-
-        if(Input.GetKeyUp(KeyCode.R)) {
-            _isHolding = false;
-            _holdTimer = 0f;
         }
 
         if(!swordPivot.activeSelf) {
@@ -131,8 +134,6 @@ public class Move : MonoBehaviour, iDamageable {
         }
         PortalImage.enabled = _portal == null;
         DropFootprint();
-
-
     }
 
     void FixedUpdate() {
