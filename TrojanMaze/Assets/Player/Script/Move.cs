@@ -86,6 +86,8 @@ public class Move : MonoBehaviour, iDamageable {
                 _portal = Instantiate(Portal, transform.position, transform.rotation);
             } else {
                 _isHolding = true;
+                holdingProgress.SetActive(true);
+
             }
         }
 
@@ -97,7 +99,6 @@ public class Move : MonoBehaviour, iDamageable {
 
         // update channeling status
         if(_isHolding) {
-            holdingProgress.SetActive(true);
             holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat(
                 "_Arc2", 360f - _holdTimer / _holdTimerTarget * 360f
             );
@@ -150,7 +151,6 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     IEnumerator TeleportBack() {
-        Camera.main.orthographicSize = 4f;
         float elapsedTime = 0f;
         float waitTime = 0.08f;
         Vector3 originalScale = transform.localScale;
@@ -161,7 +161,7 @@ public class Move : MonoBehaviour, iDamageable {
             yield return null;
         }
         _renderer.enabled = false;
-
+        holdingProgress.SetActive(false);
         fieldOfView.enabled = false;
 
         yield return new WaitForSeconds(0.2f);
