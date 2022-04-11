@@ -66,11 +66,9 @@ public class Move : MonoBehaviour, iDamageable {
 
     void Update() {
 
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-        {
+        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) {
             animator.SetBool("isWalk", true);
-        } else
-        {
+        } else {
             animator.SetBool("isWalk", false);
         }
 
@@ -135,11 +133,11 @@ public class Move : MonoBehaviour, iDamageable {
         }
 
         if(bulletNum > 0) {
-            BulletText.text = bulletNum.ToString();
+            GameManager.instance.BulletUI.text = bulletNum.ToString();
         } else {
-            BulletText.text = "";
+            GameManager.instance.BulletUI.text = "";
         }
-        
+
         if(_hurtTimer > 0) {
             _hurtTimer -= Time.deltaTime;
             if(_hurtTimer < 0) {
@@ -152,6 +150,7 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     IEnumerator TeleportBack() {
+        Camera.main.orthographicSize = 4f;
         float elapsedTime = 0f;
         float waitTime = 0.08f;
         Vector3 originalScale = transform.localScale;
@@ -162,7 +161,7 @@ public class Move : MonoBehaviour, iDamageable {
             yield return null;
         }
         fieldOfView.enabled = false;
-        
+
         yield return new WaitForSeconds(0.2f);
 
         Vector3 originalLocation = transform.position;
@@ -237,7 +236,7 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
-    
+
     IEnumerator StopHurtAnimation() {
         float elapsedTime = 0f;
         float waitTime = 0.15f;
@@ -307,8 +306,7 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
-    public IEnumerator Die()
-    {
+    public IEnumerator Die() {
         this.swordPivot.SetActive(false);
         animator.SetBool("isDie", true);
         yield return new WaitForEndOfFrame();
