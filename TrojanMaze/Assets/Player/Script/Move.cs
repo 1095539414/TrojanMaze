@@ -133,9 +133,9 @@ public class Move : MonoBehaviour, iDamageable {
         }
 
         if(bulletNum > 0) {
-            BulletText.text = bulletNum.ToString();
+            GameManager.instance.BulletUI.text = bulletNum.ToString();
         } else {
-            BulletText.text = "";
+            GameManager.instance.BulletUI.text = "";
         }
 
         if(_hurtTimer > 0) {
