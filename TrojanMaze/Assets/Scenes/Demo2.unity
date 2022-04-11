@@ -342,6 +342,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1363871204251526509, guid: 30535aac82e73e844b174013f342e772, type: 3}
   m_PrefabInstance: {fileID: 323244607}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &355510290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 237608342, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+  m_PrefabInstance: {fileID: 524326541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &524326541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -508,6 +513,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8095899708655789046, guid: 4fe28878c895db446a5980515fa18f3b, type: 3}
   m_PrefabInstance: {fileID: 611391062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &670982400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1689212061980209036, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+  m_PrefabInstance: {fileID: 524326541}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &693593067
 PrefabInstance:
@@ -793,6 +803,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8009882617018712917, guid: 8962d1ae213cbee479b8d46796433153, type: 3}
+      propertyPath: menuPanel
+      value: 
+      objectReference: {fileID: 670982400}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8962d1ae213cbee479b8d46796433153, type: 3}
 --- !u!1001 &1149347481
@@ -868,6 +882,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 501089880552232205, guid: b5ebf326a2260c54a96f0b22b2f70db6, type: 3}
   m_PrefabInstance: {fileID: 1149347481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1323813408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1560762847, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+  m_PrefabInstance: {fileID: 524326541}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1377300608
 PrefabInstance:
@@ -1125,6 +1144,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: PortalUI
+      value: 
+      objectReference: {fileID: 1323813408}
+    - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: menuPanel
+      value: 
+      objectReference: {fileID: 355510290}
     - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: BulletText
       value: 

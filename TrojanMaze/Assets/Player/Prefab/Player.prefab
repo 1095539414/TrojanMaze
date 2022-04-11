@@ -398,23 +398,27 @@ PrefabInstance:
       objectReference: {fileID: 548594345}
     - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_Size.x
-      value: 0.27379307
+      value: 2.0918524
       objectReference: {fileID: 0}
     - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_Size.y
-      value: 1.0464811
+      value: 0.4984508
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_Offset.x
-      value: -0.012257386
+      value: 0.4266585
       objectReference: {fileID: 0}
     - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_Offset.y
-      value: 0.30084348
+      value: 0.01709545
       objectReference: {fileID: 0}
     - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_Direction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7273016644190423153, guid: d219ca9bb425d2743b3d2e4ec4abb3b6, type: 3}
       propertyPath: m_IsTrigger
