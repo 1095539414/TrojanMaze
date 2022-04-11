@@ -267,6 +267,7 @@ public class Move : MonoBehaviour, iDamageable {
             damagedFrom[from.name] += value;
 
             if(HP <= 0) {
+                StartCoroutine(Die());
                 UnityAnalytics.sendLevelDied();
                 Time.timeScale = 0f;
                 menuPanel.SetActive(true);
@@ -307,5 +308,12 @@ public class Move : MonoBehaviour, iDamageable {
             Instantiate(FootPrint, transform.position, Quaternion.Euler(new Vector3(0, 0, rotationAngle)));
             _prevPos = _curPos;
         }
+    }
+
+    public IEnumerator Die()
+    {
+        this.swordPivot.SetActive(false);
+        animator.SetBool("isDie", true);
+        yield return new WaitForEndOfFrame();
     }
 }
