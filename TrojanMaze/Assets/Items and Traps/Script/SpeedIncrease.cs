@@ -9,7 +9,10 @@ public class SpeedIncrease : BuffItem {
 
     float increaseRatio = 1.5f;
 
+    public Animator animator;
+
     protected override bool AddBuff() {
+        animator.SetBool("isRun", true);
         Move._move.speed *= increaseRatio;
         name = gameObject.name;
         status.AddBuff(spriteR, name);
@@ -17,6 +20,7 @@ public class SpeedIncrease : BuffItem {
     }
 
     protected override bool RemoveBuff() {
+        animator.SetBool("isRun", false);
         Move._move.speed /= increaseRatio;
         status.RemoveBuff(name);
         return true;

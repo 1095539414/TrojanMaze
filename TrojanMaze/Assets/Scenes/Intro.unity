@@ -319,14 +319,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
-      propertyPath: PortalUI
-      value: 
-      objectReference: {fileID: 2003817375}
-    - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
-      propertyPath: menuPanel
-      value: 
-      objectReference: {fileID: 1854894810}
-    - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: BulletText
       value: 
       objectReference: {fileID: 774371189}
@@ -338,21 +330,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3123892597243334061, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2008
+      value: 7.227
       objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.5393
+      value: -5.585
       objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -752,6 +740,11 @@ MonoBehaviour:
 --- !u!1 &809339256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1611923457474655302, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+  m_PrefabInstance: {fileID: 153046168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &809339264 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 809339264, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
   m_PrefabInstance: {fileID: 153046168}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &982852955
@@ -1751,6 +1744,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554220216}
     m_Modifications:
+    - target: {fileID: 2517915667449049989, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 809339264}
     - target: {fileID: 4088460237326637217, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
       propertyPath: m_Name
       value: SpeedIncrease
@@ -2041,11 +2038,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1689212061980209036, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
   m_PrefabInstance: {fileID: 1854894808}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1854894810 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 237608342, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
-  m_PrefabInstance: {fileID: 1854894808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1921261254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,11 +2289,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7141577405830077292, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
   m_PrefabInstance: {fileID: 1952194821}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2003817375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1560762847, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
-  m_PrefabInstance: {fileID: 1854894808}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2040360323
 PrefabInstance:

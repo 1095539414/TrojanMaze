@@ -9,20 +9,6 @@ public class sword : MonoBehaviour
     [SerializeField] GameObject swordPivot;
 
     public Animator animator;
-    /*
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            this.swordPivot.SetActive(false);
-            animator.SetBool("isAttack", true);
-        } else
-        {
-            animator.SetBool("isAttack", false);
-            this.swordPivot.SetActive(true);
-        }
-    }
-    */
 
     void OnTriggerEnter2D(Collider2D other)
     {
