@@ -318,6 +318,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 954252249335266780, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 954252249335266780, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 954252249335266780, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -867911905
+      objectReference: {fileID: 0}
     - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: PortalUI
       value: 
@@ -338,9 +350,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2579685054662491523, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3123892597243334061, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913005662985325680, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.940151
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913005662985325680, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913005662985325680, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 45.79258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913005662985325680, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144101360840607431, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144101360840607431, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -867911905
       objectReference: {fileID: 0}
     - target: {fileID: 8889695693845426544, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_RootOrder
