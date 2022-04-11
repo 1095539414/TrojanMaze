@@ -5,16 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 1f;
-    [SerializeField] GameObject menuPanel;
 
     void Start(){
-        menuPanel.SetActive(false);
+        GameManager.instance.PassUI.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             Time.timeScale = 0f;
-            menuPanel.SetActive(true);
+            GameManager.instance.PassUI.SetActive(true);
         }
     }
 

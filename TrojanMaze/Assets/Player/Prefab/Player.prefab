@@ -107,11 +107,9 @@ MonoBehaviour:
   fireInterval: 1
   swordPivot: {fileID: 548594345}
   playerBullet: {fileID: 3572178453297475688, guid: 331976b73e7ac414c99b70b0e9c1bf3b, type: 3}
-  menuPanel: {fileID: 0}
   holdingProgress: {fileID: 2579685054662491523}
   animator: {fileID: 809339264}
   BulletText: {fileID: 0}
-  PortalUI: {fileID: 0}
   gunEnabled: 0
   FootPrint: {fileID: 2560464115760370760, guid: 01f7cd74fc72e4dcebc256b3d6d8348a, type: 3}
   FootprintGap: 1
@@ -194,8 +192,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00851422, y: -0.026610529}
-  m_Size: {x: 0.45836198, y: 0.58677864}
+  m_Offset: {x: 0.23476692, y: -1.0934708}
+  m_Size: {x: 1.2692987, y: 2.484545}
   m_Direction: 0
 --- !u!95 &809339264
 Animator:

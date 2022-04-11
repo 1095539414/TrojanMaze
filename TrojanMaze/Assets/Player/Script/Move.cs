@@ -12,7 +12,6 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
     [SerializeField] GameObject playerBullet;
-    [SerializeField] GameObject menuPanel;
     [SerializeField] GameObject holdingProgress;
     Vector2 moveInput;
     Rigidbody2D _body;
@@ -20,8 +19,6 @@ public class Move : MonoBehaviour, iDamageable {
     public Animator animator;
 
     [SerializeField] private TextMeshProUGUI BulletText;
-
-    [SerializeField] private GameObject PortalUI;
     bool isBouncing = false;
     public bool gunEnabled;
     const float MAX_HP = 1f;
@@ -62,7 +59,7 @@ public class Move : MonoBehaviour, iDamageable {
         swordPivot.SetActive(false);
         gunEnabled = false;
         HP = MAX_HP;
-        menuPanel.SetActive(false);
+        GameManager.instance.DeathUI.SetActive(false);
         _prevPos = transform.position;
         _renderer = GetComponent<SpriteRenderer>();
     }
@@ -150,7 +147,7 @@ public class Move : MonoBehaviour, iDamageable {
                 _hurtTimer = 0f;
             }
         }
-        PortalUI.SetActive(_portal == null);
+        GameManager.instance.PortalUI.SetActive(_portal == null);
         DropFootprint();
     }
 
@@ -270,7 +267,7 @@ public class Move : MonoBehaviour, iDamageable {
                 StartCoroutine(Die());
                 UnityAnalytics.sendLevelDied();
                 Time.timeScale = 0f;
-                menuPanel.SetActive(true);
+                GameManager.instance.DeathUI.SetActive(true);
             }
             return true;
         }
