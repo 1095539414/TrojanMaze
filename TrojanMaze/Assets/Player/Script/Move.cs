@@ -17,6 +17,7 @@ public class Move : MonoBehaviour, iDamageable {
     Vector2 moveInput;
     Rigidbody2D _body;
 
+    public Animator animator;
 
     [SerializeField] private TextMeshProUGUI BulletText;
 
@@ -67,6 +68,15 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
+
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        {
+            animator.SetBool("isWalk", true);
+        } else
+        {
+            animator.SetBool("isWalk", false);
+        }
+
         // make sure the loading progress always display corectly
         if(transform.localScale.x <= 0 && holdingProgress.transform.localScale.x >= 0 ||
             transform.localScale.x >= 0 && holdingProgress.transform.localScale.x <= 0) {
