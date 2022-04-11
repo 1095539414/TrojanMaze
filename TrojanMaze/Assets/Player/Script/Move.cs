@@ -154,12 +154,14 @@ public class Move : MonoBehaviour, iDamageable {
         float elapsedTime = 0f;
         float waitTime = 0.08f;
         Vector3 originalScale = transform.localScale;
-        Vector3 finalScale = new Vector3(0, originalScale.y * 1.5f, originalScale.z);
+        Vector3 finalScale = new Vector3(0.05f, originalScale.y * 1.5f, originalScale.z);
         while(elapsedTime <= waitTime) {
             elapsedTime += Time.deltaTime;
             transform.localScale = Vector3.Lerp(originalScale, finalScale, elapsedTime / waitTime);
             yield return null;
         }
+        _renderer.enabled = false;
+
         fieldOfView.enabled = false;
 
         yield return new WaitForSeconds(0.2f);
@@ -176,6 +178,8 @@ public class Move : MonoBehaviour, iDamageable {
         }
         yield return new WaitForSeconds(0.2f);
         fieldOfView.enabled = true;
+        _renderer.enabled = true;
+
         elapsedTime = 0f;
         waitTime = 0.08f;
         while(elapsedTime <= waitTime) {
@@ -249,7 +253,7 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
     public bool ReduceHealth(float value, GameObject from) {
-        if(HP > 0) {
+        if(HP > 0 && Mathf.Abs(transform.localScale.x) > 0.02f) {
             if(_hurtTimer == 0f) {
                 StartCoroutine(StartHurtAnimation());
             }
