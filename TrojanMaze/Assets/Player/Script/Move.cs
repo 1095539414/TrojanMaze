@@ -147,6 +147,12 @@ public class Move : MonoBehaviour, iDamageable {
         }
         GameManager.instance.PortalUI.SetActive(_portal == null);
         DropFootprint();
+
+        if(speed > 150f){
+            animator.SetBool("isRun", true);
+        }else{
+            animator.SetBool("isRun", false);
+        }
     }
 
     IEnumerator TeleportBack() {
