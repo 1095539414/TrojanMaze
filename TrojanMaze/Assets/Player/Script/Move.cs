@@ -152,6 +152,7 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     IEnumerator TeleportBack() {
+        Camera.main.orthographicSize = 4f;
         float elapsedTime = 0f;
         float waitTime = 0.08f;
         Vector3 originalScale = transform.localScale;
