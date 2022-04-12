@@ -63,12 +63,7 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
-
-        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) {
-            animator.SetBool("isWalk", true);
-        } else {
-            animator.SetBool("isWalk", false);
-        }
+        animator.SetFloat("Speed", Vector3.Magnitude(_body.velocity));
 
         // make sure the loading progress always display corectly
         if(transform.localScale.x <= 0 && holdingProgress.transform.localScale.x >= 0 ||
@@ -147,11 +142,6 @@ public class Move : MonoBehaviour, iDamageable {
         GameManager.instance.PortalUI.SetActive(_portal == null);
         DropFootprint();
 
-        if(speed > 150f){
-            animator.SetBool("isRun", true);
-        }else{
-            animator.SetBool("isRun", false);
-        }
     }
 
     IEnumerator TeleportBack() {
@@ -167,6 +157,8 @@ public class Move : MonoBehaviour, iDamageable {
         _renderer.enabled = false;
         holdingProgress.SetActive(false);
         fieldOfView.enabled = false;
+        bool swordStatus = swordPivot.activeSelf;
+        swordPivot.SetActive(false);
         _teleporting = true;
 
         yield return new WaitForSeconds(0.2f);
@@ -185,6 +177,7 @@ public class Move : MonoBehaviour, iDamageable {
         fieldOfView.enabled = true;
         _renderer.enabled = true;
         _teleporting = false;
+        swordPivot.SetActive(swordStatus);
 
         elapsedTime = 0f;
         waitTime = 0.08f;
