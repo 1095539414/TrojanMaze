@@ -48,6 +48,10 @@ public class BuffItem : MonoBehaviour {
     }
     protected void OnTriggerEnter2D(Collider2D other) {
         buffTarget = other.gameObject;
+        if(buffTarget.CompareTag("Player") && buffTarget.GetComponent<Move>().isTeleporting()) {
+            return;
+        }
+        
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Armor")){
             if(AddBuff()) {
                 Invoke("RemoveBuff", GetDuration());

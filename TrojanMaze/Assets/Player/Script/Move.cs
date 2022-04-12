@@ -17,8 +17,6 @@ public class Move : MonoBehaviour, iDamageable {
     Rigidbody2D _body;
 
     public Animator animator;
-
-    [SerializeField] private TextMeshProUGUI BulletText;
     bool isBouncing = false;
     public bool gunEnabled;
     const float MAX_HP = 1f;
@@ -49,7 +47,7 @@ public class Move : MonoBehaviour, iDamageable {
     private float _hurtTimer = 0f;
     public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
 
-
+    private bool _teleporting = false;
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
@@ -163,6 +161,7 @@ public class Move : MonoBehaviour, iDamageable {
         _renderer.enabled = false;
         holdingProgress.SetActive(false);
         fieldOfView.enabled = false;
+        _teleporting = true;
 
         yield return new WaitForSeconds(0.2f);
 
@@ -179,6 +178,7 @@ public class Move : MonoBehaviour, iDamageable {
         yield return new WaitForSeconds(0.2f);
         fieldOfView.enabled = true;
         _renderer.enabled = true;
+        _teleporting = false;
 
         elapsedTime = 0f;
         waitTime = 0.08f;
@@ -253,7 +253,7 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
     public bool ReduceHealth(float value, GameObject from) {
-        if(HP > 0 && Mathf.Abs(transform.localScale.x) > 0.02f) {
+        if(HP > 0 && !_teleporting) {
             if(_hurtTimer == 0f) {
                 StartCoroutine(StartHurtAnimation());
             }
@@ -314,5 +314,9 @@ public class Move : MonoBehaviour, iDamageable {
         this.swordPivot.SetActive(false);
         animator.SetBool("isDie", true);
         yield return new WaitForEndOfFrame();
+    }
+
+    public bool isTeleporting() {
+        return _teleporting;
     }
 }
