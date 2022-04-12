@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public GameObject PassUI;
     public GameObject PortalUI;
     public TextMeshProUGUI BulletUI;
+    public FieldOfView FOV;
     void Awake() {
         instance = this;
     }

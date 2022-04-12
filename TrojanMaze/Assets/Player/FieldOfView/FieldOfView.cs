@@ -21,7 +21,6 @@ public class FieldOfView : MonoBehaviour {
         int rayCount = 100;
         float angle = 0f;
         float angleIncrease = fov / rayCount;
-
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[rayCount * 3];

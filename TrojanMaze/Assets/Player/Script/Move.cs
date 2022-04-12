@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] public float speed = 10f;
-    [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
     [SerializeField] GameObject playerBullet;
@@ -80,7 +79,6 @@ public class Move : MonoBehaviour, iDamageable {
             } else {
                 _isHolding = true;
                 holdingProgress.SetActive(true);
-
             }
         }
 
@@ -118,8 +116,8 @@ public class Move : MonoBehaviour, iDamageable {
                 transform.localScale.y
             );
         }
-
-        fieldOfView.SetOrigin(transform.position);
+        
+        GameManager.instance.FOV.SetOrigin(transform.position);
         if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
             nextShootTime = Time.time + 0.6f;
             bulletNum--;
@@ -156,7 +154,7 @@ public class Move : MonoBehaviour, iDamageable {
         }
         _renderer.enabled = false;
         holdingProgress.SetActive(false);
-        fieldOfView.enabled = false;
+        GameManager.instance.FOV.enabled = false;
         bool swordStatus = swordPivot.activeSelf;
         swordPivot.SetActive(false);
         _teleporting = true;
@@ -174,7 +172,7 @@ public class Move : MonoBehaviour, iDamageable {
             yield return null;
         }
         yield return new WaitForSeconds(0.2f);
-        fieldOfView.enabled = true;
+        GameManager.instance.FOV.enabled = true;
         _renderer.enabled = true;
         _teleporting = false;
         swordPivot.SetActive(swordStatus);
