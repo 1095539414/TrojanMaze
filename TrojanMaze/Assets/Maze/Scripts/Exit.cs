@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Exit : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 1f;
 
-    void Start(){
+    void Start() {
         GameManager.instance.PassUI.SetActive(false);
     }
 
@@ -18,29 +18,12 @@ public class Exit : MonoBehaviour {
     }
 
 
-    public void OnLoadNextLevel(){
-        Time.timeScale = 1f;
-        StartCoroutine(LoadNextLevel());
-    }
-
-    IEnumerator LoadNextLevel() {
-        yield return new WaitForSecondsRealtime(levelLoadDelay);
-        UnityAnalytics.sendLevelSolved();
-        UnityAnalytics.sendDamagedFrom();
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
-            nextSceneIndex = 0;
-        }
-        SceneManager.LoadScene(nextSceneIndex);
-    }
-
     public void OnApplicationQuit() {
         Time.timeScale = 1f;
         UnityAnalytics.sendDamagedFrom();
     }
 
-    public void OnRestart(){
+    public void OnRestart() {
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }

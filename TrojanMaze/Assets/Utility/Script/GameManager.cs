@@ -29,4 +29,21 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
+
+    public void OnLoadNextLevel() {
+        StartCoroutine(LoadNextLevel());
+    }
+
+    IEnumerator LoadNextLevel() {
+        yield return new WaitForSecondsRealtime(1f);
+        UnityAnalytics.sendLevelSolved();
+        UnityAnalytics.sendDamagedFrom();
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
+            nextSceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextSceneIndex);
+        Time.timeScale = 1f;
+    }
 }
