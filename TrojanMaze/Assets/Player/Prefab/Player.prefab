@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4ae7608a7b9f249bf8744e4a95f9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
   fieldOfView: {fileID: 0}
+  speed: 150
   fireInterval: 1
   swordPivot: {fileID: 548594345}
   playerBullet: {fileID: 3572178453297475688, guid: 331976b73e7ac414c99b70b0e9c1bf3b, type: 3}

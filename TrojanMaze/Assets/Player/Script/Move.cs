@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.UI;
 
 public class Move : MonoBehaviour, iDamageable {
+    [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] public float speed = 10f;
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
@@ -62,6 +63,8 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void Update() {
+        fieldOfView.SetOrigin(transform.position);
+        
         animator.SetFloat("Speed", Vector3.Magnitude(_body.velocity));
 
         // make sure the loading progress always display corectly
