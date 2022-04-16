@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPoint : MonoBehaviour
 {
 
-    [SerializeField] float FadedPeriod = 1f;
+    [SerializeField] float FadedPeriod = 2f;
     private float _time = 0f;
     private GameObject currentGameObject;
     private float alpha = 0.1f;
