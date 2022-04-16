@@ -12,7 +12,9 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
     [SerializeField] GameObject playerBullet;
-    [SerializeField] GameObject holdingProgress;
+    [SerializeField] GameObject holdingProgressR;
+    [SerializeField] GameObject holdingProgressT;
+
     Vector2 moveInput;
     Rigidbody2D _body;
 
@@ -40,14 +42,19 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject Portal;
     private GameObject _portal;
     private float _holdTimerTarget = 1f;
-    private float _holdTimer = 0f;
-    private bool _isHolding = false;
+    private float _holdTimerT = 0f;
+    private float _holdTimerR = 0f;
+    private bool _isHoldingT = false;
+    private bool _isHoldingR = false;
 
     private SpriteRenderer _renderer;
     private float _hurtTimer = 0f;
     public static Dictionary<string, float> damagedFrom = new Dictionary<string, float>();
 
     private bool _teleporting = false;
+    private Renderer _holdingProgressRendererR;
+    private Renderer _holdingProgressRendererT;
+
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
@@ -60,78 +67,99 @@ public class Move : MonoBehaviour, iDamageable {
         GameManager.instance.DeathUI.SetActive(false);
         _prevPos = transform.position;
         _renderer = GetComponent<SpriteRenderer>();
+        _holdingProgressRendererR = holdingProgressR.GetComponent<Renderer>();
+        _holdingProgressRendererT = holdingProgressT.GetComponent<Renderer>();
     }
 
     void Update() {
         fieldOfView.SetOrigin(transform.position);
-        
         animator.SetFloat("Speed", Vector3.Magnitude(_body.velocity));
+        if(_renderer.enabled) {
+            DropFootprint();
+            FlipPlayer();
 
-        // make sure the loading progress always display corectly
-        if(transform.localScale.x <= 0 && holdingProgress.transform.localScale.x >= 0 ||
-            transform.localScale.x >= 0 && holdingProgress.transform.localScale.x <= 0) {
-            Vector3 scale = holdingProgress.transform.localScale;
-            scale.x *= -1;
-            holdingProgress.transform.localScale = scale;
         }
-
         // channeling the portal/etc.
         if(Input.GetKeyDown(KeyCode.R)) {
             if(_portal == null) {
                 _portal = Instantiate(Portal, transform.position, transform.rotation);
             } else {
-                _isHolding = true;
-                holdingProgress.SetActive(true);
+                _isHoldingR = true;
+                holdingProgressR.SetActive(true);
             }
+        }
+
+        if(_portal != null && Input.GetKeyDown(KeyCode.T)) {
+            _isHoldingT = true;
+            holdingProgressT.SetActive(true);
         }
 
         // reset the channeling
-        if(Input.GetKeyUp(KeyCode.R)) {
-            _isHolding = false;
-            _holdTimer = 0f;
+        if(Input.GetKeyUp(KeyCode.T)) {
+            _isHoldingT = false;
+            _holdTimerT = 0f;
         }
 
-        // update channeling status
-        if(_isHolding) {
-            holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat(
-                "_Arc2", 360f - _holdTimer / _holdTimerTarget * 360f
+        if(Input.GetKeyUp(KeyCode.R)) {
+            _isHoldingR = false;
+            _holdTimerR = 0f;
+        }
+
+        if(_isHoldingR && !_isHoldingT) {
+            _holdingProgressRendererR.sharedMaterial.SetFloat(
+                "_Arc2", 360f - _holdTimerR / _holdTimerTarget * 360f
+            );
+            _holdTimerR += Time.deltaTime;
+            if(_holdTimerR >= _holdTimerTarget) {
+                _holdTimerR = 0f;
+                _isHoldingR = false;
+                Destroy(_portal);
+                _portal = null;
+            }
+        } else {
+            holdingProgressR.SetActive(false);
+            _holdingProgressRendererR.sharedMaterial.SetFloat("_Arc2", 360f);
+        }
+
+        if(!_isHoldingR && _isHoldingT) {
+            _holdingProgressRendererT.sharedMaterial.SetFloat(
+                "_Arc2", 360f - _holdTimerT / _holdTimerTarget * 360f
             );
 
-            _holdTimer += Time.deltaTime;
+            _holdTimerT += Time.deltaTime;
             _body.velocity = Vector3.zero;
-            if(_holdTimer >= _holdTimerTarget) {
-                _holdTimer = -100f;
+            if(_holdTimerT >= _holdTimerTarget) {
+                _holdTimerT = -100f;
                 StartCoroutine(TeleportBack());
             }
-            return;
         } else {
-            holdingProgress.SetActive(false);
-            holdingProgress.GetComponent<Renderer>().sharedMaterial.SetFloat("_Arc2", 360f);
+            holdingProgressT.SetActive(false);
+            _holdingProgressRendererT.sharedMaterial.SetFloat("_Arc2", 360f);
         }
 
-        if(!swordPivot.activeSelf) {
-            FlipPlayer();
+        if(_portal == null) {
+            GameManager.instance.PortalImage.color = Color.white;
         } else {
-            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
-            Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            transform.localScale = new Vector2(
-                Mathf.Sign(diff.x) * Mathf.Abs(transform.localScale.x),
-                transform.localScale.y
-            );
+            Color c = Color.gray;
+            c.a = 0.7f;
+            GameManager.instance.PortalImage.color = c;
         }
-        
-        GameManager.instance.FOV.SetOrigin(transform.position);
+
+        GameManager.instance.PortalT.enabled = _portal != null;
+        GameManager.instance.PortalR.enabled = _portal == null;
+        GameManager.instance.PortalDisgard.SetActive(_portal != null);
+
         if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
             nextShootTime = Time.time + 0.6f;
             bulletNum--;
             Instantiate(playerBullet, this.transform.position, this.transform.rotation);
+            if(bulletNum > 0) {
+                GameManager.instance.BulletUI.text = bulletNum.ToString();
+            } else {
+                GameManager.instance.BulletUI.text = "";
+            }
         }
 
-        if(bulletNum > 0) {
-            GameManager.instance.BulletUI.text = bulletNum.ToString();
-        } else {
-            GameManager.instance.BulletUI.text = "";
-        }
 
         if(_hurtTimer > 0) {
             _hurtTimer -= Time.deltaTime;
@@ -140,10 +168,10 @@ public class Move : MonoBehaviour, iDamageable {
                 _hurtTimer = 0f;
             }
         }
-        GameManager.instance.PortalUI.SetActive(_portal == null);
-        DropFootprint();
+
 
     }
+
 
     IEnumerator TeleportBack() {
         float elapsedTime = 0f;
@@ -156,8 +184,8 @@ public class Move : MonoBehaviour, iDamageable {
             yield return null;
         }
         _renderer.enabled = false;
-        holdingProgress.SetActive(false);
-        GameManager.instance.FOV.enabled = false;
+        holdingProgressT.SetActive(false);
+        fieldOfView.enabled = false;
         bool swordStatus = swordPivot.activeSelf;
         swordPivot.SetActive(false);
         _teleporting = true;
@@ -174,8 +202,10 @@ public class Move : MonoBehaviour, iDamageable {
             transform.position = Vector3.Lerp(originalLocation, finalLocation, elapsedTime / waitTime);
             yield return null;
         }
+
         yield return new WaitForSeconds(0.2f);
-        GameManager.instance.FOV.enabled = true;
+
+        fieldOfView.enabled = true;
         _renderer.enabled = true;
         _teleporting = false;
         swordPivot.SetActive(swordStatus);
@@ -189,12 +219,12 @@ public class Move : MonoBehaviour, iDamageable {
         }
         Destroy(_portal);
         _portal = null;
-        _isHolding = false;
-        _holdTimer = 0f;
+        _isHoldingT = false;
+        _holdTimerT = 0f;
     }
 
     void FixedUpdate() {
-        if(!_isHolding) {
+        if(!_isHoldingT) {
             Run();
         }
     }
@@ -213,9 +243,26 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void FlipPlayer() {
-        bool hasHorizontalSpeed = Mathf.Abs(_body.velocity.x) > Mathf.Epsilon;
-        if(hasHorizontalSpeed) {
-            transform.localScale = new Vector2(Mathf.Sign(_body.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        if(!swordPivot.activeSelf) {
+            bool hasHorizontalSpeed = Mathf.Abs(_body.velocity.x) > Mathf.Epsilon;
+            if(hasHorizontalSpeed) {
+                transform.localScale = new Vector2(Mathf.Sign(_body.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            }
+        } else {
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            transform.localScale = new Vector2(
+                Mathf.Sign(diff.x) * Mathf.Abs(transform.localScale.x),
+                transform.localScale.y
+            );
+        }
+
+        if(transform.localScale.x <= 0 && holdingProgressT.transform.localScale.x >= 0 ||
+            transform.localScale.x >= 0 && holdingProgressT.transform.localScale.x <= 0) {
+            Vector3 scale = holdingProgressT.transform.localScale;
+            scale.x *= -1;
+            holdingProgressT.transform.localScale = scale;
+            holdingProgressR.transform.localScale = scale;
         }
     }
 

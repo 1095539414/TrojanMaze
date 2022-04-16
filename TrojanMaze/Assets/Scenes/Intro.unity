@@ -414,6 +414,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4194932226903062019, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
+      propertyPath: m_Name
+      value: rButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8acbaf21d54fcba44a717d9c6b90c940, type: 3}
 --- !u!1 &512718964
@@ -839,7 +843,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858629212}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &858629216
 Camera:
   m_ObjectHideFlags: 0
@@ -911,6 +915,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 869843492012390924, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c5cdd6b02237574484cf01c3719d7ca, type: 2}
+    - target: {fileID: 954252249335266780, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e124cd5d6b364843b733795d0b0ab21, type: 2}
     - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: fieldOfView
       value: 

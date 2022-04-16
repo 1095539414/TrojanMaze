@@ -29,13 +29,14 @@ public class Zombie : MonoBehaviour, iDamageable {
     public bool ReduceHealth(float amount, GameObject from) {
         if(_health > 0 && !_hurt) {
             _health -= amount;
+            HealthBar.SetBar(_health, _maxHealth);
+
             if(_health <= 0.001) {
                 StartCoroutine(Die());
             } else {
                 _hurt = true;
                 _hurtCoroutine = StartCoroutine(Hurt());
             }
-            HealthBar.SetBar(_health, _maxHealth);
         }
         return true;
     }

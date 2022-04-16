@@ -14,7 +14,6 @@ public class ZombieSpawnController : MonoBehaviour {
             Debug.LogWarning("Zombie Spawn Controller: Size of zombieTypes and zombieAmount should match");
             return;
         }
-        Debug.Log("Respawning");
         float centerX = transform.position.x;
         float centerY = transform.position.y;
         float radius = GetComponent<Renderer>().bounds.size.x/2;
