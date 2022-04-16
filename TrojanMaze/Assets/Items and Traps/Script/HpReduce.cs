@@ -4,14 +4,52 @@ using UnityEngine;
 
 public class HpReduce : MonoBehaviour {
     private float _damage = 0.25f;
+    [SerializeField] float moveSpeed = 0.02f;
+    [SerializeField] bool horizontal = true;
+
+    [SerializeField] Transform center;
+    private Rigidbody2D _body;
+    private Vector2 _initialPos;
+    private bool _direction = true;
+    private Vector3 _velocity;
+
     // Start is called before the first frame update
     void Start() {
-
+        _body = GetComponent<Rigidbody2D>();
+        _initialPos = transform.position;
     }
 
     // Update is called once per frame
     void Update() {
+        // if(_body.velocity.x > 0) {
+        //     Vector3 theScale = transform.localScale;
+        //     if(theScale.x < 0) {
+        //         theScale.x *= -1;
+        //     }
+        //     transform.localScale = theScale;
+        // } else if(_body.velocity.x < 0) {
+        //     Vector3 theScale = transform.localScale;
+        //     if(theScale.x > 0) {
+        //         theScale.x *= -1;
+        //     }
+        //     transform.localScale = theScale;
+        // }
 
+        // virus zombies move horizontally 
+        if(horizontal) {
+            if(_direction) {
+                _velocity = Vector3.right * moveSpeed;
+            } else {
+                _velocity = Vector3.left * moveSpeed;
+            }
+        // virus zombies move vertically 
+        } else {
+            if(_direction) {
+                _velocity = Vector3.up * moveSpeed;
+            } else {
+                _velocity = Vector3.down * moveSpeed;
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
@@ -20,6 +58,13 @@ public class HpReduce : MonoBehaviour {
                 damageableObj.ReduceHealth(_damage, this.gameObject);
             }
         }
+        if(other.CompareTag("Walls")) {
+            _direction = !_direction;
+        }
+    }
+
+    void FixedUpdate() {
+        _body.velocity = _velocity * Time.deltaTime;
     }
 }
 
