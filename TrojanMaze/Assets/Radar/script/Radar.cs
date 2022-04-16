@@ -15,7 +15,7 @@ public class Radar : MonoBehaviour
 
     void Start()
     {
-        rangeMax = 11f;
+        rangeMax = 10f;
         VisitedObj = new List<Collider2D>();
     }
 
@@ -35,7 +35,6 @@ public class Radar : MonoBehaviour
             if(rayHit.collider.tag == "Zombie" && !VisitedObj.Contains(rayHit.collider)) {
                 VisitedObj.Add(rayHit.collider);
                 // rayHit.collider.Destroy();
-                Debug.Log("Hit");
                 Instantiate(EnemyPoint, rayHit.collider.transform.position, rayHit.collider.transform.rotation);
             }
         }

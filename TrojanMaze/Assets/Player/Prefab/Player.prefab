@@ -112,7 +112,7 @@ MonoBehaviour:
   holdingProgress: {fileID: 2579685054662491523}
   animator: {fileID: 809339264}
   gunEnabled: 0
-  FootPrint: {fileID: 2560464115760370760, guid: 01f7cd74fc72e4dcebc256b3d6d8348a, type: 3}
+  FootPrint: {fileID: 8020008980465781415, guid: 7be8ac059572c40a19941763f397022d, type: 3}
   FootprintGap: 1
   Portal: {fileID: 1482466758426759666, guid: ca01b08ade8ea41c0a59216c35fdc54c, type: 3}
 --- !u!50 &464544809
