@@ -6,8 +6,11 @@ using UnityEngine.Analytics;
 
 public class Zombie : MonoBehaviour, iDamageable {
     private float _health;
+    private float _maxHealth;
     private Coroutine _hurtCoroutine;
     private bool _hurt = false;
+
+    public ZombieHealthBar HealthBar;
     // Getters
     public float health {
         get { return _health; }
@@ -16,7 +19,9 @@ public class Zombie : MonoBehaviour, iDamageable {
     // used by its inheritance
     protected void Init(float health) {
         _health = health;
+        _maxHealth = health;
         this.gameObject.tag = "Zombie";
+        HealthBar.SetBar(_health, _maxHealth);
     }
 
     // Health calculation 
@@ -30,6 +35,7 @@ public class Zombie : MonoBehaviour, iDamageable {
                 _hurt = true;
                 _hurtCoroutine = StartCoroutine(Hurt());
             }
+            HealthBar.SetBar(_health, _maxHealth);
         }
         return true;
     }
