@@ -78,11 +78,10 @@ public class BuffItem : MonoBehaviour {
     }
 
     private void OnMouseExit() {
-        LeanTween.cancel(delay.uniqueId);
+        if(delay != null) {
+            LeanTween.cancel(delay.uniqueId);
+        }
         TooltipManager.Hide();
     }
 
-    private void OnMouseDown() {
-        LeanTween.cancel(delay.uniqueId);
-    }
 }
