@@ -14,7 +14,14 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject playerBullet;
     [SerializeField] GameObject holdingProgressR;
     [SerializeField] GameObject holdingProgressT;
+    [SerializeField] GameObject FootPrintLeft;
+    [SerializeField] GameObject FootPrintRight;
 
+    [SerializeField] float FootprintGap = 1f;
+    private bool _footPrintLeft;
+
+    // Portal-related variables
+    [SerializeField] GameObject Portal;
     Vector2 moveInput;
     Rigidbody2D _body;
 
@@ -35,11 +42,7 @@ public class Move : MonoBehaviour, iDamageable {
     // footprints-related variables
     private Vector2 _prevPos;
     private Vector2 _curPos;
-    [SerializeField] GameObject FootPrint;
-    [SerializeField] float FootprintGap = 1f;
 
-    // Portal-related variables
-    [SerializeField] GameObject Portal;
     private GameObject _portal;
     private float _holdTimerTarget = 1f;
     private float _holdTimerT = 0f;
@@ -69,6 +72,7 @@ public class Move : MonoBehaviour, iDamageable {
         _renderer = GetComponent<SpriteRenderer>();
         _holdingProgressRendererR = holdingProgressR.GetComponent<Renderer>();
         _holdingProgressRendererT = holdingProgressT.GetComponent<Renderer>();
+        _footPrintLeft = true;
     }
 
     void Update() {
@@ -351,7 +355,20 @@ public class Move : MonoBehaviour, iDamageable {
         if(dist > FootprintGap) {
             float tanVal = (_curPos.y - _prevPos.y) / (_curPos.x - _prevPos.x);
             float rotationAngle = Mathf.Atan(tanVal) * (180 / Mathf.PI) + ((_curPos.x - _prevPos.x) < 0 ? 180 : 0);
-            Instantiate(FootPrint, transform.position, Quaternion.Euler(new Vector3(0, 0, rotationAngle)));
+            if(_footPrintLeft) {
+                Instantiate(
+                    FootPrintLeft, 
+                    transform.position - new Vector3(0, 0.45f, 0), 
+                    Quaternion.Euler(new Vector3(0, 0, rotationAngle))
+                );
+            } else {
+                Instantiate(
+                    FootPrintRight, 
+                    transform.position - new Vector3(0, 0.45f, 0), 
+                    Quaternion.Euler(new Vector3(0, 0, rotationAngle))
+                );
+            }
+            _footPrintLeft = !_footPrintLeft;
             _prevPos = _curPos;
         }
     }

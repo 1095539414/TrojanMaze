@@ -112,11 +112,12 @@ MonoBehaviour:
   playerBullet: {fileID: 3572178453297475688, guid: 331976b73e7ac414c99b70b0e9c1bf3b, type: 3}
   holdingProgressR: {fileID: 2579685054662491523}
   holdingProgressT: {fileID: 5313207389520505267}
+  FootPrintLeft: {fileID: 8020008980465781415, guid: 7be8ac059572c40a19941763f397022d, type: 3}
+  FootPrintRight: {fileID: 8020008980465781415, guid: 904786a2f70e3444dbe7c052b8248c67, type: 3}
+  FootprintGap: 0.8
+  Portal: {fileID: 1482466758426759666, guid: ca01b08ade8ea41c0a59216c35fdc54c, type: 3}
   animator: {fileID: 809339264}
   gunEnabled: 0
-  FootPrint: {fileID: 8020008980465781415, guid: 7be8ac059572c40a19941763f397022d, type: 3}
-  FootprintGap: 1
-  Portal: {fileID: 1482466758426759666, guid: ca01b08ade8ea41c0a59216c35fdc54c, type: 3}
 --- !u!50 &464544809
 Rigidbody2D:
   serializedVersion: 4
