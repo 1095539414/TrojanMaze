@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2845321121368815466}
   m_Layer: 9
   m_Name: Navmesh
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2845321121368815465
 Transform:
@@ -79,11 +79,11 @@ GameObject:
   - component: {fileID: 2845321121959746698}
   - component: {fileID: 2845321121959746697}
   m_Layer: 9
-  m_Name: SimpleMaze_E_1
+  m_Name: No3_demo2
   m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2845321121959746698
 Transform:
@@ -130,7 +130,7 @@ GameObject:
   m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2845321122919237960
 Transform:
@@ -4651,10 +4651,10 @@ GameObject:
   - component: {fileID: 2845321122977723155}
   m_Layer: 9
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2845321122977723154
 Transform:
@@ -15625,10 +15625,10 @@ GameObject:
   - component: {fileID: 8007993407474852464}
   m_Layer: 9
   m_Name: TilemapGround
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &3179369125171326221
 Transform:
