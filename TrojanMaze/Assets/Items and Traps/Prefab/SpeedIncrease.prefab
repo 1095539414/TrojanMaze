@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006e6a1794d44e748aa26d04db0a9fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  header: Speed Increase
+  content: Increase your speed for 3 seconds
   icon: {fileID: 0}
   time: 3
-  animator: {fileID: 0}

@@ -122,5 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312ec491228573247b946ab64f99c696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  header: Speed Decrease
+  content: Careful. Will reduce your speed
   icon: {fileID: 0}
   time: 3

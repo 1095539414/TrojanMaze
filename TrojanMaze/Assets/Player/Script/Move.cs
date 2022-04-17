@@ -77,7 +77,6 @@ public class Move : MonoBehaviour, iDamageable {
         if(_renderer.enabled) {
             DropFootprint();
             FlipPlayer();
-
         }
         // channeling the portal/etc.
         if(Input.GetKeyDown(KeyCode.R)) {

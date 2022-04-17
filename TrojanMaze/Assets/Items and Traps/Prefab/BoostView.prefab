@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4343d46dd5db4174a670ebc29c7ac53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  header: VIew Booster
+  content: Increase your view range
   icon: {fileID: 0}
   time: 10
 --- !u!61 &8811928437017863926

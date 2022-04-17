@@ -9,12 +9,15 @@ public class BuffItem : MonoBehaviour {
 
     protected State status;
     protected SpriteRenderer spriteR;
+    public string header;
+    public string content;
 
     // [SerializeField]
     // private Image durationImg;
 
     //[SerializeField]
     public Image icon;
+    private LTDescr delay;
 
     public void Initialize(SpriteRenderer spriteR, string name) {
         this.icon.sprite = spriteR.sprite;
@@ -51,11 +54,14 @@ public class BuffItem : MonoBehaviour {
         if(buffTarget.CompareTag("Player") && buffTarget.GetComponent<Move>().isTeleporting()) {
             return;
         }
-        
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Armor")){
+
+        if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Armor")) {
             if(AddBuff()) {
+
                 Invoke("RemoveBuff", GetDuration());
             }
+            TooltipManager.Hide();
+
             this.gameObject.SetActive(false);
             if(!this.CompareTag("ZombieBullet")) {
                 UnityAnalytics.sendItemCollected(this.name);
@@ -65,4 +71,18 @@ public class BuffItem : MonoBehaviour {
         }
     }
 
+    private void OnMouseEnter() {
+        delay = LeanTween.delayedCall(0.5f, () => {
+            TooltipManager.Show(content, header);
+        });
+    }
+
+    private void OnMouseExit() {
+        LeanTween.cancel(delay.uniqueId);
+        TooltipManager.Hide();
+    }
+
+    private void OnMouseDown() {
+        LeanTween.cancel(delay.uniqueId);
+    }
 }

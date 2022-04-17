@@ -122,4 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c61032e0a972f14c94048c95af212c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  header: Potion
+  content: Drink to get more health
   icon: {fileID: 0}
