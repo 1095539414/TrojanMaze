@@ -22,7 +22,7 @@ public class Radar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float rangeSpeed = 20f;
+        float rangeSpeed = 10f;
         range += rangeSpeed * Time.deltaTime;
         if(range > rangeMax) {
             range = 0f;
