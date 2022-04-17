@@ -2787,7 +2787,7 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2889,4 +2889,4 @@ MonoBehaviour:
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6faac6dfe4666ac439c82efb29486ea5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: a554cb2b470898141ab6c92bf2f7993a, type: 2}
