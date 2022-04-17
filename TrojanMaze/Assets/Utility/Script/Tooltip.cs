@@ -15,6 +15,7 @@ public class Tooltip : MonoBehaviour {
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
     }
+
     private void Update() {
         Vector2 position = Input.mousePosition;
 

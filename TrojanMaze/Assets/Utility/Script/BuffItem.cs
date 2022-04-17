@@ -17,7 +17,7 @@ public class BuffItem : MonoBehaviour {
 
     //[SerializeField]
     public Image icon;
-    private LTDescr delay;
+    private static LTDescr delay;
 
     public void Initialize(SpriteRenderer spriteR, string name) {
         this.icon.sprite = spriteR.sprite;
