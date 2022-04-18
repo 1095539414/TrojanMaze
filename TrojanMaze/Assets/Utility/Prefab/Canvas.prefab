@@ -1631,6 +1631,7 @@ GameObject:
   - component: {fileID: 5289552926952918708}
   - component: {fileID: 5289552926952918709}
   - component: {fileID: 5289552926952918710}
+  - component: {fileID: 1585394763747744518}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -1752,6 +1753,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1585394763747744518}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: ResetKillNum
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1585394763747744518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289552926952918728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded65032ccf6b4ba9a7019f39c386bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP: {fileID: 2672822170686533952}
 --- !u!1 &5289552926966147967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2118,7 @@ GameObject:
   - component: {fileID: 5289552927400791851}
   - component: {fileID: 5289552927400791852}
   - component: {fileID: 5289552927400791853}
+  - component: {fileID: 993450581165455995}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2213,6 +2240,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 993450581165455995}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: ResetKillNum
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &993450581165455995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289552927400791855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded65032ccf6b4ba9a7019f39c386bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP: {fileID: 2672822170686533952}
 --- !u!1 &5289552927518130722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,6 +2972,7 @@ GameObject:
   - component: {fileID: 5289552928023818907}
   - component: {fileID: 5289552928023818908}
   - component: {fileID: 5289552928023818909}
+  - component: {fileID: 1829151423805303919}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -3041,6 +3094,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1829151423805303919}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: ResetKillNum
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1829151423805303919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289552928023818911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded65032ccf6b4ba9a7019f39c386bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP: {fileID: 2672822170686533952}
 --- !u!1 &5289552928060246218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3262,6 +3340,7 @@ GameObject:
   - component: {fileID: 5289552928148109676}
   - component: {fileID: 5289552928148109677}
   - component: {fileID: 5289552928148109678}
+  - component: {fileID: 8193638134983478457}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -3383,6 +3462,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8193638134983478457}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: ResetKillNum
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8193638134983478457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289552928148109664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded65032ccf6b4ba9a7019f39c386bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP: {fileID: 2672822170686533952}
 --- !u!1 &5289552928186607649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,6 +3614,7 @@ GameObject:
   - component: {fileID: 5289552928358623708}
   - component: {fileID: 5289552928358623709}
   - component: {fileID: 5289552928358623710}
+  - component: {fileID: 7682542327417678130}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -3631,6 +3736,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7682542327417678130}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: ResetKillNum
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7682542327417678130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289552928358623696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded65032ccf6b4ba9a7019f39c386bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP: {fileID: 2672822170686533952}
 --- !u!1 &5289552928360658209
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,6 +3854,7 @@ GameObject:
   - component: {fileID: 5289552928410813332}
   - component: {fileID: 5289552928410813333}
   - component: {fileID: 304990292}
+  - component: {fileID: 1090816452240865011}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3854,6 +3985,19 @@ MonoBehaviour:
   - {fileID: 2039298791}
   - {fileID: 1620343299}
   - {fileID: 829041215}
+--- !u!114 &1090816452240865011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289552928410813334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded65032ccf6b4ba9a7019f39c386bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP: {fileID: 2672822170686533952}
 --- !u!1 &5289552928419170063
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,4 +24,8 @@ public class ScoreScript : MonoBehaviour
     public static void IncreaseKillNum() {
         KillNum++;
     }
+
+    public static void ResetKillNum() {
+        KillNum = 0;
+    }
 }
