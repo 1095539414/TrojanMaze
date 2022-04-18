@@ -12,6 +12,7 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        KillNum = 0;
         TMP.text = "Killed Zombies: 0"; 
     }
 

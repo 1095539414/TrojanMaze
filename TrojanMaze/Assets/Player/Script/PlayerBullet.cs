@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour {
     Rigidbody2D bulletRigidbody;
-    [SerializeField] float bulletSpeed = 700f;
+    [SerializeField] float bulletSpeed = 500f;
     float bulletDamage = 0.5f;
 
     private Vector2 _direction;
