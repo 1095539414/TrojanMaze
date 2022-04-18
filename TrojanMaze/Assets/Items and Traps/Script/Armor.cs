@@ -14,7 +14,7 @@ public class Armor : BuffItem
             player.tag = "Armor";//change the player tag to armor so that the zombies and traps cannot find the player
 
         }
-        status.AddBuff(spriteR, name);
+        status.AddBuff(name, icon);
         return true;
     }
     protected override bool RemoveBuff() //change the tag back. Zombies and traps could reduce HP now.

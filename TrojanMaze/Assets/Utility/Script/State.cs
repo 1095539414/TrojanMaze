@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class State : MonoBehaviour {
 
@@ -13,9 +14,9 @@ public class State : MonoBehaviour {
 
     private List<BuffItem> buffs = new List<BuffItem>();
 
-    public void AddBuff(SpriteRenderer spriteR, string name) {
+    public void AddBuff(string name, Image iconI) {
         BuffItem bf = Instantiate(buffPrefab, buffTransform);
-        bf.Initialize(spriteR, name);
+        bf.Initialize(name, iconI);
         buffs.Add(bf);
     }
 

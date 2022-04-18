@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 
 public class BuffItem : MonoBehaviour {
+    private Inventory inventory;
+    public GameObject itemButton;
+    private int slotNum;
+    protected bool used;
+
     protected GameObject buffTarget;
 
     protected State status;
-    protected SpriteRenderer spriteR;
     public string header;
     public string content;
 
@@ -19,17 +23,16 @@ public class BuffItem : MonoBehaviour {
     public Image icon;
     private static LTDescr delay;
 
-    public void Initialize(SpriteRenderer spriteR, string name) {
-        this.icon.sprite = spriteR.sprite;
-        this.icon.color = spriteR.color;
+    public void Initialize(string name, Image iconI) {
+        this.icon.sprite = iconI.sprite;
         this.name = name;
     }
 
     // Start is called before the first frame update
     void Start() {
         GameObject canvas = GameObject.Find("Canvas");
+        inventory = canvas.GetComponent<Inventory>();
         status = canvas.GetComponent<State>();
-        spriteR = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -49,27 +52,7 @@ public class BuffItem : MonoBehaviour {
     protected virtual float GetDuration() {
         return 0;
     }
-    protected void OnTriggerEnter2D(Collider2D other) {
-        buffTarget = other.gameObject;
-        if(buffTarget.CompareTag("Player") && buffTarget.GetComponent<Move>().isTeleporting()) {
-            return;
-        }
 
-        if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Armor")) {
-            if(AddBuff()) {
-
-                Invoke("RemoveBuff", GetDuration());
-            }
-            TooltipManager.Hide();
-
-            this.gameObject.SetActive(false);
-            if(!this.CompareTag("ZombieBullet")) {
-                UnityAnalytics.sendItemCollected(this.name);
-            }
-        } else if(other.gameObject.CompareTag("Walls")) {
-            this.gameObject.SetActive(false);
-        }
-    }
 
     private void OnMouseEnter() {
         delay = LeanTween.delayedCall(0.5f, () => {
@@ -82,6 +65,56 @@ public class BuffItem : MonoBehaviour {
             LeanTween.cancel(delay.uniqueId);
         }
         TooltipManager.Hide();
+    }
+
+    protected void OnTriggerEnter2D(Collider2D other) {
+        buffTarget = other.gameObject;
+        if(buffTarget.CompareTag("Player") && buffTarget.GetComponent<Move>().isTeleporting()) {
+            return;
+        }
+
+        if(other.CompareTag("Player")  || other.gameObject.CompareTag("Armor")){
+            if(gameObject.CompareTag("gun")||gameObject.CompareTag("sword")||gameObject.CompareTag("ZombieBullet")){
+                Debug.Log("weapon");
+                if(AddBuff()) {
+                    Invoke("RemoveBuff", GetDuration());
+                }
+                this.gameObject.SetActive(false);
+                if(!this.CompareTag("ZombieBullet")) {
+                    UnityAnalytics.sendItemCollected(this.name);
+                }
+                return;
+            }
+            for(int i = 0; i < inventory.slots.Length; i++){
+                if(inventory.isFull[i] == false){
+                    slotNum = i;
+                    inventory.isFull[i] = true;
+                    Instantiate(itemButton, inventory.slots[i].transform, false);
+                    Destroy(gameObject);
+                    break;
+                }
+            }
+            UnityAnalytics.sendItemCollected(this.name);
+        }else if(other.gameObject.CompareTag("Walls")){
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    public void UseItem(){
+        if(used) return;
+        used = true;
+        icon = gameObject.GetComponent<Image>();
+        gameObject.GetComponent<Image>().enabled = !gameObject.GetComponent<Image>().enabled;
+        if(AddBuff()) {
+            for(int i = 0; i < inventory.slots.Length; i++){
+                if(inventory.slots[i].transform.position == gameObject.transform.position){
+                    inventory.isFull[i] = false;
+                    break;
+                }
+            }
+            
+            Invoke("RemoveBuff", GetDuration());
+        }
     }
 
 }
