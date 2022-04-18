@@ -11,7 +11,7 @@ public class VisionExpand : BuffItem
     protected override bool AddBuff() {
         FieldOfView.BoostViewDistance();
         name = gameObject.name;
-        status.AddBuff(spriteR,name);
+        status.AddBuff(name,icon);
         return true;
     }
 

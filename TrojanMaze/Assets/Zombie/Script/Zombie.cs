@@ -52,6 +52,7 @@ public class Zombie : MonoBehaviour, iDamageable {
 
     public virtual IEnumerator Die() {
         UnityAnalytics.sendZombieKilled(this.name);
+        ScoreScript.IncreaseKillNum();
         Destroy(this.gameObject);
         yield return null;
     }
