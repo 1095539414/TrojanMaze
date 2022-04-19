@@ -1,28 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-/// <summary>
-///speed decrease
-/// </summary>
-public class SpeedDecrease : BuffItem {
-    public float time = 3f;
+
+public class SpeedDecrease : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     float decreaseRatio = 2f;
-    protected override bool AddBuff() {
-        Move._move.speed /= decreaseRatio;
-        name = gameObject.name;
-        status.AddBuff(name, GetComponent<SpriteRenderer>().sprite);
-        return true;
+    void OnTriggerEnter2D(Collider2D other){
+        if(other.CompareTag("Player")||other.CompareTag("Zombie")){
+            Move._move.speed /= decreaseRatio;
+        }
     }
 
-    protected override bool RemoveBuff() {
-        Move._move.speed *= decreaseRatio;
-        status.RemoveBuff(name);
-        return true;
-    }
-
-    protected override float GetDuration() {
-        return time;
+    void OnTriggerExit2D(Collider2D other){
+        if(other.CompareTag("Player")||other.CompareTag("Zombie")){
+            Move._move.speed *= decreaseRatio;
+        }
     }
 }

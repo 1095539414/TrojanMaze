@@ -15,6 +15,7 @@ TagManager:
   - Spike
   - Armor
   - gun
+  - speedDecrease
   layers:
   - Default
   - TransparentFX

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 501089880552232205}
   - component: {fileID: 5411124036182607743}
   - component: {fileID: 808345149738624091}
-  - component: {fileID: -8105535977427601275}
+  - component: {fileID: 6603686764505229993}
   m_Layer: 7
   m_Name: SpeedDecrease
-  m_TagString: speed
+  m_TagString: speedDecrease
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0062894, y: 1.0062894}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-8105535977427601275
+--- !u!114 &6603686764505229993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,11 +119,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8748085806544681290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312ec491228573247b946ab64f99c696, type: 3}
+  m_Script: {fileID: 11500000, guid: eb31c71d64aec4482a7110e3520d682e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemButton: {fileID: 0}
-  header: Speed Decrease
-  content: Careful. Will reduce your speed
-  icon: {fileID: 0}
-  time: 3
