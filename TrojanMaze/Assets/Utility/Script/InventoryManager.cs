@@ -14,6 +14,17 @@ public class InventoryManager : MonoBehaviour {
         inventories = new GameObject[3];
     }
 
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+            UseItem(0);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2)) {
+            UseItem(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3)) {
+            UseItem(2);
+        }
+    }
 
     public bool AddItem(GameObject item) {
         for(int i = 0; i < inventories.Length; i++) {
@@ -23,7 +34,7 @@ public class InventoryManager : MonoBehaviour {
                 slots[i].sprite = item.gameObject.GetComponent<SpriteRenderer>().sprite;
                 slots[i].color = Color.white;
                 slots[i].gameObject.GetComponent<TooltipTrigger>().SetText(
-                    item.GetComponent<BuffItem>().content, 
+                    item.GetComponent<BuffItem>().content,
                     item.GetComponent<BuffItem>().header
                 );
                 return true;
@@ -44,6 +55,7 @@ public class InventoryManager : MonoBehaviour {
         inventories[index] = null;
         slots[index].sprite = null;
         slots[index].color = color;
+        slots[index].gameObject.GetComponent<TooltipTrigger>().Reset();
         return;
     }
 }

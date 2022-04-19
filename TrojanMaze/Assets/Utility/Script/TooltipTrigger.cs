@@ -22,7 +22,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        TooltipManager.Show(content, header);
+        if(content.Length > 0) {
+            TooltipManager.Show(content, header);
+
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
@@ -32,5 +35,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void SetText(string content, string header = "") {
         this.content = content;
         this.header = header;
+    }
+
+    public void Reset() {
+        this.content = "";
+        this.header = "";
     }
 }
