@@ -21,19 +21,16 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         TooltipManager.Hide();
     }
 
-    private void OnMouseDown() {
-        LeanTween.cancel(delay.uniqueId);
-    }
     public void OnPointerEnter(PointerEventData eventData) {
-        delay = LeanTween.delayedCall(0.5f, () => {
-            TooltipManager.Show(content, header);
-        });
+        TooltipManager.Show(content, header);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        if(delay != null) {
-            LeanTween.cancel(delay.uniqueId);
-        }
         TooltipManager.Hide();
+    }
+
+    public void SetText(string content, string header = "") {
+        this.content = content;
+        this.header = header;
     }
 }

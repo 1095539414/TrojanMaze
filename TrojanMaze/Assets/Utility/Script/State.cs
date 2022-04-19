@@ -14,9 +14,9 @@ public class State : MonoBehaviour {
 
     private List<BuffItem> buffs = new List<BuffItem>();
 
-    public void AddBuff(string name, Image iconI) {
+    public void AddBuff(string name, Sprite sprite) {
         BuffItem bf = Instantiate(buffPrefab, buffTransform);
-        bf.Initialize(name, iconI);
+        bf.Initialize(name, sprite);
         buffs.Add(bf);
     }
 
