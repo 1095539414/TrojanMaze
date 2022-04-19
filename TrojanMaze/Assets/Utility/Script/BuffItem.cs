@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 public class BuffItem : MonoBehaviour {
-    private Inventory inventory;
+    private InventoryManager inventory;
     public GameObject itemButton;
     private int slotNum;
     protected bool used;
@@ -20,18 +20,18 @@ public class BuffItem : MonoBehaviour {
     // private Image durationImg;
 
     //[SerializeField]
-    public Image icon;
+    public Sprite sprite;
     private static LTDescr delay;
 
-    public void Initialize(string name, Image iconI) {
-        this.icon.sprite = iconI.sprite;
+    public void Initialize(string name, Sprite sprite) {
+        GetComponent<Image>().sprite = sprite;
         this.name = name;
     }
 
     // Start is called before the first frame update
     void Start() {
         GameObject canvas = GameObject.Find("Canvas");
-        inventory = canvas.GetComponent<Inventory>();
+        inventory = canvas.GetComponent<InventoryManager>();
         status = canvas.GetComponent<State>();
     }
 
@@ -68,51 +68,33 @@ public class BuffItem : MonoBehaviour {
     }
 
     protected void OnTriggerEnter2D(Collider2D other) {
+
         buffTarget = other.gameObject;
         if(buffTarget.CompareTag("Player") && buffTarget.GetComponent<Move>().isTeleporting()) {
             return;
         }
 
-        if(other.CompareTag("Player")  || other.gameObject.CompareTag("Armor")){
-            if(gameObject.CompareTag("gun")||gameObject.CompareTag("sword")||gameObject.CompareTag("ZombieBullet")){
-                Debug.Log("weapon");
+        if(other.CompareTag("Player") || other.gameObject.CompareTag("Armor")) {
+            if(gameObject.CompareTag("gun") || gameObject.CompareTag("sword") || gameObject.CompareTag("ZombieBullet")) {
                 if(AddBuff()) {
                     Invoke("RemoveBuff", GetDuration());
+
                 }
                 this.gameObject.SetActive(false);
                 if(!this.CompareTag("ZombieBullet")) {
                     UnityAnalytics.sendItemCollected(this.name);
                 }
-                return;
+            } else {
+                InventoryManager.instance.AddItem(this.gameObject);
             }
-            for(int i = 0; i < inventory.slots.Length; i++){
-                if(inventory.isFull[i] == false){
-                    slotNum = i;
-                    inventory.isFull[i] = true;
-                    Instantiate(itemButton, inventory.slots[i].transform, false);
-                    Destroy(gameObject);
-                    break;
-                }
-            }
-            UnityAnalytics.sendItemCollected(this.name);
-        }else if(other.gameObject.CompareTag("Walls")){
+        } else if(other.gameObject.CompareTag("Walls")) {
             this.gameObject.SetActive(false);
         }
     }
 
-    public void UseItem(){
-        if(used) return;
-        used = true;
-        icon = gameObject.GetComponent<Image>();
-        gameObject.GetComponent<Image>().enabled = !gameObject.GetComponent<Image>().enabled;
+    public void Activate() {
         if(AddBuff()) {
-            for(int i = 0; i < inventory.slots.Length; i++){
-                if(inventory.slots[i].transform.position == gameObject.transform.position){
-                    inventory.isFull[i] = false;
-                    break;
-                }
-            }
-            
+            UnityAnalytics.sendItemCollected(this.name);
             Invoke("RemoveBuff", GetDuration());
         }
     }

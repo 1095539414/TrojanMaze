@@ -175,7 +175,6 @@ public class Move : MonoBehaviour, iDamageable {
 
     }
 
-
     IEnumerator TeleportBack() {
         float elapsedTime = 0f;
         float waitTime = 0.08f;
@@ -302,6 +301,7 @@ public class Move : MonoBehaviour, iDamageable {
             yield return null;
         }
     }
+    
     public bool ReduceHealth(float value, GameObject from) {
         if(HP > 0 && !_teleporting) {
             if(_hurtTimer == 0f) {
@@ -357,14 +357,14 @@ public class Move : MonoBehaviour, iDamageable {
             float rotationAngle = Mathf.Atan(tanVal) * (180 / Mathf.PI) + ((_curPos.x - _prevPos.x) < 0 ? 180 : 0);
             if(_footPrintLeft) {
                 Instantiate(
-                    FootPrintLeft, 
-                    transform.position - new Vector3(0, 0.45f, 0), 
+                    FootPrintLeft,
+                    transform.position - new Vector3(0, 0.45f, 0),
                     Quaternion.Euler(new Vector3(0, 0, rotationAngle))
                 );
             } else {
                 Instantiate(
-                    FootPrintRight, 
-                    transform.position - new Vector3(0, 0.45f, 0), 
+                    FootPrintRight,
+                    transform.position - new Vector3(0, 0.45f, 0),
                     Quaternion.Euler(new Vector3(0, 0, rotationAngle))
                 );
             }
