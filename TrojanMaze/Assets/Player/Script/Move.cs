@@ -162,11 +162,11 @@ public class Move : MonoBehaviour, iDamageable {
             nextShootTime = Time.time + 0.6f;
             bulletNum--;
             Instantiate(playerBullet, this.transform.position, this.transform.rotation);
-            if(bulletNum > 0) {
-                GameManager.instance.BulletUI.text = bulletNum.ToString();
-            } else {
-                GameManager.instance.BulletUI.text = "";
-            }
+        }
+        if(bulletNum > 0) {
+            GameManager.instance.BulletUI.text = bulletNum.ToString();
+        } else {
+            GameManager.instance.BulletUI.text = "";
         }
 
 
