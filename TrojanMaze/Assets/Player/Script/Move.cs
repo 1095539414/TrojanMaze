@@ -34,6 +34,10 @@ public class Move : MonoBehaviour, iDamageable {
     private float nextShootTime;
     private int bulletNum = 0;
     private GameObject gun;
+    public GameObject SpeedIncrease_Effect;
+    public GameObject MedicalKit_Effect;
+    public GameObject BoostView_Effect;
+    public GameObject Trap_Effect;
 
     public static float totalHpReduced = 0f;
     public static float dmgBySword = 0f;
@@ -400,5 +404,65 @@ public class Move : MonoBehaviour, iDamageable {
 
     public bool isTeleporting() {
         return _teleporting;
+    }
+    public void SpeedIncrease_Effectopen()
+    {
+        SpeedIncrease_Effect.SetActive(true);
+
+
+        Invoke("SpeedIncrease_Effectclose", 2f);
+
+    }
+    void SpeedIncrease_Effectclose()
+    {
+
+
+        SpeedIncrease_Effect.SetActive(false);
+
+    }
+    public void MedicalKit_Effectopen()
+    {
+        MedicalKit_Effect.SetActive(true);
+
+
+        Invoke("MedicalKit_Effectclose", 2f);
+
+    }
+    void MedicalKit_Effectclose()
+    {
+
+
+        MedicalKit_Effect.SetActive(false);
+
+    }
+    public void BoostView_Effectopen()
+    {
+        BoostView_Effect.SetActive(true);
+
+
+        Invoke("BoostView_Effectclose", 2f);
+
+    }
+    void BoostView_Effectclose()
+    {
+
+
+        BoostView_Effect.SetActive(false);
+
+    }
+    public void Trap_Effectopen()
+    {
+        Trap_Effect.SetActive(true);
+
+
+        Invoke("Trap_Effectclose", 2f);
+
+    }
+    void Trap_Effectclose()
+    {
+
+
+        Trap_Effect.SetActive(false);
+
     }
 }

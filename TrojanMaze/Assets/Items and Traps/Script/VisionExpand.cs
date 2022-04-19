@@ -10,6 +10,7 @@ public class VisionExpand : BuffItem
 
     protected override bool AddBuff() {
         FieldOfView.BoostViewDistance();
+        Move._move.BoostView_Effectopen();
         name = gameObject.name;
         status.AddBuff(name,GetComponent<SpriteRenderer>().sprite);
         return true;

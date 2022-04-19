@@ -53,6 +53,7 @@ public class HpReduce : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
+            Move._move.Trap_Effectopen();
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
                 damageableObj.ReduceHealth(_damage, this.gameObject);

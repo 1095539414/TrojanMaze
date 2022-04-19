@@ -11,6 +11,7 @@ public class SpeedIncrease : BuffItem {
 
     protected override bool AddBuff() {
         Move._move.speed *= increaseRatio;
+        Move._move.SpeedIncrease_Effectopen();
         name = gameObject.name;
         status.AddBuff(name, GetComponent<SpriteRenderer>().sprite);
         return true;

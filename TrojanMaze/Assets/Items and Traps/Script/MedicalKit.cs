@@ -7,6 +7,7 @@ public class MedicalKit : BuffItem {
     float healAmount = 0.3f;
     protected override bool AddBuff() {
         Move.IncreaseHP(healAmount);
+        Move._move.MedicalKit_Effectopen();
         return true;
     }
 
