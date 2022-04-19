@@ -10,8 +10,10 @@ public class Menu : MonoBehaviour {
     private string levelName = "No2_demo1";
 
     private void Start() {
-        StartButton.SetActive(true);
-        StartButtonPressed.SetActive(false);
+        if(StartButton)
+            StartButton.SetActive(true);
+        if(StartButtonPressed)
+            StartButtonPressed.SetActive(false);
     }
     public void PlayIntro() {
         StartCoroutine(LoadScene("Intro"));
