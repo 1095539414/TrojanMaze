@@ -78,7 +78,6 @@ public class BuffItem : MonoBehaviour {
             if(gameObject.CompareTag("gun") || gameObject.CompareTag("sword") || gameObject.CompareTag("ZombieBullet")) {
                 if(AddBuff()) {
                     Invoke("RemoveBuff", GetDuration());
-
                 }
                 this.gameObject.SetActive(false);
                 if(!this.CompareTag("ZombieBullet")) {
