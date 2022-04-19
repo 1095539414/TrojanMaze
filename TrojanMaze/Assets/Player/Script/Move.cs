@@ -11,6 +11,7 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] public float speed = 10f;
     [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
+    [SerializeField] GameObject gunPivot;
     [SerializeField] GameObject playerBullet;
     [SerializeField] GameObject holdingProgressR;
     [SerializeField] GameObject holdingProgressT;
@@ -65,6 +66,7 @@ public class Move : MonoBehaviour, iDamageable {
     void Start() {
         _body = GetComponent<Rigidbody2D>();
         swordPivot.SetActive(false);
+        gunPivot.SetActive(false);
         gunEnabled = false;
         HP = MAX_HP;
         GameManager.instance.DeathUI.SetActive(false);
@@ -190,6 +192,8 @@ public class Move : MonoBehaviour, iDamageable {
         fieldOfView.enabled = false;
         bool swordStatus = swordPivot.activeSelf;
         swordPivot.SetActive(false);
+        bool gunStatus = gunPivot.activeSelf;
+        gunPivot.SetActive(false);
         _teleporting = true;
 
         yield return new WaitForSeconds(0.2f);
@@ -211,6 +215,7 @@ public class Move : MonoBehaviour, iDamageable {
         _renderer.enabled = true;
         _teleporting = false;
         swordPivot.SetActive(swordStatus);
+        gunPivot.SetActive(gunStatus);
 
         elapsedTime = 0f;
         waitTime = 0.08f;
@@ -245,12 +250,8 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void FlipPlayer() {
-        if(!swordPivot.activeSelf) {
-            bool hasHorizontalSpeed = Mathf.Abs(_body.velocity.x) > Mathf.Epsilon;
-            if(hasHorizontalSpeed) {
-                transform.localScale = new Vector2(Mathf.Sign(_body.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
-            }
-        } else {
+        if (swordPivot.activeSelf || gunPivot.activeSelf)
+        {
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
             Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.localScale = new Vector2(
@@ -258,8 +259,16 @@ public class Move : MonoBehaviour, iDamageable {
                 transform.localScale.y
             );
         }
+        else
+        {
+            bool hasHorizontalSpeed = Mathf.Abs(_body.velocity.x) > Mathf.Epsilon;
+            if (hasHorizontalSpeed)
+            {
+                transform.localScale = new Vector2(Mathf.Sign(_body.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            }
+        }
 
-        if(transform.localScale.x <= 0 && holdingProgressT.transform.localScale.x >= 0 ||
+        if (transform.localScale.x <= 0 && holdingProgressT.transform.localScale.x >= 0 ||
             transform.localScale.x >= 0 && holdingProgressT.transform.localScale.x <= 0) {
             Vector3 scale = holdingProgressT.transform.localScale;
             scale.x *= -1;
@@ -333,10 +342,19 @@ public class Move : MonoBehaviour, iDamageable {
 
     public bool EnableSword() {
         this.swordPivot.SetActive(true);
+        if (gunPivot.activeSelf)
+        {
+            this.gunPivot.SetActive(false);
+        }
         return true;
     }
 
     public bool EnableGun(GameObject gun) {
+        this.gunPivot.SetActive(true);
+        if (swordPivot.activeSelf)
+        {
+            this.swordPivot.SetActive(false);
+        }
         bulletNum += 20;
         gunEnabled = true;
         return true;
@@ -375,6 +393,7 @@ public class Move : MonoBehaviour, iDamageable {
 
     public IEnumerator Die() {
         this.swordPivot.SetActive(false);
+        this.gunPivot.SetActive(false);
         animator.SetBool("isDie", true);
         yield return new WaitForEndOfFrame();
     }

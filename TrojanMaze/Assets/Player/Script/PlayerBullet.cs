@@ -8,8 +8,11 @@ public class PlayerBullet : MonoBehaviour {
     Rigidbody2D bulletRigidbody;
     [SerializeField] float bulletSpeed = 500f;
     float bulletDamage = 0.5f;
+    private bool isExploding = false;
 
     private Vector2 _direction;
+
+    public Animator animator;
 
     void Start() {
         bulletRigidbody = GetComponent<Rigidbody2D>();
@@ -18,12 +21,27 @@ public class PlayerBullet : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        bulletRigidbody.velocity = _direction * bulletSpeed * Time.deltaTime;
+        if (isExploding)
+        {
+            bulletRigidbody.velocity = Vector3.zero;
+        }
+        else
+        {
+            bulletRigidbody.velocity = _direction * bulletSpeed * Time.deltaTime;
+        }
+    }
+
+    public IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Zombie") || other.CompareTag("Walls")) {
-            Destroy(gameObject);
+            isExploding = true;
+            animator.SetBool("isExplosion", true);
+            StartCoroutine(DestroyBullet());
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if(damageableObj != null) {
                 if(damageableObj.ReduceHealth(bulletDamage, this.gameObject)) {
