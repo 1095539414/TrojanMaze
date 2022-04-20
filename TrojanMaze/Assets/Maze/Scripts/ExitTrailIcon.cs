@@ -25,7 +25,9 @@ public class ExitTrailIcon : MonoBehaviour
                 if(time  > liveTime) {
                     State.setKeyState(false);
                     time = 0;
-                    trailPanel.SetActive(false);
+                    if(trailPanel != null) {
+                        trailPanel.SetActive(false);
+                    }
                 }
             } else {
                 trailMapIcon.GetComponent<Renderer>().enabled = false;
