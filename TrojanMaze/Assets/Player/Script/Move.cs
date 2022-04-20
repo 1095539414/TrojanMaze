@@ -244,6 +244,10 @@ public class Move : MonoBehaviour, iDamageable {
     private void OnCollisionEnter2D(Collision2D other) {
         // Debug.Log(other.collider.name);
     }
+    
+    private void OnTriggerEnter2D(Collider2D other) {
+        // Debug.Log(other.name);
+    }
 
     void Run() {
         Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;

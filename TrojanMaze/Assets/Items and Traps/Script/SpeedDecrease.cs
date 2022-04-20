@@ -18,13 +18,13 @@ public class SpeedDecrease : MonoBehaviour
 
     float decreaseRatio = 2f;
     void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player")||other.CompareTag("Zombie")){
+        if(other.CompareTag("Player")){
             Move._move.speed /= decreaseRatio;
         }
     }
 
     void OnTriggerExit2D(Collider2D other){
-        if(other.CompareTag("Player")||other.CompareTag("Zombie")){
+        if(other.CompareTag("Player")){
             Move._move.speed *= decreaseRatio;
         }
     }
