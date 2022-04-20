@@ -3547,6 +3547,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3961146452861307845, guid: 328be2f5e7601a04188aba8a340c3db7, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     - target: {fileID: 3961146452861307849, guid: 328be2f5e7601a04188aba8a340c3db7, type: 3}
       propertyPath: m_Name
       value: Tower (1)
@@ -3927,6 +3931,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30535aac82e73e844b174013f342e772, type: 3}
+--- !u!1 &1696120332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6561273067854212323, guid: 14643ad793adfb94bb7d3c5d1c0fc8ca, type: 3}
+  m_PrefabInstance: {fileID: 422373909}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1785631618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4592,6 +4601,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3961146452861307845, guid: 328be2f5e7601a04188aba8a340c3db7, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     - target: {fileID: 3961146452861307849, guid: 328be2f5e7601a04188aba8a340c3db7, type: 3}
       propertyPath: m_Name
       value: Tower
