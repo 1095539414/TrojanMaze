@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour {
     private Camera myCamera;
+    public GameObject trailPanel;
     float initialCamera = 4f;
     float boostCamera = 8f;
     float cameraZoomSpeed = 4f;
@@ -21,12 +22,18 @@ public class Tower : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             activate = 1.0f;
+            if(trailPanel != null) {
+                trailPanel.SetActive(true);
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player") {
             activate = -1.0f;
+            if(trailPanel != null) {
+                trailPanel.SetActive(false);
+            }
         }
     }
 
