@@ -52,6 +52,13 @@ public class FieldOfView : MonoBehaviour {
             angle -= angleIncrease;
         }
         mesh.vertices = vertices;
+
+        // create new colors array where the colors will be created.
+        Color[] colors = new Color[vertices.Length];
+
+        for (int i = 0; i < vertices.Length; i++)
+            colors[i] = Color.Lerp(Color.white, Color.white, vertices[i].y);
+        mesh.colors = colors;
         mesh.uv = uv;
         mesh.triangles = triangles;
         mesh.bounds = new Bounds(origin, Vector3.one * 1000f);
