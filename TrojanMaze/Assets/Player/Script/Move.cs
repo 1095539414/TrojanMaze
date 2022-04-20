@@ -167,6 +167,7 @@ public class Move : MonoBehaviour, iDamageable {
             GameManager.instance.BulletUI.text = bulletNum.ToString();
         } else {
             GameManager.instance.BulletUI.text = "";
+            this.gunPivot.SetActive(false);
         }
 
 
