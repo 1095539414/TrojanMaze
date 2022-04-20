@@ -11,6 +11,8 @@ public class State : MonoBehaviour {
     [SerializeField]
     private Transform buffTransform;
 
+    private static bool isOnTower = false;
+
 
     private List<BuffItem> buffs = new List<BuffItem>();
 
@@ -24,5 +26,13 @@ public class State : MonoBehaviour {
         BuffItem bf = buffs.Find(x => x.name == name);
         buffs.Remove(bf);
         Destroy(bf.gameObject);
+    }
+
+    public static void SetTowerState(bool state) {
+        isOnTower = state;
+    }
+
+    public static bool getTowerState() {
+        return isOnTower;
     }
 }

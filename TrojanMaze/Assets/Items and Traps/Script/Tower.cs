@@ -23,6 +23,7 @@ public class Tower : MonoBehaviour {
         if(other.tag == "Player") {
             activate = 1.0f;
             if(trailPanel != null) {
+                State.SetTowerState(true);
                 trailPanel.SetActive(true);
             }
         }
@@ -32,6 +33,7 @@ public class Tower : MonoBehaviour {
         if(other.tag == "Player") {
             activate = -1.0f;
             if(trailPanel != null) {
+                State.SetTowerState(false);
                 trailPanel.SetActive(false);
             }
         }
