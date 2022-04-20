@@ -11,10 +11,12 @@ public class MedicalKit : BuffItem {
     }
 
     void Update() {
-        if(State.getTowerState()) {
-            trailMapIcon.GetComponent<Renderer> ().enabled = true;
-        } else {
-            trailMapIcon.GetComponent<Renderer> ().enabled = false;
+        if(trailMapIcon != null) {
+            if(State.getTowerState()) {
+                trailMapIcon.GetComponent<Renderer> ().enabled = true;
+            } else {
+                trailMapIcon.GetComponent<Renderer> ().enabled = false;
+            }
         }
     }
     protected override bool AddBuff() {

@@ -12,6 +12,7 @@ public class State : MonoBehaviour {
     private Transform buffTransform;
 
     private static bool isOnTower = false;
+    private static bool isGetKey = false;
 
 
     private List<BuffItem> buffs = new List<BuffItem>();
@@ -34,5 +35,13 @@ public class State : MonoBehaviour {
 
     public static bool getTowerState() {
         return isOnTower;
+    }
+
+    public static void setKeyState(bool state) {
+        isGetKey = state;
+    }
+
+    public static bool getKeyState() {
+        return isGetKey;
     }
 }
