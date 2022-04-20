@@ -23,6 +23,8 @@ public class VirusZombie : Zombie {
         _body = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _initialPos = transform.position;
+        gameObject.layer = 7;
+
     }
 
     // Update is called once per frame
@@ -60,7 +62,7 @@ public class VirusZombie : Zombie {
                     _direction = true;
                 }
             }
-        // virus zombies move vertically 
+            // virus zombies move vertically 
         } else {
             if(_direction) {
                 _velocity = Vector3.up * moveSpeed;

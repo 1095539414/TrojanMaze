@@ -6,10 +6,14 @@ public class ZombieSpawnController : MonoBehaviour {
 
     [SerializeField] List<Zombie> zombieTypes;
     [SerializeField] List<int> zombieAmount;
-
+    private SpriteRenderer renderer;
     int count;
     // Start is called before the first frame update
     void Start() {
+        renderer = GetComponent<SpriteRenderer>();
+        Color color = renderer.color;
+        color.a = 0;
+        renderer.color = color;
         if(zombieTypes.Count != zombieAmount.Count) {
             Debug.LogWarning("Zombie Spawn Controller: Size of zombieTypes and zombieAmount should match");
             return;

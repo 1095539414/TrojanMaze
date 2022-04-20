@@ -42,9 +42,7 @@ public class BuffItem : MonoBehaviour {
     void Update() {
         if(Application.isPlaying) {
             gameObject.layer = 7;
-
         }
-
         //durationImg.fillAmount = 
     }
 
