@@ -18,7 +18,6 @@ public class SimpleZombie : Zombie {
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
 
-    [SerializeField] bool demoUse;
     private Rigidbody2D _body;
     private NavMeshAgent _agent;
 
@@ -42,6 +41,7 @@ public class SimpleZombie : Zombie {
     private bool _dead = false;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -87,9 +87,6 @@ public class SimpleZombie : Zombie {
             transform.localScale = theScale;
         }
 
-        if(demoUse) {
-            return;
-        }
         _fireTime += Time.deltaTime;
         // chase after the player if the zombie is targeting the player
         if(_attacking) {
@@ -180,9 +177,6 @@ public class SimpleZombie : Zombie {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(demoUse) {
-            return;
-        }
         if(other.CompareTag("Player") && _agent.enabled) {
             if(_target == null) {
                 _target = _player;
@@ -195,9 +189,6 @@ public class SimpleZombie : Zombie {
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if(demoUse) {
-            return;
-        }
         if(other.CompareTag("Player") && _agent.enabled) {
             // keep chasing player
             _agent.isStopped = false;
@@ -207,7 +198,6 @@ public class SimpleZombie : Zombie {
 
     public override IEnumerator Die() {
         _dead = true;
-
         _animator.SetBool("Dead", true);
         yield return new WaitForSeconds(2f);
         StartCoroutine(base.Die());

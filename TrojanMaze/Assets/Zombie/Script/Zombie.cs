@@ -32,6 +32,10 @@ public class Zombie : MonoBehaviour, iDamageable {
             HealthBar.SetBar(_health, _maxHealth);
 
             if(_health <= 0.001) {
+                Collider2D[] colliders = GetComponents<Collider2D>();
+                for(int i = 0; i < colliders.Length; i++) {
+                    colliders[i].enabled = false;
+                }
                 StartCoroutine(Die());
             } else {
                 _hurt = true;

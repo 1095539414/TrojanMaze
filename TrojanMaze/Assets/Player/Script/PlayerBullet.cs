@@ -21,24 +21,20 @@ public class PlayerBullet : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (isExploding)
-        {
+        if(isExploding) {
             bulletRigidbody.velocity = Vector3.zero;
-        }
-        else
-        {
+        } else {
             bulletRigidbody.velocity = _direction * bulletSpeed * Time.deltaTime;
         }
     }
 
-    public IEnumerator DestroyBullet()
-    {
+    public IEnumerator DestroyBullet() {
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Zombie") || other.CompareTag("Walls")) {
+        if(!isExploding && other.CompareTag("Zombie") || other.CompareTag("Walls")) {
             isExploding = true;
             animator.SetBool("isExplosion", true);
             StartCoroutine(DestroyBullet());
