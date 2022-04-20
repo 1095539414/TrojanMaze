@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 636421568454997025}
   - component: {fileID: -3732742685701779791}
   - component: {fileID: -6112880662172459062}
+  - component: {fileID: 5042680830947376469}
   m_Layer: 0
   m_Name: GreenFtRight
   m_TagString: Untagged
@@ -97,3 +98,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ValidityPeriod: 20
   FadedPeriod: 10
+--- !u!70 &5042680830947376469
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020008980465781415}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.67814815, y: -2.938646}
+  m_Size: {x: 5.6060276, y: 3.5716114}
+  m_Direction: 1

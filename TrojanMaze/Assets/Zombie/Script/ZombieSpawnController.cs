@@ -16,17 +16,18 @@ public class ZombieSpawnController : MonoBehaviour {
         }
         float centerX = transform.position.x;
         float centerY = transform.position.y;
-        float radius = GetComponent<Renderer>().bounds.size.x/2;
+        float length = GetComponent<Renderer>().bounds.size.x/2;
+        float width = GetComponent<Renderer>().bounds.size.y/2;
         for(int i = 0; i < zombieTypes.Count; i++) {
             for(int j = 0; j < zombieAmount[i]; j++) {
-                Instantiate(zombieTypes[i], randomPosition(centerX, centerY, radius), Quaternion.identity);
+                Instantiate(zombieTypes[i], randomPosition(centerX, centerY, length, width), Quaternion.identity);
             }
         }
     }
 
-    private Vector3 randomPosition(float x, float y, float r) {
-        float deltaX = Random.Range(-r, r);
-        float deltaY = Random.Range(-r, r);
+    private Vector3 randomPosition(float x, float y, float l, float w) {
+        float deltaX = Random.Range(-l, l);
+        float deltaY = Random.Range(-w, w);
         return new Vector3(x+deltaX, y+deltaY, transform.position.z);
     }
     // Update is called once per frame

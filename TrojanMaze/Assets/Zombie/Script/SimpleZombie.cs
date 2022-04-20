@@ -198,7 +198,6 @@ public class SimpleZombie : Zombie {
 
     public override IEnumerator Die() {
         _dead = true;
-
         _animator.SetBool("Dead", true);
         yield return new WaitForSeconds(2f);
         StartCoroutine(base.Die());
