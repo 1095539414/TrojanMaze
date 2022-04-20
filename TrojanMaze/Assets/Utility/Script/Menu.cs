@@ -15,20 +15,9 @@ public class Menu : MonoBehaviour {
         if(StartButtonPressed)
             StartButtonPressed.SetActive(false);
     }
-    public void PlayIntro() {
-        StartCoroutine(LoadScene(1));
-    }
-    public void PlayLevel1() {
-        StartCoroutine(LoadScene(4));
-    }
-
-    public void PlayLevel2() {
-        StartCoroutine(LoadScene(5));
-    }
-
     public void QuitScene() {
         Time.timeScale = 1f;
-        StartCoroutine(LoadScene(0));
+        StartCoroutine(LoadScene((int)BuildIndex.MENU));
     }
 
     public void OnStartClick() {
