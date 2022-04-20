@@ -17,6 +17,8 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject holdingProgressT;
     [SerializeField] GameObject FootPrintLeft;
     [SerializeField] GameObject FootPrintRight;
+    [SerializeField] GameObject gunItem;
+    [SerializeField] GameObject swordItem;
 
     [SerializeField] float FootprintGap = 1f;
     private bool _footPrintLeft;
@@ -354,6 +356,7 @@ public class Move : MonoBehaviour, iDamageable {
         if (gunPivot.activeSelf)
         {
             this.gunPivot.SetActive(false);
+            Instantiate(this.gunItem, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y - 0.5f), Quaternion.identity);
         }
         return true;
     }
@@ -363,6 +366,7 @@ public class Move : MonoBehaviour, iDamageable {
         if (swordPivot.activeSelf)
         {
             this.swordPivot.SetActive(false);
+            Instantiate(this.swordItem, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y - 0.5f), Quaternion.identity);
         }
         bulletNum += 20;
         gunEnabled = true;
