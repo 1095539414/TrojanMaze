@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8811928437017863922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.83, y: -5.58, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   itemButton: {fileID: 568726806448701552, guid: 4b7e49c2f4b3b534ab3e1021b5fa36e3, type: 3}
   header: VIew Booster
   content: Increase your view range
-  icon: {fileID: 0}
+  sprite: {fileID: 0}
   time: 10
 --- !u!61 &8811928437017863926
 BoxCollider2D:
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0062894, y: 1.0062894}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
