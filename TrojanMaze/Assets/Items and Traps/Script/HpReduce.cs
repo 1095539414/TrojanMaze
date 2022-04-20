@@ -17,23 +17,11 @@ public class HpReduce : MonoBehaviour {
     void Start() {
         _body = GetComponent<Rigidbody2D>();
         _initialPos = transform.position;
+        gameObject.layer = 7;
     }
 
     // Update is called once per frame
     void Update() {
-        // if(_body.velocity.x > 0) {
-        //     Vector3 theScale = transform.localScale;
-        //     if(theScale.x < 0) {
-        //         theScale.x *= -1;
-        //     }
-        //     transform.localScale = theScale;
-        // } else if(_body.velocity.x < 0) {
-        //     Vector3 theScale = transform.localScale;
-        //     if(theScale.x > 0) {
-        //         theScale.x *= -1;
-        //     }
-        //     transform.localScale = theScale;
-        // }
 
         // virus zombies move horizontally 
         if(horizontal) {

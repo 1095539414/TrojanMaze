@@ -10,6 +10,8 @@ public class DemoZombie : Zombie {
     // Start is called before the first frame update
     void Start() {
         base.Init(initialHealth);
+        gameObject.layer = 7;
+
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }

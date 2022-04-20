@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+[ExecuteInEditMode]
 public class BuffItem : MonoBehaviour {
     private InventoryManager inventory;
     public GameObject itemButton;
@@ -33,10 +33,16 @@ public class BuffItem : MonoBehaviour {
         GameObject canvas = GameObject.Find("Canvas");
         inventory = canvas.GetComponent<InventoryManager>();
         status = canvas.GetComponent<State>();
+        if(Application.isEditor) {
+            gameObject.layer = 0;
+        }
     }
 
     // Update is called once per frame
     void Update() {
+        if(Application.isPlaying) {
+            gameObject.layer = 7;
+        }
         //durationImg.fillAmount = 
     }
 
