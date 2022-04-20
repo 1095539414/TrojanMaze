@@ -1357,6 +1357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 895448100721736309, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     - target: {fileID: 6769287889862566995, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_Name
       value: Key (2)
@@ -1414,6 +1418,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 895448100721736309, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     - target: {fileID: 6769287889862566995, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_Name
       value: Key
@@ -1751,6 +1759,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7032094947907689136, guid: 8962d1ae213cbee479b8d46796433153, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8962d1ae213cbee479b8d46796433153, type: 3}
 --- !u!1 &894415989
@@ -2566,6 +2578,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 895448100721736309, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     - target: {fileID: 6769287889862566995, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_Name
       value: Key (4)
@@ -2916,6 +2932,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 895448100721736309, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     - target: {fileID: 6769287889862566995, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_Name
       value: Key (3)
@@ -3153,6 +3173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 895448100721736309, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1696120332}
     - target: {fileID: 6769287889862566995, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_Name
       value: Key (1)
@@ -3163,11 +3187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058874655387807539, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.92752
+      value: -77.6
       objectReference: {fileID: 0}
     - target: {fileID: 8058874655387807539, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.724338
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 8058874655387807539, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_LocalPosition.z
