@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 1f;
     public GameObject StartButtonPressed;
     public GameObject StartButton;
-    private string levelName = "No2_demo1";
+    private int levelIndex = -1;
 
     private void Start() {
         if(StartButton)
@@ -16,24 +16,24 @@ public class Menu : MonoBehaviour {
             StartButtonPressed.SetActive(false);
     }
     public void PlayIntro() {
-        StartCoroutine(LoadScene("Intro"));
+        StartCoroutine(LoadScene(1));
     }
     public void PlayLevel1() {
-        StartCoroutine(LoadScene("Maze1"));
+        StartCoroutine(LoadScene(4));
     }
 
     public void PlayLevel2() {
-        StartCoroutine(LoadScene("Maze1.2"));
+        StartCoroutine(LoadScene(5));
     }
 
     public void QuitScene() {
         Time.timeScale = 1f;
-        StartCoroutine(LoadScene("menu"));
+        StartCoroutine(LoadScene(0));
     }
 
     public void OnStartClick() {
         StartCoroutine(AnimateStartButton());
-        StartCoroutine(LoadScene(levelName));
+        StartCoroutine(LoadScene(levelIndex));
     }
 
     IEnumerator AnimateStartButton() {
@@ -44,12 +44,16 @@ public class Menu : MonoBehaviour {
         StartButtonPressed.SetActive(false);
     }
 
-    IEnumerator LoadScene(string sceneName) {
+    IEnumerator LoadScene(int sceneIndex) {
         yield return new WaitForSecondsRealtime(levelLoadDelay);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void QuitGame() {
         Application.Quit();
+    }
+
+    public void SetLevelIndex(int index) {
+        this.levelIndex = index;
     }
 }
