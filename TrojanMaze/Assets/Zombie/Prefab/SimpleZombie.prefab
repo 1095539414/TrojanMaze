@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 5468890650955213780}
   - component: {fileID: 5468890650955213781}
   - component: {fileID: 5468890650955213782}
-  - component: {fileID: 5468890650955213783}
   - component: {fileID: 5468890650955213784}
   - component: {fileID: 3963855490594333829}
+  - component: {fileID: 6735199695713480577}
   m_Layer: 7
   m_Name: SimpleZombie
   m_TagString: Zombie
@@ -197,11 +197,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012170639, y: -0.07940764}
-  m_Size: {x: 0.1574809, y: 0.12347532}
+  m_Offset: {x: 0.115280345, y: -0.06352745}
+  m_Size: {x: 0.5552596, y: 0.48093957}
   m_Direction: 1
 --- !u!114 &5468890650955213781
 MonoBehaviour:
@@ -241,22 +241,6 @@ NavMeshAgent:
   m_BaseOffset: 0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!70 &5468890650955213783
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5468890650955213776}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.10410473, y: -0.0647309}
-  m_Size: {x: 0.48602173, y: 0.33724532}
-  m_Direction: 1
 --- !u!95 &5468890650955213784
 Animator:
   serializedVersion: 3
@@ -289,6 +273,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 5883310905535625409}
+--- !u!58 &6735199695713480577
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468890650955213776}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.06748756}
+  serializedVersion: 2
+  m_Radius: 0.12506914
 --- !u!1 &5776629238097361691
 GameObject:
   m_ObjectHideFlags: 0
