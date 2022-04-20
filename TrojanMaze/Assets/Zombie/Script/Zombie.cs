@@ -16,9 +16,6 @@ public class Zombie : MonoBehaviour, iDamageable {
         get { return _health; }
     }
 
-    private void Start() {
-        gameObject.layer = 7;
-    }
     // used by its inheritance
     protected void Init(float health) {
         _health = health;

@@ -54,6 +54,7 @@ public class SimpleZombie : Zombie {
         _acceleration = _agent.acceleration;
         _player = GameObject.FindWithTag("Player");
         _attackTime = _attackInterval;
+        gameObject.layer = 7;
 
         // set a random destination to start
         moveTo(GetRandomDest(), _speed, _acceleration);
