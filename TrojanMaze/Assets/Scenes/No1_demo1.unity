@@ -302,6 +302,11 @@ Transform:
   m_Father: {fileID: 1097013489}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &344071466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3974027626208487902, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+  m_PrefabInstance: {fileID: 688420173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &436917480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -666,6 +671,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1373244228, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633180758, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646000246, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911828914, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1404535109907744525, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: fieldOfView
       value: 
@@ -677,6 +698,14 @@ PrefabInstance:
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -52.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 40.8
       objectReference: {fileID: 0}
     - target: {fileID: 4825852273574709213, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: Trap_Effect
@@ -1339,6 +1368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Main Camera '
       objectReference: {fileID: 0}
+    - target: {fileID: 4544561991415459077, guid: e07853f432c63b54280a282656e94b2e, type: 3}
+      propertyPath: ThingToFollow
+      value: 
+      objectReference: {fileID: 344071466}
     - target: {fileID: 4832541530071926494, guid: e07853f432c63b54280a282656e94b2e, type: 3}
       propertyPath: m_RootOrder
       value: 1
