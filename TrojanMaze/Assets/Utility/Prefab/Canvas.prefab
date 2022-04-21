@@ -4224,6 +4224,9 @@ MonoBehaviour:
   PortalT: {fileID: 7224895879019483424}
   PortalDisgard: {fileID: 7224895877596424373}
   BulletUI: {fileID: 7224895878877636741}
+  itemDropRate: 0.2
+  itemsToDrop:
+  - {fileID: 7141577405830077290, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
 --- !u!1 &7224895879559456184
 GameObject:
   m_ObjectHideFlags: 0
