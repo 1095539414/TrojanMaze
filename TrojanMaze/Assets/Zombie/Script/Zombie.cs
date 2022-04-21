@@ -58,6 +58,13 @@ public class Zombie : MonoBehaviour, iDamageable {
         UnityAnalytics.sendZombieKilled(this.name);
         ScoreScript.IncreaseKillNum();
         Destroy(this.gameObject);
+        if(Random.value < GameManager.instance.itemDropRate && GameManager.instance.itemsToDrop.Length > 0) {
+            Instantiate(
+                GameManager.instance.itemsToDrop[Random.Range(0, GameManager.instance.itemsToDrop.Length)], 
+                transform.position, 
+                Quaternion.identity
+            );
+        }
         yield return null;
     }
 

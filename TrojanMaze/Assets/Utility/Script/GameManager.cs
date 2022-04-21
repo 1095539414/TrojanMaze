@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
     public GameObject PortalDisgard;
 
     public TextMeshProUGUI BulletUI;
+
+    public float itemDropRate = 0f;
+    public BuffItem[] itemsToDrop;
     void Awake() {
         instance = this;
     }
