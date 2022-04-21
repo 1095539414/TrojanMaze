@@ -89,6 +89,12 @@ public class BuffItem : MonoBehaviour {
                 if(!this.CompareTag("ZombieBullet")) {
                     UnityAnalytics.sendItemCollected(this.name);
                 }
+            } else if(gameObject.CompareTag("Hpincrease") && !Mathf.Approximately(Move.GetHP(), 1f)) {
+                if(AddBuff()) {
+                    Invoke("RemoveBuff", GetDuration());
+                }
+                this.gameObject.SetActive(false);
+
             } else {
                 InventoryManager.instance.AddItem(this.gameObject);
             }
