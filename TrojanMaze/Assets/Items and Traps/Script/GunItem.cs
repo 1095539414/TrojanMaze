@@ -2,31 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunItem : BuffItem {
+public class GunItem : MonoBehaviour
+{
     // Start is called before the first frame update
-
     private int bulletNum = 20;
-    
-    protected override bool AddBuff() {
-        buffTarget.GetComponent<Move>().EnableGun(this.gameObject);
-        return true;
-    }
-
-    protected override bool RemoveBuff() {
-        return false;
-    }
-
-    protected override float GetDuration() {
-        return 0f;
-    }
 
     public int getBulletNum()
     {
         return bulletNum;
     }
 
-    public void shoot()
+    public void setBulletNum(int num)
     {
-        bulletNum--;
+        bulletNum = num;
+    }
+
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    protected void OnTriggerEnter2D(Collider2D other){
+
     }
 }
