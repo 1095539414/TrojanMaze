@@ -442,7 +442,6 @@ public class Move : MonoBehaviour, iDamageable {
 
     }
 
-<<<<<<< HEAD
     protected void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("gun"))
@@ -467,23 +466,6 @@ public class Move : MonoBehaviour, iDamageable {
                     this.swordPivot.SetActive(false);
                     Instantiate(swordItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
                 }
-=======
-    protected void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("gun")) {
-            if(gunPivot.activeSelf) {
-                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
-                usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-            } else {
-                this.gunPivot.SetActive(true);
-            }
-
-            bulletNum = other.gameObject.GetComponent<GunItem>().getBulletNum();
-            gunEnabled = true;
-            Destroy(other.gameObject);
-            if(swordPivot.activeSelf) {
-                this.swordPivot.SetActive(false);
-                Instantiate(swordItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
->>>>>>> 79b32fd8bccdc0a804d45afb7db1c19c128f6fc5
             }
         } else if(other.CompareTag("speedDecrease")) {
             speed = reducedSpeed;
@@ -508,7 +490,6 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
-<<<<<<< HEAD
     /*
     public bool EnableSword()
     {
@@ -523,15 +504,6 @@ public class Move : MonoBehaviour, iDamageable {
                 bulletNum = 0;
             }
             return true;
-=======
-    public bool EnableSword() {
-        this.swordPivot.SetActive(true);
-        if(gunPivot.activeSelf) {
-            this.gunPivot.SetActive(false);
-            GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
-            usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-            bulletNum = 0;
->>>>>>> 79b32fd8bccdc0a804d45afb7db1c19c128f6fc5
         }
         return false;
     }
