@@ -1,8 +1,9 @@
 public enum BuildIndex {
     MENU = 0, 
-    DEMO1 = 1,
-    DEMO2 = 2,
-    LEVEL1 = 3,
-    LEVEL2 = 4,
-    LEVEL3 = 5,
+    DEMO0 = 1,
+    DEMO1 = 2,
+    LEVEL0 = 3,
+    LEVEL1 = 4,
+    LEVEL2 = 5,
+    LEVEL3 = 6,
 }

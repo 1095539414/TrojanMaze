@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8312264525999104996}
   - component: {fileID: 8312264525999105002}
   - component: {fileID: 7353611693174677996}
+  - component: {fileID: 8516488077294000852}
   m_Layer: 0
   m_Name: MenuZombie1
   m_TagString: Zombie
@@ -177,3 +178,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea45f30c69c208458353639a0ea7f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8516488077294000852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312264525999104994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44b852c36db4cd40b6328c7b128c4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Zombie
+  content: Be careful. They will attack you with sword and slow you down with flying
+    daggers

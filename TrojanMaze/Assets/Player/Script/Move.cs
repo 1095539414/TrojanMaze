@@ -66,6 +66,7 @@ public class Move : MonoBehaviour, iDamageable {
     private Renderer _holdingProgressRendererR;
     private Renderer _holdingProgressRendererT;
 
+    private float reducedSpeed = 0f;
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
@@ -82,6 +83,7 @@ public class Move : MonoBehaviour, iDamageable {
         _holdingProgressRendererR = holdingProgressR.GetComponent<Renderer>();
         _holdingProgressRendererT = holdingProgressT.GetComponent<Renderer>();
         _footPrintLeft = true;
+        reducedSpeed = speed * 0.5f;
     }
 
     void Update() {
@@ -92,7 +94,7 @@ public class Move : MonoBehaviour, iDamageable {
             FlipPlayer();
         }
         // channeling the portal/etc.
-        if(Input.GetKeyDown(KeyCode.R)) {
+        if(GameManager.instance.PortalObject.activeSelf && Input.GetKeyDown(KeyCode.R)) {
             if(_portal == null) {
                 _portal = Instantiate(Portal, transform.position, transform.rotation);
             } else {
@@ -453,8 +455,6 @@ public class Move : MonoBehaviour, iDamageable {
     }
     void Trap_Effectclose()
     {
-
-
         Trap_Effect.SetActive(false);
 
     }
@@ -465,7 +465,7 @@ public class Move : MonoBehaviour, iDamageable {
         {
             if (gunPivot.activeSelf)
             {
-                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y - 0.5f), Quaternion.identity);
+                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
                 usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
             }
             else
@@ -479,8 +479,15 @@ public class Move : MonoBehaviour, iDamageable {
             if (swordPivot.activeSelf)
             {
                 this.swordPivot.SetActive(false);
-                Instantiate(swordItem, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y - 0.5f), Quaternion.identity);
+                Instantiate(swordItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
             }
+        } else if(other.CompareTag("speedDecrease")) {
+            speed = reducedSpeed;
+        }
+    }
+    private void OnTriggerExit(Collider other) {
+        if(other.CompareTag("speedDecrease")) {
+            speed = 2*reducedSpeed;
         }
     }
 
@@ -490,7 +497,7 @@ public class Move : MonoBehaviour, iDamageable {
         if (gunPivot.activeSelf)
         {
             this.gunPivot.SetActive(false);
-            GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y - 0.5f), Quaternion.identity);
+            GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
             usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
             bulletNum = 0;
         }
