@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
 public class BuffItem : MonoBehaviour {
     private InventoryManager inventory;
     public GameObject itemButton;

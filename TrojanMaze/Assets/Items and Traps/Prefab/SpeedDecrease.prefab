@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5411124036182607743}
   - component: {fileID: 808345149738624091}
   - component: {fileID: 6603686764505229993}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpeedDecrease
   m_TagString: speedDecrease
   m_Icon: {fileID: 0}
