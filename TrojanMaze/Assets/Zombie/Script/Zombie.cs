@@ -59,14 +59,16 @@ public class Zombie : MonoBehaviour, iDamageable {
         ScoreScript.IncreaseKillNum();
         Destroy(this.gameObject);
         if(Random.value < GameManager.instance.itemDropRate && GameManager.instance.itemsToDrop.Length > 0) {
-            Instantiate(
-                GameManager.instance.itemsToDrop[Random.Range(0, GameManager.instance.itemsToDrop.Length)], 
-                transform.position, 
+            BuffItem item = Instantiate(
+                GameManager.instance.itemsToDrop[Random.Range(0, GameManager.instance.itemsToDrop.Length)],
+                transform.position,
                 Quaternion.identity
             );
+            GameManager.instance.StartAnimateDropItem(item);
         }
         yield return null;
     }
+
 
     public virtual IEnumerator Hurt() {
         _hurt = false;
