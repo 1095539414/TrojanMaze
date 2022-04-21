@@ -7,13 +7,13 @@ public class SwordItem : BuffItem {
     float healAmount = 0.3f;
 
     private GameObject trailMapIcon;
-
+    
     void Start() {
         gameObject.layer = 7;
 
         trailMapIcon = transform.GetChild(0).gameObject;
     }
-
+    
     void Update() {
         if(State.getTowerState()) {
             trailMapIcon.GetComponent<Renderer>().enabled = true;
@@ -21,12 +21,14 @@ public class SwordItem : BuffItem {
             trailMapIcon.GetComponent<Renderer>().enabled = false;
         }
     }
+
+    
     protected override bool AddBuff() {
-        if(!buffTarget.GetComponent<Move>().SwordEnabled()) {
-            buffTarget.GetComponent<Move>().EnableSword();
-            return true;
-        }
-        return false;
+        //if(!buffTarget.GetComponent<Move>().SwordEnabled()) {
+        //    buffTarget.GetComponent<Move>().EnableSword();
+        //    return true;
+        //}
+        return true;
     }
 
     protected override bool RemoveBuff() {

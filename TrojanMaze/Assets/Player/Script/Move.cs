@@ -463,26 +463,42 @@ public class Move : MonoBehaviour, iDamageable {
     {
         if (other.CompareTag("gun"))
         {
-            if (gunPivot.activeSelf)
+            if (Input.GetKeyDown(KeyCode.C) || Input.GetMouseButton(1))
             {
-                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
-                usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-            }
-            else
-            {
-                this.gunPivot.SetActive(true);
-            }
+                if (gunPivot.activeSelf)
+                {
+                    GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
+                }
+                else
+                {
+                    this.gunPivot.SetActive(true);
+                }
 
-            bulletNum = other.gameObject.GetComponent<GunItem>().getBulletNum();
-            gunEnabled = true;
-            Destroy(other.gameObject);
-            if (swordPivot.activeSelf)
-            {
-                this.swordPivot.SetActive(false);
-                Instantiate(swordItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
+                bulletNum = other.gameObject.GetComponent<GunItem>().getBulletNum();
+                gunEnabled = true;
+                Destroy(other.gameObject);
+                if (swordPivot.activeSelf)
+                {
+                    this.swordPivot.SetActive(false);
+                    Instantiate(swordItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                }
             }
         } else if(other.CompareTag("speedDecrease")) {
             speed = reducedSpeed;
+        } else if (other.CompareTag("sword"))
+        {
+            if (Input.GetKeyDown(KeyCode.C) || Input.GetMouseButton(1))
+            {
+                this.swordPivot.SetActive(true);
+                if (gunPivot.activeSelf)
+                {
+                    this.gunPivot.SetActive(false);
+                    GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+                    usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
+                    bulletNum = 0;
+                }
+            }
         }
     }
     private void OnTriggerExit(Collider other) {
@@ -491,17 +507,22 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
+    /*
     public bool EnableSword()
     {
-        this.swordPivot.SetActive(true);
-        if (gunPivot.activeSelf)
+        if (Input.GetMouseButton(1))
         {
-            this.gunPivot.SetActive(false);
-            GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
-            usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-            bulletNum = 0;
+            this.swordPivot.SetActive(true);
+            if (gunPivot.activeSelf)
+            {
+                this.gunPivot.SetActive(false);
+                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
+                usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
+                bulletNum = 0;
+            }
+            return true;
         }
-        return true;
+        return false;
     }
-
+    */
 }

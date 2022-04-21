@@ -33,11 +33,17 @@ public class BuffItem : MonoBehaviour {
         GameObject canvas = GameObject.Find("Canvas");
         inventory = canvas.GetComponent<InventoryManager>();
         status = canvas.GetComponent<State>();
-        gameObject.layer = 7;
+        if(Application.isEditor) {
+            gameObject.layer = 0;
+        }
     }
 
     // Update is called once per frame
     void Update() {
+        if(Application.isPlaying) {
+            gameObject.layer = 7;
+        }
+        //durationImg.fillAmount = 
     }
 
     // how do I apply the buff
@@ -76,10 +82,19 @@ public class BuffItem : MonoBehaviour {
 
         if(other.CompareTag("Player") || other.gameObject.CompareTag("Armor")) {
             if(gameObject.CompareTag("gun") || gameObject.CompareTag("sword") || gameObject.CompareTag("ZombieBullet")) {
-                if(AddBuff()) {
+                if (AddBuff()) {
                     Invoke("RemoveBuff", GetDuration());
                 }
-                this.gameObject.SetActive(false);
+                if (gameObject.CompareTag("sword"))
+                {
+                    if (Input.GetKeyDown(KeyCode.C) || Input.GetMouseButton(1))
+                    {
+                        this.gameObject.SetActive(false);
+                    }
+                } else
+                {
+                    this.gameObject.SetActive(false);
+                }
                 if(!this.CompareTag("ZombieBullet")) {
                     UnityAnalytics.sendItemCollected(this.name);
                 }
