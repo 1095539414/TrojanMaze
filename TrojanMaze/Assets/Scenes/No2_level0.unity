@@ -2959,6 +2959,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3961146452861307845, guid: 328be2f5e7601a04188aba8a340c3db7, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1503867022}
     - target: {fileID: 3961146452861307849, guid: 328be2f5e7601a04188aba8a340c3db7, type: 3}
       propertyPath: m_Name
       value: Tower1
@@ -3174,6 +3178,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 798198915}
     m_Modifications:
+    - target: {fileID: 895448100721736309, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
+      propertyPath: trailPanel
+      value: 
+      objectReference: {fileID: 1503867022}
     - target: {fileID: 6769287889862566995, guid: 15af0adf9af8c444ea47cb2417db0806, type: 3}
       propertyPath: m_Name
       value: Key

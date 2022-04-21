@@ -1378,6 +1378,8 @@ MonoBehaviour:
   holdingProgressT: {fileID: 1333870616148579736}
   FootPrintLeft: {fileID: 8020008980465781415, guid: 7be8ac059572c40a19941763f397022d, type: 3}
   FootPrintRight: {fileID: 8020008980465781415, guid: 904786a2f70e3444dbe7c052b8248c67, type: 3}
+  gunItem: {fileID: 8074959210324111919, guid: 7ff20cfa7c8084240a0887246029510d, type: 3}
+  swordItem: {fileID: 586772944015095237, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
   FootprintGap: 0.8
   Portal: {fileID: 1482466758426759666, guid: ca01b08ade8ea41c0a59216c35fdc54c, type: 3}
   animator: {fileID: 895776594534811555}
