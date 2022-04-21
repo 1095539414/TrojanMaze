@@ -8,16 +8,24 @@ public class TooltipManager : MonoBehaviour {
     public static TooltipManager instance;
 
     public Tooltip tooltip;
-    public void Awake() {
+    private GameObject ObjShown;
+    private void Awake() {
         instance = this;
     }
 
-    public static void Show(string content, string header = "") {
+    private void Update() {
+        if(ObjShown != null && !ObjShown.activeSelf) {
+            Hide();
+        }
+    }
+    public void Show(string content, string header = "", GameObject obj = null) {
+        ObjShown = obj;
         instance.tooltip.SetText(content, header);
         instance.tooltip.gameObject.SetActive(true);
     }
 
-    public static void Hide() {
+    public void Hide() {
+        ObjShown = null;
         instance.tooltip.gameObject.SetActive(false);
     }
 }

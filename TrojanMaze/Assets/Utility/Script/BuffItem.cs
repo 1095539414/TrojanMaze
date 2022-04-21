@@ -22,6 +22,8 @@ public class BuffItem : MonoBehaviour {
     public Sprite sprite;
     private static LTDescr delay;
 
+    private static GameObject objectShowing;
+
     public void Initialize(string name, Sprite sprite) {
         GetComponent<Image>().sprite = sprite;
         this.name = name;
@@ -55,7 +57,8 @@ public class BuffItem : MonoBehaviour {
 
     private void OnMouseEnter() {
         delay = LeanTween.delayedCall(0.5f, () => {
-            TooltipManager.Show(content, header);
+            objectShowing = this.gameObject;
+            TooltipManager.instance.Show(content, header, this.gameObject);
         });
     }
 
@@ -63,7 +66,7 @@ public class BuffItem : MonoBehaviour {
         if(delay != null) {
             LeanTween.cancel(delay.uniqueId);
         }
-        TooltipManager.Hide();
+        TooltipManager.instance.Hide();
     }
 
     protected void OnTriggerEnter2D(Collider2D other) {
