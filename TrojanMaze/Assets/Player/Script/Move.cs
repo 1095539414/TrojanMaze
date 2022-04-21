@@ -465,7 +465,7 @@ public class Move : MonoBehaviour, iDamageable {
         {
             if (gunPivot.activeSelf)
             {
-                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f), Quaternion.identity);
+                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
                 usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
             }
             else
@@ -479,7 +479,7 @@ public class Move : MonoBehaviour, iDamageable {
             if (swordPivot.activeSelf)
             {
                 this.swordPivot.SetActive(false);
-                Instantiate(swordItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f), Quaternion.identity);
+                Instantiate(swordItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
             }
         } else if(other.CompareTag("speedDecrease")) {
             speed = reducedSpeed;
@@ -497,7 +497,7 @@ public class Move : MonoBehaviour, iDamageable {
         if (gunPivot.activeSelf)
         {
             this.gunPivot.SetActive(false);
-            GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y - 0.5f), Quaternion.identity);
+            GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
             usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
             bulletNum = 0;
         }
