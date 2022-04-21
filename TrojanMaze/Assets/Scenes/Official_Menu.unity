@@ -1927,7 +1927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1307dd05a6c153e41a591d83c2f0ab1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoadDelay: 0.5
   StartButtonPressed: {fileID: 204006542}
   StartButton: {fileID: 93217827}
   HintGameObject:
@@ -2101,6 +2100,14 @@ PrefabInstance:
     - target: {fileID: 8240632659960019790, guid: 2b25271aef4f22d409644e86a37b19fd, type: 3}
       propertyPath: m_Name
       value: Tooltip Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240632660035361841, guid: 2b25271aef4f22d409644e86a37b19fd, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240632660035361853, guid: 2b25271aef4f22d409644e86a37b19fd, type: 3}
+      propertyPath: m_LayoutPriority
+      value: 320
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b25271aef4f22d409644e86a37b19fd, type: 3}

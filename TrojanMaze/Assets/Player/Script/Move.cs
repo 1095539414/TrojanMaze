@@ -163,20 +163,15 @@ public class Move : MonoBehaviour, iDamageable {
         GameManager.instance.PortalR.enabled = _portal == null;
         GameManager.instance.PortalDisgard.SetActive(_portal != null);
 
-        if (gunItem)
-        {
-            if (bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime)
-            {
+        if(gunItem) {
+            if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
                 nextShootTime = Time.time + 0.6f;
                 bulletNum--;
                 Instantiate(playerBullet, this.transform.position, this.transform.rotation);
             }
-            if (bulletNum > 0)
-            {
+            if(bulletNum > 0) {
                 GameManager.instance.BulletUI.text = bulletNum.ToString();
-            }
-            else
-            {
+            } else {
                 GameManager.instance.BulletUI.text = "";
                 this.gunPivot.SetActive(false);
             }
@@ -257,7 +252,7 @@ public class Move : MonoBehaviour, iDamageable {
     private void OnCollisionEnter2D(Collision2D other) {
         // Debug.Log(other.collider.name);
     }
-    
+
 
     void Run() {
         Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;
@@ -269,25 +264,21 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     void FlipPlayer() {
-        if (swordPivot.activeSelf || gunPivot.activeSelf)
-        {
+        if(swordPivot.activeSelf || gunPivot.activeSelf) {
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
             Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.localScale = new Vector2(
                 Mathf.Sign(diff.x) * Mathf.Abs(transform.localScale.x),
                 transform.localScale.y
             );
-        }
-        else
-        {
+        } else {
             bool hasHorizontalSpeed = Mathf.Abs(_body.velocity.x) > Mathf.Epsilon;
-            if (hasHorizontalSpeed)
-            {
+            if(hasHorizontalSpeed) {
                 transform.localScale = new Vector2(Mathf.Sign(_body.velocity.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
             }
         }
 
-        if (transform.localScale.x <= 0 && holdingProgressT.transform.localScale.x >= 0 ||
+        if(transform.localScale.x <= 0 && holdingProgressT.transform.localScale.x >= 0 ||
             transform.localScale.x >= 0 && holdingProgressT.transform.localScale.x <= 0) {
             Vector3 scale = holdingProgressT.transform.localScale;
             scale.x *= -1;
@@ -329,7 +320,7 @@ public class Move : MonoBehaviour, iDamageable {
             yield return null;
         }
     }
-    
+
     public bool ReduceHealth(float value, GameObject from) {
         if(HP > 0 && !_teleporting) {
             if(_hurtTimer == 0f) {
@@ -400,84 +391,70 @@ public class Move : MonoBehaviour, iDamageable {
     public bool isTeleporting() {
         return _teleporting;
     }
-    public void SpeedIncrease_Effectopen()
-    {
+    public void SpeedIncrease_Effectopen() {
         SpeedIncrease_Effect.SetActive(true);
 
 
         Invoke("SpeedIncrease_Effectclose", 2f);
 
     }
-    void SpeedIncrease_Effectclose()
-    {
+    void SpeedIncrease_Effectclose() {
 
 
         SpeedIncrease_Effect.SetActive(false);
 
     }
-    public void MedicalKit_Effectopen()
-    {
+    public void MedicalKit_Effectopen() {
         MedicalKit_Effect.SetActive(true);
 
 
         Invoke("MedicalKit_Effectclose", 2f);
 
     }
-    void MedicalKit_Effectclose()
-    {
+    void MedicalKit_Effectclose() {
 
 
         MedicalKit_Effect.SetActive(false);
 
     }
-    public void BoostView_Effectopen()
-    {
+    public void BoostView_Effectopen() {
         BoostView_Effect.SetActive(true);
 
 
         Invoke("BoostView_Effectclose", 2f);
 
     }
-    void BoostView_Effectclose()
-    {
+    void BoostView_Effectclose() {
 
 
         BoostView_Effect.SetActive(false);
 
     }
-    public void Trap_Effectopen()
-    {
+    public void Trap_Effectopen() {
         Trap_Effect.SetActive(true);
 
 
         Invoke("Trap_Effectclose", 2f);
 
     }
-    void Trap_Effectclose()
-    {
+    void Trap_Effectclose() {
         Trap_Effect.SetActive(false);
 
     }
 
-    protected void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("gun"))
-        {
-            if (gunPivot.activeSelf)
-            {
+    protected void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("gun")) {
+            if(gunPivot.activeSelf) {
                 GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
                 usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-            }
-            else
-            {
+            } else {
                 this.gunPivot.SetActive(true);
             }
 
             bulletNum = other.gameObject.GetComponent<GunItem>().getBulletNum();
             gunEnabled = true;
             Destroy(other.gameObject);
-            if (swordPivot.activeSelf)
-            {
+            if(swordPivot.activeSelf) {
                 this.swordPivot.SetActive(false);
                 Instantiate(swordItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
             }
@@ -487,15 +464,13 @@ public class Move : MonoBehaviour, iDamageable {
     }
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("speedDecrease")) {
-            speed = 2*reducedSpeed;
+            speed = 2 * reducedSpeed;
         }
     }
 
-    public bool EnableSword()
-    {
+    public bool EnableSword() {
         this.swordPivot.SetActive(true);
-        if (gunPivot.activeSelf)
-        {
+        if(gunPivot.activeSelf) {
             this.gunPivot.SetActive(false);
             GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
             usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);

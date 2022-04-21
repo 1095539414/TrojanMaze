@@ -500,7 +500,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 250
+  m_PreferredWidth: 300
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -520,4 +520,4 @@ MonoBehaviour:
   headerField: {fileID: 8240632658920257578}
   contentField: {fileID: 8240632659564669124}
   layoutElement: {fileID: 8240632660035361853}
-  characterWrapLimit: 80
+  characterWrapLimit: 40

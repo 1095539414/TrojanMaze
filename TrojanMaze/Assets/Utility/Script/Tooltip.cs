@@ -15,13 +15,25 @@ public class Tooltip : MonoBehaviour {
         rectTransform = GetComponent<RectTransform>();
     }
 
-    private void Update() {
+    private void Start() {
+
+    }
+
+    private void OnEnable() {
         Vector2 position = Input.mousePosition;
 
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;
         rectTransform.pivot = new Vector2(pivotX, pivotY);
         transform.position = position;
+        Cursor.visible = false;
+    }
+
+    private void OnDisable() {
+        Cursor.visible = true;
+    }
+
+    private void Update() {
     }
 
     public void SetText(string content, string header = "") {
@@ -33,6 +45,7 @@ public class Tooltip : MonoBehaviour {
         }
         contentField.text = content;
         AdjustSize();
+
     }
 
     private void AdjustSize() {
