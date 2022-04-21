@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public GameObject DeathUI;
     public GameObject PassUI;
+    public GameObject PortalObject;
+    public GameObject TrailmapObject;
+    public GameObject RadarObject;
     public Image PortalImage;
     public Image PortalR;
     public Image PortalT;
@@ -21,6 +24,10 @@ public class GameManager : MonoBehaviour {
     public BuffItem[] itemsToDrop;
     void Awake() {
         instance = this;
+        PortalObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 3);
+        RadarObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 4);
+        TrailmapObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 5);
+
     }
     // Start is called before the first frame update
     void Start() {

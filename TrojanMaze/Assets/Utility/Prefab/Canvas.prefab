@@ -4219,6 +4219,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathUI: {fileID: 7224895878679976847}
   PassUI: {fileID: 7224895878265930422}
+  PortalObject: {fileID: 7224895879339355937}
+  TrailmapObject: {fileID: 2843817681507060979}
+  RadarObject: {fileID: 7224895878719111820}
   PortalImage: {fileID: 7224895878653420868}
   PortalR: {fileID: 7224895878649032856}
   PortalT: {fileID: 7224895879019483424}

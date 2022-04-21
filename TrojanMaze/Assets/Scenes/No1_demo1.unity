@@ -683,6 +683,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 517589203}
     - target: {fileID: 4825852273574709213, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
+      propertyPath: fieldOfView
+      value: 
+      objectReference: {fileID: 1742048572}
+    - target: {fileID: 4825852273574709213, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: BoostView_Effect
       value: 
       objectReference: {fileID: 206747729}

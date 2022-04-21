@@ -7,6 +7,8 @@ public class Menu : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 1f;
     public GameObject StartButtonPressed;
     public GameObject StartButton;
+    public GameObject[] HintGameObject;
+
     private int levelIndex = -1;
 
     private void Start() {
@@ -44,5 +46,12 @@ public class Menu : MonoBehaviour {
 
     public void SetLevelIndex(int index) {
         this.levelIndex = index;
+        for(int i = 0; i < HintGameObject.Length; i++) {
+            if(i != index - 1) {
+                HintGameObject[i].SetActive(false);
+            } else {
+                HintGameObject[i].SetActive(true);
+            }
+        }
     }
 }
