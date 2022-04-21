@@ -21,7 +21,16 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI BulletUI;
 
     public float itemDropRate = 0f;
+
     public BuffItem[] itemsToDrop;
+    public GameObject[] nextLevelHints;
+
+    public GameObject Continue;
+    public GameObject Return;
+    public GameObject ContinuePressed;
+    public GameObject ReturnPressed;
+
+
     void Awake() {
         instance = this;
         PortalObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 3);
@@ -48,6 +57,36 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(LoadNextLevel());
     }
 
+    public void OnContinueClicked() {
+        StartCoroutine(AnimateContinueButton());
+    }
+    public void OnReturnClicked() {
+        StartCoroutine(AnimateReturnButton());
+    }
+
+    public void QuitScene() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene((int)BuildIndex.MENU);
+    }
+
+    IEnumerator AnimateContinueButton() {
+        Continue.SetActive(false);
+        ContinuePressed.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Continue.SetActive(true);
+        ContinuePressed.SetActive(false);
+    }
+
+    IEnumerator AnimateReturnButton() {
+        Return.SetActive(false);
+        ReturnPressed.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Return.SetActive(true);
+        ReturnPressed.SetActive(false);
+    }
+
+
+
     IEnumerator LoadNextLevel() {
         yield return new WaitForSecondsRealtime(1f);
         UnityAnalytics.sendLevelSolved();
@@ -60,6 +99,7 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(nextSceneIndex);
         Time.timeScale = 1f;
     }
+
 
     public Vector2 GetParabola(Vector2 start, Vector2 v0, float time, float gravity = -9.8f) {
         Vector2 pos = start;
