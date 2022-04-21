@@ -28,7 +28,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void ShowTooltip() {
         if(content.Length > 0) {
             delay = LeanTween.delayedCall(0.5f, () => {
-                TooltipManager.Show(content, header);
+                TooltipManager.instance.Show(content, header, this.gameObject);
             });
         }
     }
@@ -37,7 +37,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if(delay != null) {
             LeanTween.cancel(delay.uniqueId);
         }
-        TooltipManager.Hide();
+        TooltipManager.instance.Hide();
     }
     public void SetText(string content, string header = "") {
         this.content = content;

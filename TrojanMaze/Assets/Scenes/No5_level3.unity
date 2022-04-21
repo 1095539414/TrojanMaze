@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964059437341398580, guid: 6084db1fc6ffd52418297f13d885bc86, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4964059437341398580, guid: 6084db1fc6ffd52418297f13d885bc86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -652,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 586772944015095237, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6544685205900945905, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1115,6 +1119,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7224895878421866758, guid: afabddf7cec71ee4eb2fccadd9b42247, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224895878995318729, guid: afabddf7cec71ee4eb2fccadd9b42247, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224895878995318729, guid: afabddf7cec71ee4eb2fccadd9b42247, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afabddf7cec71ee4eb2fccadd9b42247, type: 3}
 --- !u!1001 &347099789
@@ -1563,7 +1579,7 @@ Transform:
   - {fileID: 1919756506}
   - {fileID: 1679942989}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &839845073 stripped
 Transform:
@@ -1710,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3368146882878377931, guid: 8962d1ae213cbee479b8d46796433153, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3368146882878377931, guid: 8962d1ae213cbee479b8d46796433153, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1786,7 +1802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8240632659960019778, guid: 2b25271aef4f22d409644e86a37b19fd, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8240632659960019778, guid: 2b25271aef4f22d409644e86a37b19fd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1879,7 +1895,7 @@ PrefabInstance:
       objectReference: {fileID: 20535406}
     - target: {fileID: 4832541530071926494, guid: e07853f432c63b54280a282656e94b2e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4832541530071926494, guid: e07853f432c63b54280a282656e94b2e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2325,6 +2341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MedicalKit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7141577405830077295, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
 --- !u!1 &1375377393
@@ -2361,7 +2381,7 @@ Transform:
   - {fileID: 1218833634}
   - {fileID: 1751797116}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1439396124
 PrefabInstance:
@@ -2396,15 +2416,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.7
+      value: -25.8
       objectReference: {fileID: 0}
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.2
+      value: 13.51
       objectReference: {fileID: 0}
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2646,6 +2666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MedicalKit (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7141577405830077295, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
 --- !u!4 &1522521985 stripped
@@ -2747,7 +2771,7 @@ Transform:
   - {fileID: 673348073}
   - {fileID: 1826826389}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1554162897
 PrefabInstance:
@@ -2759,6 +2783,10 @@ PrefabInstance:
     - target: {fileID: 586772944015095237, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
       propertyPath: m_Name
       value: Sword (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 586772944015095237, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6544685205900945905, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
       propertyPath: m_Enabled
@@ -2874,6 +2902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MedicalKit
       objectReference: {fileID: 0}
+    - target: {fileID: 7141577405830077295, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
 --- !u!1001 &1586540838
@@ -2970,7 +3002,7 @@ Transform:
   - {fileID: 1305747391}
   - {fileID: 851236561}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1622730602 stripped
 Transform:
@@ -3035,6 +3067,10 @@ PrefabInstance:
     - target: {fileID: 7141577405830077295, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
       propertyPath: m_Name
       value: MedicalKit (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141577405830077295, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
@@ -3357,6 +3393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MedicalKit (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7141577405830077295, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
 --- !u!4 &1898094301 stripped
@@ -3453,11 +3493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811928437017863922, guid: 787e10e47784f41bfb4fb4dd1b360278, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8811928437017863927, guid: 787e10e47784f41bfb4fb4dd1b360278, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8811928437017863927, guid: 787e10e47784f41bfb4fb4dd1b360278, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3773,7 +3813,7 @@ Transform:
   - {fileID: 649182139}
   - {fileID: 169275032}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2004680840
 PrefabInstance:
@@ -3873,7 +3913,7 @@ Transform:
   - {fileID: 1289190664}
   - {fileID: 1288774199}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2046591997
 PrefabInstance:
@@ -3946,6 +3986,10 @@ PrefabInstance:
     - target: {fileID: 586772944015095237, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 586772944015095237, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6544685205900945905, guid: 78d0700047d7fcd4bae01cd2caeb4c15, type: 3}
       propertyPath: m_Enabled

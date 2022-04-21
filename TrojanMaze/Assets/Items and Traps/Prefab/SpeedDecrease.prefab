@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5411124036182607743}
   - component: {fileID: 808345149738624091}
   - component: {fileID: 6603686764505229993}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpeedDecrease
   m_TagString: speedDecrease
   m_Icon: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7577342650852667268, guid: aa37814c1fbad2746bae26697fdd8216, type: 3}
-  m_Color: {r: 0.38527945, g: 0.735849, b: 0.41002557, a: 1}
+  m_Sprite: {fileID: -1891762266973187673, guid: aa37814c1fbad2746bae26697fdd8216, type: 3}
+  m_Color: {r: 0.33930653, g: 1, b: 0.015686274, a: 0.50980395}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
