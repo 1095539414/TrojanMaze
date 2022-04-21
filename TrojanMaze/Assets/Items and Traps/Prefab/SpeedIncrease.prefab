@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7060769348927013918}
   - component: {fileID: 7659190232623505776}
   - component: {fileID: 2517915667449049989}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpeedIncrease
   m_TagString: speed
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0062894, y: 1.0062894}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -125,5 +125,5 @@ MonoBehaviour:
   itemButton: {fileID: 8844934198014392324, guid: 4e6d147965640064aaca5eb9b3dbc438, type: 3}
   header: Speed Increase
   content: Increase your speed for 3 seconds
-  icon: {fileID: 0}
+  sprite: {fileID: 0}
   time: 3

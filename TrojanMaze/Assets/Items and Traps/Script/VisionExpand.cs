@@ -7,7 +7,6 @@ public class VisionExpand : BuffItem
     // Start is called before the first frame update
     public float time = 3f;
 
-
     protected override bool AddBuff() {
         FieldOfView.BoostViewDistance();
         Move._move.BoostView_Effectopen();

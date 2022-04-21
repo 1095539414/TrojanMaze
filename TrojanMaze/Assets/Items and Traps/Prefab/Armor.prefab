@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5899171453953615102}
   - component: {fileID: -7393318415819428168}
   - component: {fileID: -6184000003424609748}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Armor
   m_TagString: Armor
   m_Icon: {fileID: 0}
@@ -122,8 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b965a32eefb124a990509ac1bc0b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemButton: {fileID: 0}
   header: Armor
   content: Improve your maximum health
-  icon: {fileID: 0}
+  sprite: {fileID: 0}
   time: 10
   player: {fileID: 0}

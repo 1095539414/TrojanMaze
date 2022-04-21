@@ -9,14 +9,16 @@ public class SwordItem : BuffItem {
     private GameObject trailMapIcon;
 
     void Start() {
+        gameObject.layer = 7;
+
         trailMapIcon = transform.GetChild(0).gameObject;
     }
 
     void Update() {
         if(State.getTowerState()) {
-            trailMapIcon.GetComponent<Renderer> ().enabled = true;
+            trailMapIcon.GetComponent<Renderer>().enabled = true;
         } else {
-            trailMapIcon.GetComponent<Renderer> ().enabled = false;
+            trailMapIcon.GetComponent<Renderer>().enabled = false;
         }
     }
     protected override bool AddBuff() {
