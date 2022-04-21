@@ -25,18 +25,24 @@ public class GameManager : MonoBehaviour {
     public BuffItem[] itemsToDrop;
     public GameObject[] nextLevelHints;
 
-    public GameObject Continue;
-    public GameObject Return;
-    public GameObject ContinuePressed;
-    public GameObject ReturnPressed;
+    public GameObject PassContinue;
+    public GameObject PassReturn;
+    public GameObject PassContinuePressed;
+    public GameObject PassReturnPressed;
+    public GameObject DeathRestart;
+    public GameObject DeathReturn;
+    public GameObject DeathRestartPressed;
+    public GameObject DeathReturnPressed;
+    public GameObject Quit;
+    public GameObject QuitPressed;
 
+    public GameObject ComingUp;
 
     void Awake() {
         instance = this;
         PortalObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 3);
         RadarObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 4);
         TrailmapObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 5);
-
     }
     // Start is called before the first frame update
     void Start() {
@@ -53,39 +59,47 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
-    public void OnLoadNextLevel() {
-        StartCoroutine(LoadNextLevel());
-    }
-
     public void OnContinueClicked() {
         StartCoroutine(AnimateContinueButton());
+        StartCoroutine(LoadNextLevel());
+
     }
     public void OnReturnClicked() {
-        StartCoroutine(AnimateReturnButton());
-    }
-
-    public void QuitScene() {
         Time.timeScale = 1f;
+        StartCoroutine(AnimateReturnButton());
         SceneManager.LoadScene((int)BuildIndex.MENU);
     }
 
+    public void OnQuitClicked() {
+        Time.timeScale = 1f;
+        StartCoroutine(AnimateQuitButton());
+        SceneManager.LoadScene((int)BuildIndex.MENU);
+    }
+
+
     IEnumerator AnimateContinueButton() {
-        Continue.SetActive(false);
-        ContinuePressed.SetActive(true);
+        PassContinue.SetActive(false);
+        PassContinuePressed.SetActive(true);
         yield return new WaitForSeconds(0.2f);
-        Continue.SetActive(true);
-        ContinuePressed.SetActive(false);
+        PassContinue.SetActive(true);
+        PassContinuePressed.SetActive(false);
     }
 
     IEnumerator AnimateReturnButton() {
-        Return.SetActive(false);
-        ReturnPressed.SetActive(true);
+        PassReturn.SetActive(false);
+        PassReturnPressed.SetActive(true);
         yield return new WaitForSeconds(0.2f);
-        Return.SetActive(true);
-        ReturnPressed.SetActive(false);
+        PassReturn.SetActive(true);
+        PassReturnPressed.SetActive(false);
     }
 
-
+    IEnumerator AnimateQuitButton() {
+        Quit.SetActive(false);
+        QuitPressed.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Quit.SetActive(true);
+        QuitPressed.SetActive(false);
+    }
 
     IEnumerator LoadNextLevel() {
         yield return new WaitForSecondsRealtime(1f);
@@ -107,9 +121,11 @@ public class GameManager : MonoBehaviour {
         pos.y += v0.y * time + gravity * 0.5f * time * time;
         return pos;
     }
+    
     public void StartAnimateDropItem(BuffItem item) {
         StartCoroutine(AnimateDropItem(item));
     }
+
     IEnumerator AnimateDropItem(BuffItem item) {
         float elapsedTime = 0f;
         float waitTime = 0.3f;

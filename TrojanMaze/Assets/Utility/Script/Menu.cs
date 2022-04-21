@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Menu : MonoBehaviour {
-    [SerializeField] float levelLoadDelay = 1f;
     public GameObject StartButtonPressed;
     public GameObject StartButton;
     public GameObject[] HintGameObject;
@@ -16,10 +15,6 @@ public class Menu : MonoBehaviour {
             StartButton.SetActive(true);
         if(StartButtonPressed)
             StartButtonPressed.SetActive(false);
-    }
-    public void QuitScene() {
-        Time.timeScale = 1f;
-        StartCoroutine(LoadScene((int)BuildIndex.MENU));
     }
 
     public void OnStartClick() {
@@ -36,8 +31,11 @@ public class Menu : MonoBehaviour {
     }
 
     IEnumerator LoadScene(int sceneIndex) {
-        yield return new WaitForSecondsRealtime(levelLoadDelay);
-        SceneManager.LoadScene(sceneIndex);
+        if(sceneIndex > -1) {
+            yield return new WaitForSecondsRealtime(0.5f);
+            SceneManager.LoadScene(sceneIndex);
+        }
+
     }
 
     public void QuitGame() {
