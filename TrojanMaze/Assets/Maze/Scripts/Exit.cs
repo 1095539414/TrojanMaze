@@ -11,7 +11,7 @@ public class Exit : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         GameObject[] hint = GameManager.instance.nextLevelHints;
-        if(other.tag == "Player") {
+        if(other.tag == "Player" && other.GetComponent<SpriteRenderer>().isVisible) {
             Time.timeScale = 0f;
             GameManager.instance.PassUI.SetActive(true);
             GameManager.instance.ComingUp.SetActive(

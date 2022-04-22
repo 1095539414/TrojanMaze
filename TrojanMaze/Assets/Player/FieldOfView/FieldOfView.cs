@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour {
-    private const float normalViewDistance = 2.5f;
-    private const float boostViewDistance = 3.5f;
+    private const float normalViewDistance = 3f;
+    private const float boostViewDistance = 4.5f;
 
     [SerializeField] LayerMask layerMask;
     private Mesh mesh;
