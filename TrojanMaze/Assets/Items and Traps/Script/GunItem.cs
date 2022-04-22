@@ -10,6 +10,11 @@ public class GunItem : MonoBehaviour {
         return bulletNum;
     }
 
+    public int UpdateBulletNum(int newNum) {
+        int curNum = bulletNum;
+        bulletNum = newNum;
+        return curNum;
+    }
     public void setBulletNum(int num) {
         bulletNum = num;
     }
@@ -23,6 +28,13 @@ public class GunItem : MonoBehaviour {
 
     }
     protected void OnTriggerEnter2D(Collider2D other) {
-
+        if(other.CompareTag("Player")) {
+            Move._move.WeaponTouched(this.gameObject);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Player")) {
+            Move._move.WeaponUntouched(this.gameObject);
+        }
     }
 }

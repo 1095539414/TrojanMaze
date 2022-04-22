@@ -15,6 +15,8 @@ public class Move : MonoBehaviour, iDamageable {
     [SerializeField] GameObject playerBullet;
     [SerializeField] GameObject holdingProgressR;
     [SerializeField] GameObject holdingProgressT;
+    [SerializeField] GameObject weaponChangeUI;
+
     [SerializeField] GameObject FootPrintLeft;
     [SerializeField] GameObject FootPrintRight;
 
@@ -65,8 +67,8 @@ public class Move : MonoBehaviour, iDamageable {
     private bool _teleporting = false;
     private Renderer _holdingProgressRendererR;
     private Renderer _holdingProgressRendererT;
+    private GameObject _weaponTouching;
 
-    private float reducedSpeed = 0f;
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
@@ -83,7 +85,6 @@ public class Move : MonoBehaviour, iDamageable {
         _holdingProgressRendererR = holdingProgressR.GetComponent<Renderer>();
         _holdingProgressRendererT = holdingProgressT.GetComponent<Renderer>();
         _footPrintLeft = true;
-        reducedSpeed = speed * 0.5f;
     }
 
     void Update() {
@@ -163,7 +164,8 @@ public class Move : MonoBehaviour, iDamageable {
         GameManager.instance.PortalR.enabled = _portal == null;
         GameManager.instance.PortalDisgard.SetActive(_portal != null);
 
-        if(gunItem) {
+        DealWithWeapon();
+        if(gunPivot.activeSelf) {
             if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
                 nextShootTime = Time.time + 0.6f;
                 bulletNum--;
@@ -177,8 +179,6 @@ public class Move : MonoBehaviour, iDamageable {
             }
         }
 
-
-
         if(_hurtTimer > 0) {
             _hurtTimer -= Time.deltaTime;
             if(_hurtTimer < 0) {
@@ -186,8 +186,6 @@ public class Move : MonoBehaviour, iDamageable {
                 _hurtTimer = 0f;
             }
         }
-
-
     }
 
     IEnumerator TeleportBack() {
@@ -249,10 +247,6 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        // Debug.Log(other.collider.name);
-    }
-
 
     void Run() {
         Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;
@@ -284,6 +278,7 @@ public class Move : MonoBehaviour, iDamageable {
             scale.x *= -1;
             holdingProgressT.transform.localScale = scale;
             holdingProgressR.transform.localScale = scale;
+            weaponChangeUI.transform.localScale = scale / 4f;
         }
     }
 
@@ -350,13 +345,6 @@ public class Move : MonoBehaviour, iDamageable {
         return HP;
     }
 
-    public bool SwordEnabled() {
-        return this.swordPivot.activeSelf;
-    }
-    public bool GunEnabled() {
-        return gunEnabled;
-    }
-
     private void DropFootprint() {
         _curPos = transform.position;
         float dist = Mathf.Sqrt(Mathf.Pow(_curPos.x - _prevPos.x, 2) + Mathf.Pow(_curPos.y - _prevPos.y, 2));
@@ -399,11 +387,10 @@ public class Move : MonoBehaviour, iDamageable {
 
     }
     void SpeedIncrease_Effectclose() {
-
-
         SpeedIncrease_Effect.SetActive(false);
 
     }
+
     public void MedicalKit_Effectopen() {
         MedicalKit_Effect.SetActive(true);
 
@@ -412,10 +399,7 @@ public class Move : MonoBehaviour, iDamageable {
 
     }
     void MedicalKit_Effectclose() {
-
-
         MedicalKit_Effect.SetActive(false);
-
     }
     public void BoostView_Effectopen() {
         BoostView_Effect.SetActive(true);
@@ -425,87 +409,88 @@ public class Move : MonoBehaviour, iDamageable {
 
     }
     void BoostView_Effectclose() {
-
-
         BoostView_Effect.SetActive(false);
-
-    }
-    public void Trap_Effectopen() {
-        Trap_Effect.SetActive(true);
-
-
-        Invoke("Trap_Effectclose", 2f);
-
-    }
-    void Trap_Effectclose() {
-        Trap_Effect.SetActive(false);
-
     }
 
-    protected void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("gun"))
-        {
-            if (Input.GetKeyDown(KeyCode.C) || Input.GetMouseButton(1))
-            {
-                if (gunPivot.activeSelf)
-                {
-                    GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                    usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-                }
-                else
-                {
-                    this.gunPivot.SetActive(true);
-                }
+    public void WeaponTouched(GameObject weapon) {
+        if(_weaponTouching != null) {
+            _weaponTouching.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+         _weaponTouching = weapon;
 
-                bulletNum = other.gameObject.GetComponent<GunItem>().getBulletNum();
-                gunEnabled = true;
-                Destroy(other.gameObject);
-                if (swordPivot.activeSelf)
-                {
-                    this.swordPivot.SetActive(false);
-                    Instantiate(swordItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+        if(!(swordPivot.activeSelf && weapon.CompareTag("sword"))) {
+            _weaponTouching.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+        }
+
+    }
+    public void WeaponUntouched(GameObject weapon) {
+        if(_weaponTouching == weapon) {
+            _weaponTouching.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            _weaponTouching = null;
+
+        }
+    }
+
+    private void PickupGun() {
+        bulletNum = _weaponTouching.GetComponent<GunItem>().getBulletNum();
+        gunPivot.SetActive(true);
+        Destroy(_weaponTouching);
+        _weaponTouching = null;
+    }
+    private void PickupSword() {
+        swordPivot.SetActive(true);
+        Destroy(_weaponTouching);
+        _weaponTouching = null;
+    }
+
+    private void DealWithWeapon() {
+        if(_weaponTouching != null) {
+            if(!swordPivot.activeSelf && !gunPivot.activeSelf) {
+                if(_weaponTouching.CompareTag("gun")) {
+                    PickupGun();
+                } else {
+                    PickupSword();
                 }
-            }
-        } else if(other.CompareTag("speedDecrease")) {
-            speed = reducedSpeed;
-        } else if (other.CompareTag("sword"))
-        {
-            if (Input.GetKeyDown(KeyCode.C) || Input.GetMouseButton(1))
-            {
-                this.swordPivot.SetActive(true);
-                if (gunPivot.activeSelf)
-                {
-                    this.gunPivot.SetActive(false);
-                    GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-                    usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-                    bulletNum = 0;
+            } else if(Input.GetKeyDown(KeyCode.C)) {
+                if(_weaponTouching.CompareTag("gun")) {
+                    if(swordPivot.activeSelf) {
+                        Instantiate(swordItem, _weaponTouching.transform.position, Quaternion.identity);
+                        swordPivot.SetActive(false);
+                        PickupGun();
+                    } else if(gunPivot.activeSelf) {
+                        bulletNum = _weaponTouching.GetComponent<GunItem>().UpdateBulletNum(bulletNum);
+                    } else {
+                        PickupGun();
+                    }
+                } else {
+                    if(gunPivot.activeSelf) {
+                        GameObject droppedGun = Instantiate(
+                            gunItem,
+                            _weaponTouching.transform.position,
+                            Quaternion.identity
+                        );
+                        droppedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
+                        bulletNum = 0;
+
+                        PickupSword();
+                    } else if(!swordPivot.activeSelf) {
+                        PickupSword();
+                    }
                 }
             }
         }
+        weaponChangeUI.SetActive(
+            _weaponTouching != null &&
+            !(_weaponTouching.CompareTag("sword") && swordPivot.activeSelf)
+        );
+
     }
+
+    protected void OnTriggerEnter2D(Collider2D other) {
+
+    }
+
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("speedDecrease")) {
-            speed = 2 * reducedSpeed;
-        }
-    }
 
-    /*
-    public bool EnableSword()
-    {
-        if (Input.GetMouseButton(1))
-        {
-            this.swordPivot.SetActive(true);
-            if (gunPivot.activeSelf)
-            {
-                this.gunPivot.SetActive(false);
-                GameObject usedGun = Instantiate(gunItem, new Vector2(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y - 0.8f), Quaternion.identity);
-                usedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-                bulletNum = 0;
-            }
-            return true;
-        }
-        return false;
     }
-    */
 }
