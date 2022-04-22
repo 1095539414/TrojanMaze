@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour {
     float boostCamera = 8f;
     float cameraZoomSpeed = 4f;
     float activate = 0f;
+    public static bool PlayerOnTower;
     // Start is called before the first frame update
     void Start() {
         myCamera = Camera.main;
@@ -16,6 +17,11 @@ public class Tower : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(PlayerOnTower) {
+            gameObject.layer = 0;
+        } else {
+            gameObject.layer = 7;
+        }
         zoom();
     }
 
@@ -26,6 +32,7 @@ public class Tower : MonoBehaviour {
                 State.SetTowerState(true);
                 trailPanel.SetActive(true);
             }
+            PlayerOnTower = true;
         }
     }
 
@@ -36,6 +43,8 @@ public class Tower : MonoBehaviour {
                 State.SetTowerState(false);
                 trailPanel.SetActive(false);
             }
+            PlayerOnTower = false;
+
         }
     }
 
