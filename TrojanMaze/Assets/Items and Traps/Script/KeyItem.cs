@@ -22,7 +22,6 @@ public class KeyItem : MonoBehaviour {
                 trailPanel.SetActive(true);
             }
             State.setKeyState(true);
-            Debug.Log("Hello");
             this.gameObject.SetActive(false);
         }
     }
