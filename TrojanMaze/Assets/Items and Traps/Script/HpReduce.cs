@@ -46,7 +46,7 @@ public class HpReduce : MonoBehaviour {
         }
         if(_time <= 0) {
             StartCoroutine(Animate());
-            _time = Random.Range(1.5f, 2.5f);
+            _time = Random.Range(1.5f, 2.5f) / (moveSpeed / 80f);
         }
         _time -= Time.deltaTime;
     }

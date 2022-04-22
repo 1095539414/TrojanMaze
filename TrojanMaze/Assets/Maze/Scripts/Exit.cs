@@ -15,7 +15,7 @@ public class Exit : MonoBehaviour {
             Time.timeScale = 0f;
             GameManager.instance.PassUI.SetActive(true);
             GameManager.instance.ComingUp.SetActive(
-                SceneManager.GetActiveScene().buildIndex == hint.Length
+                SceneManager.GetActiveScene().buildIndex != hint.Length
             );
             for(int i = 0; i < hint.Length; i++) {
                 hint[i].SetActive(i == SceneManager.GetActiveScene().buildIndex);
