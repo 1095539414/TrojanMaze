@@ -84,23 +84,20 @@ public class BuffItem : MonoBehaviour {
 
         if(other.CompareTag("Player") || other.gameObject.CompareTag("Armor")) {
             if(gameObject.CompareTag("gun") || gameObject.CompareTag("sword") || gameObject.CompareTag("ZombieBullet")) {
-                if (AddBuff()) {
+                if(AddBuff()) {
                     Invoke("RemoveBuff", GetDuration());
                 }
-                if (gameObject.CompareTag("sword"))
-                {
-                    if (Input.GetKeyDown(KeyCode.C) || Input.GetMouseButton(1))
-                    {
+                if(gameObject.CompareTag("sword")) {
+                    if(Input.GetKeyDown(KeyCode.C) || Input.GetMouseButton(1)) {
                         this.gameObject.SetActive(false);
                     }
-                } else
-                {
+                } else {
                     this.gameObject.SetActive(false);
                 }
                 if(!this.CompareTag("ZombieBullet")) {
                     UnityAnalytics.sendItemCollected(this.name);
                 }
-            } else if(gameObject.CompareTag("Hpincrease") && Move.GetHP() + 0.3f <= 1f) {
+            } else if(gameObject.CompareTag("Hpincrease") && Move.GetHP() + 0.2f <= 1f) {
                 if(AddBuff()) {
                     Invoke("RemoveBuff", GetDuration());
                 }
