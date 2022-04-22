@@ -364,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 3460665021386375506}
   initialHealth: 2
-  moveSpeed: 40
+  moveSpeed: 45
   releaseInterval: 0.2
   horizontal: 1
   VirusZone: {fileID: 338173870643118009, guid: bc21a4ca1cd1849b4bb00ced3a4e52f4, type: 3}

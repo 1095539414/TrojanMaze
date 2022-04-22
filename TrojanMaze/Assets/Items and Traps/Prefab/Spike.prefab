@@ -126,6 +126,9 @@ MonoBehaviour:
   moveSpeed: 40
   horizontal: 1
   center: {fileID: 0}
+  AnimationSprites:
+  - {fileID: -6057492274373504256, guid: aa37814c1fbad2746bae26697fdd8216, type: 3}
+  - {fileID: -6892245529798384379, guid: aa37814c1fbad2746bae26697fdd8216, type: 3}
 --- !u!50 &-869629050980681468
 Rigidbody2D:
   serializedVersion: 4
