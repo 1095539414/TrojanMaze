@@ -9,10 +9,10 @@ public class Tower : MonoBehaviour {
     float boostCamera = 8f;
     float cameraZoomSpeed = 4f;
     float activate = 0f;
-    public static bool PlayerOnTower;
+    public static bool PlayerOnTower = false;
     // Start is called before the first frame update
     void Start() {
-        myCamera = Camera.main;
+        myCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Tower : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player") {
+        if(other.CompareTag("Player")) {
             activate = 1.0f;
             if(trailPanel != null) {
                 State.SetTowerState(true);
@@ -52,12 +52,11 @@ public class Tower : MonoBehaviour {
         float cameraZoomSpeed = 4f;
 
         myCamera.orthographicSize += activate * cameraZoomSpeed * Time.deltaTime;
-
         if(myCamera.orthographicSize > boostCamera) {
             myCamera.orthographicSize = boostCamera;
             activate = 0f;
         }
-        if(myCamera.orthographicSize < initialCamera) {
+        if(myCamera.orthographicSize < initialCamera - 0.01f) {
             myCamera.orthographicSize = initialCamera;
             activate = 0f;
         }

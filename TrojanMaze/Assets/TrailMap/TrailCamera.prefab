@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 871729742986080445}
   m_Layer: 0
   m_Name: TrailCamera
-  m_TagString: MainCamera
+  m_TagString: SubCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -16,6 +16,7 @@ TagManager:
   - Armor
   - gun
   - speedDecrease
+  - SubCamera
   layers:
   - Default
   - TransparentFX
