@@ -14,6 +14,7 @@ public class ScoreScript : MonoBehaviour
     void Start()
     {
         KillNum = 0;
+        time = 0f;
         TMP.text = "Killed Zombies: 0"; 
         GameManager.instance.TimeSpent.text = "0s"; 
     }
