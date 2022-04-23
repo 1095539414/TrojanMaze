@@ -168,6 +168,7 @@ public class Move : MonoBehaviour, iDamageable {
         if(gunPivot.activeSelf) {
             if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
                 nextShootTime = Time.time + 0.6f;
+                SoundManager.PlaySound("gunshot");
                 Instantiate(playerBullet, this.transform.position, this.transform.rotation);
                 StartCoroutine(UpdateBulletNumUI(bulletNum - 1));
             }

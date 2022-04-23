@@ -15,7 +15,7 @@ public class ScoreScript : MonoBehaviour
     {
         KillNum = 0;
         time = 0f;
-        TMP.text = "Killed Zombies: 0"; 
+        TMP.text = "Killed: 0"; 
         GameManager.instance.TimeSpent.text = "0s"; 
     }
 
@@ -23,7 +23,7 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        TMP.text = "Killed Zombies: " + KillNum; 
+        TMP.text = "Killed: " + KillNum; 
         GameManager.instance.TimeSpent.text = Mathf.Floor(time) + "s"; 
     }
 
