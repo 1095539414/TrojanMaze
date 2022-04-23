@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Image PortalR;
     public Image PortalT;
     public GameObject PortalDisgard;
+    public Camera MainCamera;
 
     public TextMeshProUGUI BulletUI;
 
@@ -49,10 +50,11 @@ public class GameManager : MonoBehaviour {
         PortalObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 3);
         RadarObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 4);
         TrailmapObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 5);
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
     }
     // Start is called before the first frame update
     void Start() {
-
     }
 
     // Update is called once per frame
@@ -127,7 +129,7 @@ public class GameManager : MonoBehaviour {
         pos.y += v0.y * time + gravity * 0.5f * time * time;
         return pos;
     }
-    
+
     public void StartAnimateDropItem(BuffItem item) {
         StartCoroutine(AnimateDropItem(item));
     }

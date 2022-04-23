@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Pivot : MonoBehaviour {
 
+    private Camera _camera;
     public GameObject myPlayer;
     Rigidbody2D rigidBody;
 
     private void FixedUpdate() {
-        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 diff = GameManager.instance.MainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         diff.Normalize();
 
         float rotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;

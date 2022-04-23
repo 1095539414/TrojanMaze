@@ -255,7 +255,7 @@ public class Move : MonoBehaviour, iDamageable {
     void FlipPlayer() {
         if(swordPivot.activeSelf || gunPivot.activeSelf) {
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
-            Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Vector3 diff = GameManager.instance.MainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.localScale = new Vector2(
                 Mathf.Sign(diff.x) * Mathf.Abs(transform.localScale.x),
                 transform.localScale.y
