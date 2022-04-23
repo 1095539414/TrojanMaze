@@ -6,14 +6,10 @@ public class Bullet : BuffItem {
     Rigidbody2D bulletRigidbody;
     [SerializeField] float bulletSpeed = 10f;
     float bulletDamage = 0.1f;
-    bool speedSet = false;
-    private Vector2 _direction;
-
     private Vector2 dirToPlayer;
     private GameObject _player;
 
     private Vector2 GunPosition;
-    private float xSpeed = 0f, ySpeed = 0f;
     private float _speedDecreaseRatio = 2f;
     private float _speedDecreaseDuration = 2f;
 

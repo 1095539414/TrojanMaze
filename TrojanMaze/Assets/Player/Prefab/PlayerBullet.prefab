@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8315730361520231474}
   - component: {fileID: 4488859908691284002}
-  - component: {fileID: -5741253269104582626}
   - component: {fileID: -1636605678310416840}
   - component: {fileID: -5926925604525775316}
   - component: {fileID: 848364448785364837}
+  - component: {fileID: 3535685566946952380}
   m_Layer: 7
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3572178453297475688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7742131, y: 0.6610392, z: 0.2}
+  m_LocalScale: {x: 0.6212, y: 0.6212, z: 0.12424}
   m_Children:
   - {fileID: 8732071281980601003}
   m_Father: {fileID: 0}
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &-5741253269104582626
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3572178453297475688}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0012518466, y: 0}
-  m_Size: {x: 0.9737389, y: 0.9737389}
-  m_Direction: 0
 --- !u!50 &-1636605678310416840
 Rigidbody2D:
   serializedVersion: 4
@@ -157,6 +141,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &3535685566946952380
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572178453297475688}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.038709722, y: -0.03563591}
+  serializedVersion: 2
+  m_Radius: 0.030925931
 --- !u!1 &8876592545165415173
 GameObject:
   m_ObjectHideFlags: 0

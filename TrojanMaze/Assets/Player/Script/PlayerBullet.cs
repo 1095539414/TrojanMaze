@@ -36,6 +36,7 @@ public class PlayerBullet : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if(!isExploding && other.CompareTag("Zombie") || other.CompareTag("Walls")) {
             isExploding = true;
+            gameObject.layer = 0;
             animator.SetBool("isExplosion", true);
             StartCoroutine(DestroyBullet());
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
