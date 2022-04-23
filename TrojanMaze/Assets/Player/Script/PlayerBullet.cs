@@ -16,7 +16,7 @@ public class PlayerBullet : MonoBehaviour {
 
     void Start() {
         bulletRigidbody = GetComponent<Rigidbody2D>();
-        _direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        _direction = GameManager.instance.MainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         _direction.Normalize();
     }
 

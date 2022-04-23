@@ -12,7 +12,7 @@ public class Tower : MonoBehaviour {
     public static bool PlayerOnTower = false;
     // Start is called before the first frame update
     void Start() {
-        myCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        myCamera = GameManager.instance.MainCamera;
     }
 
     // Update is called once per frame
