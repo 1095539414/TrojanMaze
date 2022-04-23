@@ -70,7 +70,7 @@ public class VirusZombie : Zombie {
                     _direction = false;
                 }
             } else {
-                _velocity = transform.position + Vector3.down * moveSpeed;
+                _velocity = Vector3.down * moveSpeed;
                 if(transform.position.y - _initialPos.y < -3f) {
                     _direction = true;
                 }
