@@ -98,7 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee9b5c395364e5d98a4b533c85c851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  itemButton: {fileID: 0}
+  header: 
+  content: 
+  sprite: {fileID: 0}
   bulletSpeed: 5
 --- !u!50 &1578709938961532512
 Rigidbody2D:
@@ -134,8 +137,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.012920645, y: -0.014939246}
-  m_Size: {x: 1.3799225, y: 0.35881212}
+  m_Offset: {x: 0.37454528, y: -0.014939299}
+  m_Size: {x: 0.60499555, y: 0.35881364}
   m_Direction: 1
 --- !u!1 &8493976769300751405
 GameObject:

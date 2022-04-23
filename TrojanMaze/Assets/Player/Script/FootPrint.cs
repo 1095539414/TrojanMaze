@@ -9,13 +9,13 @@ public class FootPrint : MonoBehaviour {
     private GameObject currentGameObject;
     private float alpha = 0.1f;
 
-    private SpriteRenderer renderer;
+    private SpriteRenderer _renderer;
 
 
     // Start is called before the first frame update
     void Start() {
         currentGameObject = gameObject;
-        renderer = GetComponent<SpriteRenderer>();
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -37,13 +37,13 @@ public class FootPrint : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Zombie")) {
-            renderer.enabled = false;
+            _renderer.enabled = false;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("Zombie")) {
-            renderer.enabled = true;
+            _renderer.enabled = true;
         }
     }
 }

@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1355795267
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e74419723f2b85646bd4f9aca1097323, type: 3}
   m_Color: {r: 0.9622642, g: 0.05900679, b: 0.05900679, a: 1}
   m_FlipX: 0
@@ -303,6 +303,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 3613230131998507133}
   initialHealth: 2
+  bullet: {fileID: 1578709938961532515, guid: ba51b193768c94d43afd0185530c7b86, type: 3}
+  gun: {fileID: 3613230131556730705}
+  canShoot: 0
 --- !u!1 &3613230131505485372
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +376,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1355795267
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c33871c8638eb4c41bfb4577f3b58627, type: 3}
   m_Color: {r: 0.4339623, g: 0.41144538, b: 0.41144538, a: 1}
   m_FlipX: 0

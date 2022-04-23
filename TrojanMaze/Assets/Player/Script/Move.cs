@@ -168,17 +168,9 @@ public class Move : MonoBehaviour, iDamageable {
         if(gunPivot.activeSelf) {
             if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
                 nextShootTime = Time.time + 0.6f;
-                bulletNum--;
                 SoundManager.PlaySound("gunshot");
                 Instantiate(playerBullet, this.transform.position, this.transform.rotation);
-            }
-            if(bulletNum > 0) {
-                GameManager.instance.BulletImg.SetActive(true);
-                GameManager.instance.BulletUI.text = bulletNum.ToString();
-            } else {
-                GameManager.instance.BulletImg.SetActive(false);
-                GameManager.instance.BulletUI.text = "";
-                this.gunPivot.SetActive(false);
+                StartCoroutine(UpdateBulletNumUI(bulletNum - 1));
             }
         }
 
@@ -419,7 +411,7 @@ public class Move : MonoBehaviour, iDamageable {
         if(_weaponTouching != null) {
             _weaponTouching.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
-         _weaponTouching = weapon;
+        _weaponTouching = weapon;
 
         if(!(swordPivot.activeSelf && weapon.CompareTag("sword"))) {
             _weaponTouching.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
@@ -434,8 +426,36 @@ public class Move : MonoBehaviour, iDamageable {
         }
     }
 
+    private IEnumerator UpdateBulletNumUI(int num) {
+        Color color = Color.red;
+        if(bulletNum <= num) {
+            color = Color.green;
+        }
+        bulletNum = num;
+        if(bulletNum > 0) {
+            GameManager.instance.BulletImg.SetActive(true);
+            GameManager.instance.BulletUI.text = bulletNum.ToString();
+        } else {
+            GameManager.instance.BulletImg.SetActive(false);
+            GameManager.instance.BulletUI.text = "";
+            this.gunPivot.SetActive(false);
+        }
+        float elapsedTime = 0f;
+        float waitTime = 0.12f;
+        while(elapsedTime < waitTime) {
+            elapsedTime += Time.deltaTime;
+            GameManager.instance.BulletUI.color = Vector4.Lerp(Color.white, color, elapsedTime / waitTime);
+            yield return null;
+        }
+        elapsedTime = 0f;
+        while(elapsedTime < waitTime) {
+            elapsedTime += Time.deltaTime;
+            GameManager.instance.BulletUI.color = Vector4.Lerp(color, Color.white, elapsedTime / waitTime);
+            yield return null;
+        }
+    }
     private void PickupGun() {
-        bulletNum = _weaponTouching.GetComponent<GunItem>().getBulletNum();
+        StartCoroutine(UpdateBulletNumUI(_weaponTouching.GetComponent<GunItem>().getBulletNum()));
         gunPivot.SetActive(true);
         Destroy(_weaponTouching);
         _weaponTouching = null;
@@ -461,7 +481,11 @@ public class Move : MonoBehaviour, iDamageable {
                         swordPivot.SetActive(false);
                         PickupGun();
                     } else if(gunPivot.activeSelf) {
-                        bulletNum = _weaponTouching.GetComponent<GunItem>().UpdateBulletNum(bulletNum);
+                        StartCoroutine(
+                            UpdateBulletNumUI(
+                                _weaponTouching.GetComponent<GunItem>().UpdateBulletNum(bulletNum)
+                            )
+                        );
                     } else {
                         PickupGun();
                     }
@@ -473,7 +497,7 @@ public class Move : MonoBehaviour, iDamageable {
                             Quaternion.identity
                         );
                         droppedGun.GetComponent<GunItem>().setBulletNum(bulletNum);
-                        bulletNum = 0;
+                        StartCoroutine(UpdateBulletNumUI(0));
 
                         PickupSword();
                     } else if(!swordPivot.activeSelf) {
