@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour {
 
     public TextMeshProUGUI BulletUI;
 
+    public GameObject BulletImg;
+
+    public TextMeshProUGUI TimeSpent;
+
     public float itemDropRate = 0f;
 
     public BuffItem[] itemsToDrop;
