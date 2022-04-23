@@ -667,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoZombie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3613230131491851834, guid: 6e293d00e9e7e2e469b1c44e471f0f5f, type: 3}
+      propertyPath: canShoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3613230131491851835, guid: 6e293d00e9e7e2e469b1c44e471f0f5f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -21898,6 +21902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoZombie (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3613230131491851834, guid: 6e293d00e9e7e2e469b1c44e471f0f5f, type: 3}
+      propertyPath: canShoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3613230131491851835, guid: 6e293d00e9e7e2e469b1c44e471f0f5f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -22548,11 +22556,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.12
+      value: -72.73
       objectReference: {fileID: 0}
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.35
+      value: 32.37
       objectReference: {fileID: 0}
     - target: {fileID: 4732200271780574221, guid: e0f43898dc6190641a0cd48597dfaa8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23028,6 +23036,10 @@ PrefabInstance:
     - target: {fileID: 3613230131491851832, guid: 6e293d00e9e7e2e469b1c44e471f0f5f, type: 3}
       propertyPath: m_Name
       value: DemoZombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613230131491851834, guid: 6e293d00e9e7e2e469b1c44e471f0f5f, type: 3}
+      propertyPath: canShoot
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3613230131491851835, guid: 6e293d00e9e7e2e469b1c44e471f0f5f, type: 3}
       propertyPath: m_RootOrder
@@ -43864,7 +43876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1822882314}
   m_Layer: 0
-  m_Name: Spites
+  m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
