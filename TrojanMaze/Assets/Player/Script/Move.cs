@@ -169,6 +169,7 @@ public class Move : MonoBehaviour, iDamageable {
             if(bulletNum > 0 && (Input.GetMouseButton(0) || Input.GetKeyDown("space")) && Time.time >= nextShootTime) {
                 nextShootTime = Time.time + 0.6f;
                 bulletNum--;
+                SoundManager.PlaySound("gunshot");
                 Instantiate(playerBullet, this.transform.position, this.transform.rotation);
             }
             if(bulletNum > 0) {

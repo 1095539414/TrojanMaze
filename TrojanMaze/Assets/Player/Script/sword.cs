@@ -14,6 +14,7 @@ public class sword : MonoBehaviour
     {
         if (other.CompareTag("Zombie") && !other.isTrigger)
         {
+            SoundManager.PlaySound("sword");
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
             if (damageableObj != null)
             {
