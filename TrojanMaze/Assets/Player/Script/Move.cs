@@ -172,8 +172,10 @@ public class Move : MonoBehaviour, iDamageable {
                 Instantiate(playerBullet, this.transform.position, this.transform.rotation);
             }
             if(bulletNum > 0) {
+                GameManager.instance.BulletImg.SetActive(true);
                 GameManager.instance.BulletUI.text = bulletNum.ToString();
             } else {
+                GameManager.instance.BulletImg.SetActive(false);
                 GameManager.instance.BulletUI.text = "";
                 this.gunPivot.SetActive(false);
             }
