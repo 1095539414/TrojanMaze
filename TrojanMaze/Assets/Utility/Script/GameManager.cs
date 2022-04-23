@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
     public GameObject PassReturn;
     public GameObject PassContinuePressed;
     public GameObject PassReturnPressed;
+
+    public TextMeshProUGUI ScoreTextUI;
     public GameObject DeathRestart;
     public GameObject DeathReturn;
     public GameObject DeathRestartPressed;

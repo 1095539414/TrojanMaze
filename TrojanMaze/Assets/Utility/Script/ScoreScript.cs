@@ -8,7 +8,7 @@ public class ScoreScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI TMP;
 
     private static int KillNum = 0;
-    private float time = 0f;
+    private static float time = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,4 +33,25 @@ public class ScoreScript : MonoBehaviour
     public static void ResetKillNum() {
         KillNum = 0;
     }
+
+    public static int GetKilledZombies() {
+        return KillNum;
+    }
+
+    public static int GetTimeSpent() {
+        return (int)time;
+    }
+
+    public static int GetOverallScore() {
+        int hitScore = 100*KillNum;
+        /*
+            timeScore
+            <2min : 500
+            2min ~ 6min: (6*60 - time)* 500 / (4*60)
+            >=6min: 0
+        */
+        int timeScore = time < 2*60 ? 500 : (time > 6*60 ? 0 : (int)((6*60 - time) * 500 / 4*60));
+        return hitScore +  timeScore;
+    }
+
 }

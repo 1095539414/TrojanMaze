@@ -4568,6 +4568,7 @@ MonoBehaviour:
   PassReturn: {fileID: 4207353407455884898}
   PassContinuePressed: {fileID: 7563864521994170592}
   PassReturnPressed: {fileID: 6258409158695880143}
+  ScoreTextUI: {fileID: 2525921512269569439}
   DeathRestart: {fileID: 1356179317610926314}
   DeathReturn: {fileID: 9132374412304071445}
   DeathRestartPressed: {fileID: 7043546918131556935}
@@ -5406,6 +5407,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3334128632503514279, guid: 0e47e5f2be7d1f348982aa40886cfad9, type: 3}
   m_PrefabInstance: {fileID: 3314821081881890024}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2525921512269569439 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 940544294930059639, guid: 0e47e5f2be7d1f348982aa40886cfad9, type: 3}
+  m_PrefabInstance: {fileID: 3314821081881890024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3454619015156263675 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 140132237121758739, guid: 0e47e5f2be7d1f348982aa40886cfad9, type: 3}
