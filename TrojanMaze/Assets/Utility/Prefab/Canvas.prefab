@@ -4078,7 +4078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75, y: 22}
+  m_AnchoredPosition: {x: 80.5, y: 15.7}
   m_SizeDelta: {x: 60.0037, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7224895878877636742
@@ -4702,6 +4702,7 @@ MonoBehaviour:
   PortalR: {fileID: 7224895878649032856}
   PortalT: {fileID: 7224895879019483424}
   PortalDisgard: {fileID: 7224895877596424373}
+  MainCamera: {fileID: 0}
   BulletUI: {fileID: 7224895878877636741}
   BulletImg: {fileID: 31309527364518115}
   TimeSpent: {fileID: 7376936023609560467}
