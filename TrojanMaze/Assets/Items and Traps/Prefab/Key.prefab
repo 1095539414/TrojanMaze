@@ -150,4 +150,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   header: Key
-  content: 'Temporarily mark the end goal position on your trail mark. '
+  content: Temporarily mark the end goal position on your trail mark. Will enable
+    you to see the exit on tower

@@ -16,8 +16,9 @@ public class KeyItem : MonoBehaviour {
         if(buffTarget.CompareTag("Player") && buffTarget.GetComponent<Move>().isTeleporting()) {
             return;
         }
-
+        
         if(other.CompareTag("Player")) {
+            GameObject.FindGameObjectWithTag("Exit").GetComponent<Exit>().EnableTowerTrigger();
             if(trailPanel != null) {
                 trailPanel.SetActive(true);
             }

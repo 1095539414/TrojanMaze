@@ -16,7 +16,7 @@ public class TowerEventReceiver : MonoBehaviour {
         gameObject.layer = 7;
     }
 
-    private void OnDisable() {
+    private void OnDestroy() {
         GameEvents.instance.onTowerEnterTrigger -= OnTowerEnterTrigger;
         GameEvents.instance.onTowerExitTrigger -= OnTowerExitTrigger;
     }

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour {
 
+    public GameObject child1;
+    public GameObject child2;
+
     void Start() {
         GameManager.instance.PassUI.SetActive(false);
     }
@@ -17,7 +20,7 @@ public class Exit : MonoBehaviour {
             GameManager.instance.ComingUp.SetActive(
                 SceneManager.GetActiveScene().buildIndex < hint.Length - 1
             );
-            GameManager.instance.PassContinue.SetActive(                
+            GameManager.instance.PassContinue.SetActive(
                 SceneManager.GetActiveScene().buildIndex < hint.Length - 1
             );
             for(int i = 0; i < hint.Length; i++) {
@@ -29,5 +32,10 @@ public class Exit : MonoBehaviour {
     public void OnApplicationQuit() {
         Time.timeScale = 1f;
         UnityAnalytics.sendDamagedFrom();
+    }
+
+    public void EnableTowerTrigger() {
+        child1.GetComponent<TowerEventReceiver>().enabled = true;
+        child2.GetComponent<TowerEventReceiver>().enabled = true;
     }
 }

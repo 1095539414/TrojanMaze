@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3368146882512192807}
   - component: {fileID: 3368146882512192806}
+  - component: {fileID: 689277974965477428}
   m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
@@ -82,6 +83,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &689277974965477428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368146882512192800}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62ba4dc4a9681e418858dd44eb624d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3368146882878377925
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +108,7 @@ GameObject:
   - component: {fileID: 8009882617018712917}
   m_Layer: 7
   m_Name: Exit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af7b98e21c63bd42af217917780bb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoadDelay: 1
+  child1: {fileID: 3368146882512192800}
+  child2: {fileID: 3368146883513755133}
 --- !u!1 &3368146883513755133
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3368146883513755132}
   - component: {fileID: 3368146883513755107}
+  - component: {fileID: 2951616761523427077}
   m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
@@ -238,6 +253,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2951616761523427077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368146883513755133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62ba4dc4a9681e418858dd44eb624d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9066384157576570894
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,3 +360,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaeb9fc87c06a4fdca2ef880ce5d8208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  liveTime: 5
+  trailPanel: {fileID: 0}
