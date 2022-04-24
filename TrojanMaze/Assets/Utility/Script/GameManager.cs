@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public GameObject DeathUI;
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour {
     public GameObject DeathReturnPressed;
     public GameObject Quit;
     public GameObject QuitPressed;
-
     public GameObject ComingUp;
 
     void Awake() {
