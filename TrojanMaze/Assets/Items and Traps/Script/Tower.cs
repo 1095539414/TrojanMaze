@@ -9,19 +9,15 @@ public class Tower : MonoBehaviour {
     float boostCamera = 8f;
     float cameraZoomSpeed = 4f;
     float activate = 0f;
-    public static bool PlayerOnTower = false;
+
     // Start is called before the first frame update
     void Start() {
         myCamera = GameManager.instance.MainCamera;
+        gameObject.layer = 7;
     }
 
     // Update is called once per frame
     void Update() {
-        if(PlayerOnTower) {
-            gameObject.layer = 0;
-        } else {
-            gameObject.layer = 7;
-        }
         zoom();
     }
 
@@ -32,7 +28,7 @@ public class Tower : MonoBehaviour {
                 State.SetTowerState(true);
                 trailPanel.SetActive(true);
             }
-            PlayerOnTower = true;
+            GameEvents.instance.TowerEnterTrigger();
         }
     }
 
@@ -43,14 +39,13 @@ public class Tower : MonoBehaviour {
                 State.SetTowerState(false);
                 trailPanel.SetActive(false);
             }
-            PlayerOnTower = false;
+            GameEvents.instance.TowerExitTrigger();
 
         }
     }
 
-    private void zoom() {
-        float cameraZoomSpeed = 4f;
 
+    private void zoom() {
         myCamera.orthographicSize += activate * cameraZoomSpeed * Time.deltaTime;
         if(myCamera.orthographicSize > boostCamera) {
             myCamera.orthographicSize = boostCamera;
@@ -61,4 +56,5 @@ public class Tower : MonoBehaviour {
             activate = 0f;
         }
     }
+
 }

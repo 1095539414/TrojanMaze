@@ -7,7 +7,6 @@ public class DemoZombie : Zombie {
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
     [SerializeField] bool canShoot;
-    private bool _dead = false;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
@@ -47,7 +46,6 @@ public class DemoZombie : Zombie {
     }
 
     public override IEnumerator Die() {
-        _dead = true;
         _animator.SetBool("Dead", true);
         yield return new WaitForSeconds(2f);
         StartCoroutine(base.Die());

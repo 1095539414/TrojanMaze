@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SwordItem : MonoBehaviour {
     // Start is called before the first frame update
-    float healAmount = 0.3f;
-
     private GameObject trailMapIcon;
 
     void Start() {

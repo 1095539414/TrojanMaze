@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5411124036182607743}
   - component: {fileID: 808345149738624091}
   - component: {fileID: 6603686764505229993}
+  - component: {fileID: 5570382602491694886}
   m_Layer: 0
   m_Name: SpeedDecrease
   m_TagString: speedDecrease
@@ -120,5 +121,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb31c71d64aec4482a7110e3520d682e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5570382602491694886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8748085806544681290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62ba4dc4a9681e418858dd44eb624d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
