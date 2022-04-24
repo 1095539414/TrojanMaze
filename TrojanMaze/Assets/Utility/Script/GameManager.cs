@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour {
         RadarObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 4);
         TrailmapObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 5);
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
     }
     // Start is called before the first frame update
     void Start() {

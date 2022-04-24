@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class Move : MonoBehaviour, iDamageable {
     [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] public float speed = 10f;
-    [SerializeField] float fireInterval = 1f;
     [SerializeField] GameObject swordPivot;
     [SerializeField] GameObject gunPivot;
     [SerializeField] GameObject playerBullet;
@@ -32,7 +31,6 @@ public class Move : MonoBehaviour, iDamageable {
     Rigidbody2D _body;
 
     public Animator animator;
-    bool isBouncing = false;
     public bool gunEnabled;
     const float MAX_HP = 1f;
     static float HP;

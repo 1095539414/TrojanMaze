@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5899171453953615102}
   - component: {fileID: -7393318415819428168}
   - component: {fileID: -6184000003424609748}
+  - component: {fileID: 6212501795224278811}
   m_Layer: 0
   m_Name: Armor
   m_TagString: Armor
@@ -128,3 +129,15 @@ MonoBehaviour:
   sprite: {fileID: 0}
   time: 10
   player: {fileID: 0}
+--- !u!114 &6212501795224278811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804064661313241466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62ba4dc4a9681e418858dd44eb624d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

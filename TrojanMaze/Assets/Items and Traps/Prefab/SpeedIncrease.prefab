@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7060769348927013918}
   - component: {fileID: 7659190232623505776}
   - component: {fileID: 2517915667449049989}
+  - component: {fileID: 7446734864426564437}
   m_Layer: 0
   m_Name: SpeedIncrease
   m_TagString: speed
@@ -127,3 +128,15 @@ MonoBehaviour:
   content: Increase your speed for 3 seconds
   sprite: {fileID: 0}
   time: 3
+--- !u!114 &7446734864426564437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4088460237326637217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62ba4dc4a9681e418858dd44eb624d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
