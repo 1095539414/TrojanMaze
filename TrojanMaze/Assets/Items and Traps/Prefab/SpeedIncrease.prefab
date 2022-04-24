@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemButton: {fileID: 8844934198014392324, guid: 4e6d147965640064aaca5eb9b3dbc438, type: 3}
   header: Speed Increase
-  content: Increase your speed for 3 seconds
+  content: Increase your speed for 3 seconds. Will ignore all cripple effects
   sprite: {fileID: 0}
   time: 3
 --- !u!114 &7446734864426564437

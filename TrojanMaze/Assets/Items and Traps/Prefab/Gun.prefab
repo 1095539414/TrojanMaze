@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   header: Gun
-  content: Left click to shoot
+  content: 'Left click or use space bar to shoot. Each gun has 20 bullets. Use wisely. '
 --- !u!114 &-8823434287813455117
 MonoBehaviour:
   m_ObjectHideFlags: 0

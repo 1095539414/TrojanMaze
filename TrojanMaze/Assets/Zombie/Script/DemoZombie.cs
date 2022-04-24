@@ -12,6 +12,7 @@ public class DemoZombie : Zombie {
 
     private float _fireTime;
     private GameObject _player;
+    private bool _dead;
     // Start is called before the first frame update
     void Start() {
         base.Init(initialHealth);
@@ -20,11 +21,12 @@ public class DemoZombie : Zombie {
 
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _dead = false;
     }
 
     // Update is called once per frame
     void Update() {
-        if(canShoot && _player && Vector2.Distance(_player.transform.position, transform.position) <= 3f) {
+        if(!_dead && canShoot && _player && Vector2.Distance(_player.transform.position, transform.position) <= 3f) {
             Vector3 _dirToPlayer = _player.transform.position - transform.position;
             _dirToPlayer.Normalize();
             // if there is no target and player appears in the zombies walking direction (90 degree vision)
@@ -46,12 +48,14 @@ public class DemoZombie : Zombie {
     }
 
     public override IEnumerator Die() {
+        _dead = true;
         _animator.SetBool("Dead", true);
         yield return new WaitForSeconds(2f);
         StartCoroutine(base.Die());
     }
 
     public override IEnumerator Hurt() {
+
         _animator.SetBool("Hurt", true);
         yield return new WaitForSeconds(0.3f);
         _animator.SetBool("Hurt", false);

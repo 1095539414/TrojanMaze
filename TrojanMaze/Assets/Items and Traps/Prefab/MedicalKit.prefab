@@ -208,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemButton: {fileID: 1566036962812132228, guid: f06f018d78ffca04d84c582a5dfe324c, type: 3}
   header: Potion
-  content: Drink to get more health
+  content: 'Drink to get more health. '
   sprite: {fileID: 0}
 --- !u!114 &-3687926537372233016
 MonoBehaviour:
