@@ -18,6 +18,8 @@ public class VirusZombie : Zombie {
     private Animator _animator;
     private Vector3 _velocity;
     bool _dead = false;
+
+    bool _canHit = true;
     void Start() {
         base.Init(initialHealth);
         _body = GetComponent<Rigidbody2D>();
@@ -83,9 +85,16 @@ public class VirusZombie : Zombie {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Walls")) {
-            _direction = !_direction;
+        if(_canHit && other.CompareTag("Walls")) {
+            _canHit = false;
+            StartCoroutine(ChangeDirection());
         }
+    }
+
+    IEnumerator ChangeDirection() {
+        _direction = !_direction;
+        yield return new WaitForSeconds(0.1f);
+        _canHit = true;
     }
 
     void FixedUpdate() {
@@ -93,7 +102,8 @@ public class VirusZombie : Zombie {
     }
 
     void ReleaseVirus() {
-        Instantiate(VirusZone, center.position, center.rotation);
+        GameObject zone = Instantiate(VirusZone, center.position, center.rotation);
+        zone.layer = gameObject.layer;
     }
 
     public override IEnumerator Die() {

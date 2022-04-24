@@ -50,6 +50,7 @@ public class HpReduce : MonoBehaviour {
         }
         _time -= Time.deltaTime;
     }
+
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             iDamageable damageableObj = other.gameObject.GetComponent<iDamageable>();
