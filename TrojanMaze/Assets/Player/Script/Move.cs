@@ -31,7 +31,6 @@ public class Move : MonoBehaviour, iDamageable {
     Rigidbody2D _body;
 
     public Animator animator;
-    public bool gunEnabled;
     const float MAX_HP = 1f;
     static float HP;
     private float nextShootTime;
@@ -46,6 +45,7 @@ public class Move : MonoBehaviour, iDamageable {
     public static float dmgBySword = 0f;
     public static float dmgByGun = 0f;
     public static Move _move;
+    public static bool speedPotionEffective;
 
     // footprints-related variables
     private Vector2 _prevPos;
@@ -66,16 +66,17 @@ public class Move : MonoBehaviour, iDamageable {
     private Renderer _holdingProgressRendererR;
     private Renderer _holdingProgressRendererT;
     private GameObject _weaponTouching;
+    private float increasedSpeed;
 
     private void Awake() {
         _move = this;//static this scirpts for other scripts to deploy
     }
 
     void Start() {
+        increasedSpeed = 1.5f * speed;
         _body = GetComponent<Rigidbody2D>();
         swordPivot.SetActive(false);
         gunPivot.SetActive(false);
-        gunEnabled = false;
         HP = MAX_HP;
         GameManager.instance.DeathUI.SetActive(false);
         _prevPos = transform.position;
@@ -83,6 +84,7 @@ public class Move : MonoBehaviour, iDamageable {
         _holdingProgressRendererR = holdingProgressR.GetComponent<Renderer>();
         _holdingProgressRendererT = holdingProgressT.GetComponent<Renderer>();
         _footPrintLeft = true;
+        speedPotionEffective = false;
     }
 
     void Update() {
@@ -242,7 +244,11 @@ public class Move : MonoBehaviour, iDamageable {
 
 
     void Run() {
+
         Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;
+        if(speedPotionEffective) {
+            moveSpeed = new Vector2(moveInput.x * increasedSpeed, moveInput.y * increasedSpeed) * Time.deltaTime;
+        }
         _body.velocity = moveSpeed;
     }
 
@@ -374,11 +380,9 @@ public class Move : MonoBehaviour, iDamageable {
     }
     public void SpeedIncrease_Effectopen() {
         SpeedIncrease_Effect.SetActive(true);
-
-
         Invoke("SpeedIncrease_Effectclose", 2f);
-
     }
+
     void SpeedIncrease_Effectclose() {
         SpeedIncrease_Effect.SetActive(false);
 

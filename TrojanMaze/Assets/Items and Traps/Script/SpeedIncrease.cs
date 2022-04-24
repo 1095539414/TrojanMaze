@@ -14,11 +14,14 @@ public class SpeedIncrease : BuffItem {
         Move._move.SpeedIncrease_Effectopen();
         name = gameObject.name;
         status.AddBuff(name, GetComponent<SpriteRenderer>().sprite);
+        Move.speedPotionEffective = true;
+
         return true;
     }
 
     protected override bool RemoveBuff() {
         Move._move.speed /= increaseRatio;
+        Move.speedPotionEffective = false;
         status.RemoveBuff(name);
         return true;
     }
