@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6920099907298249060}
   - component: {fileID: 895448100721736309}
   - component: {fileID: -2566688242540664279}
+  - component: {fileID: -1597418018799466130}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -136,3 +137,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62ba4dc4a9681e418858dd44eb624d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1597418018799466130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769287889862566995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44b852c36db4cd40b6328c7b128c4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Key
+  content: 'Temporarily mark the end goal position on your trail mark. '

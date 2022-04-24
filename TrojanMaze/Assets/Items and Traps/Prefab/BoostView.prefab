@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemButton: {fileID: 568726806448701552, guid: 4b7e49c2f4b3b534ab3e1021b5fa36e3, type: 3}
   header: VIew Booster
-  content: Increase your view range
+  content: Increase your view range for 10 seconds
   sprite: {fileID: 0}
   time: 10
 --- !u!61 &8811928437017863926
