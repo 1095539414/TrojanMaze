@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3961146452861307846}
   - component: {fileID: 3961146452861307845}
   - component: {fileID: 5639110551692636316}
+  - component: {fileID: -4056850688585375207}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -126,3 +127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62ba4dc4a9681e418858dd44eb624d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4056850688585375207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3961146452861307849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44b852c36db4cd40b6328c7b128c4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Ladder
+  content: 'Help you get a better view of the map. If you obtain a key, you will
+    be able to see the exit in the range of the ladder. '

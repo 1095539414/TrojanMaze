@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   header: Key
-  content: Temporarily mark the end goal position on your trail mark. Will enable
-    you to see the exit on tower
+  content: Temporarily mark the exit position on your trail mark. Permanently enable
+    you to see the exit when you are on the ladder

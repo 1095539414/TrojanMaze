@@ -106,7 +106,7 @@ public class SimpleZombie : Zombie {
             if(!Boss && _fireTime >= _fireInterval) {
                 StartCoroutine(Throwing());
                 _fireTime = 0;
-                _fireInterval = Random.Range(4f, 7f);
+                _fireInterval = Random.Range(4f, 6f);
             }
             // stop chasing when player is too far
             if(Boss) {
