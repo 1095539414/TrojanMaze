@@ -14,15 +14,44 @@ public class ScoreButton : MonoBehaviour {
     public void OpenPanel() {
         if(ScorePanel != null) {
             bool isActive = ScorePanel.activeSelf;
-            ScorePanel.SetActive(!isActive);
-            if(!isActive) {
-                PrintScore();
+            if(isActive) {
+                StartCoroutine(AnimatePanelClose());
+            } else {
+                StartCoroutine(AnimatePanelOpen());
             }
             ScoreButtonObj.SetActive(isActive);
             ScoreButtonPressedObj.SetActive(!isActive);
         }
     }
 
+    IEnumerator AnimatePanelOpen() {
+        float elapsedTime = 0f;
+        float waitTime = 0.3f;
+        Vector3 initialScale = Vector3.zero;
+        Vector3 finalScale = new Vector3(1.1f, 0.75f, 1.18f);
+        ScorePanel.SetActive(true);
+        PrintScore();
+
+        while(elapsedTime < waitTime) {
+            elapsedTime += Time.unscaledDeltaTime;
+            ScorePanel.transform.localScale = Vector3.Lerp(initialScale, finalScale, elapsedTime / waitTime);
+            yield return null;
+        }
+
+    }
+    IEnumerator AnimatePanelClose() {
+        float elapsedTime = 0f;
+        float waitTime = 0.3f;
+        Vector3 initialScale = Vector3.zero;
+        Vector3 finalScale = new Vector3(1.1f, 0.75f, 1.18f);
+        while(elapsedTime < waitTime) {
+            elapsedTime += Time.unscaledDeltaTime;
+            ScorePanel.transform.localScale = Vector3.Lerp(finalScale, initialScale, elapsedTime / waitTime);
+            yield return null;
+        }
+        ScorePanel.SetActive(false);
+
+    }
     public void PrintScore() {
         GameManager.instance.ScoreTextUI.text =
             "Zombies Killed: " + ScoreScript.GetKilledZombies() +
