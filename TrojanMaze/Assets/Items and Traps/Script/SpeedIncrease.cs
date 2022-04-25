@@ -10,18 +10,14 @@ public class SpeedIncrease : BuffItem {
     float increaseRatio = 1.5f;
 
     protected override bool AddBuff() {
-        Move._move.speed *= increaseRatio;
         Move._move.SpeedIncrease_Effectopen();
         name = gameObject.name;
-        status.AddBuff(name, GetComponent<SpriteRenderer>().sprite);
-        Move.speedPotionEffective = true;
-
+        status.AddBuff(name, GetComponent<SpriteRenderer>().sprite, GetDuration(), this.header, this.content);
+        Move.speedPotionTimer = time;
         return true;
     }
 
     protected override bool RemoveBuff() {
-        Move._move.speed /= increaseRatio;
-        Move.speedPotionEffective = false;
         status.RemoveBuff(name);
         return true;
     }

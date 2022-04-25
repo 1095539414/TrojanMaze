@@ -15,8 +15,6 @@ public class BuffItem : MonoBehaviour {
     public string header;
     public string content;
 
-    // [SerializeField]
-    // private Image durationImg;
 
     //[SerializeField]
     public Sprite sprite;
@@ -24,9 +22,18 @@ public class BuffItem : MonoBehaviour {
 
     private static GameObject objectShowing;
 
-    public void Initialize(string name, Sprite sprite) {
-        GetComponent<Image>().sprite = sprite;
+    public Image durationImage;
+    public Image durationBackgroundImage;
+    private float durationElapsedTime;
+    private float durationTotalTime;
+
+    public void Initialize(string name, Sprite sprite, float duration, string header = "", string content = "") {
+        durationImage.sprite = sprite;
         this.name = name;
+        durationElapsedTime = duration;
+        durationTotalTime = duration;
+        GetComponent<TooltipTrigger>().header = header;
+        GetComponent<TooltipTrigger>().content = content;
     }
 
     // Start is called before the first frame update
@@ -40,8 +47,11 @@ public class BuffItem : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-        //durationImg.fillAmount = 
+        if(durationImage != null && durationBackgroundImage != null && durationElapsedTime > 0) {
+            durationElapsedTime -= Time.deltaTime;
+            durationImage.fillAmount = durationElapsedTime / durationTotalTime;
+            durationBackgroundImage.fillAmount = durationElapsedTime / durationTotalTime;
+        }
     }
 
     // how do I apply the buff
@@ -69,7 +79,7 @@ public class BuffItem : MonoBehaviour {
         if(delay != null) {
             LeanTween.cancel(delay.uniqueId);
         }
-        TooltipManager.instance.Hide();
+        TooltipManager.instance.Hide(gameObject);
     }
 
     protected void OnTriggerEnter2D(Collider2D other) {

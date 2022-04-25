@@ -15,7 +15,7 @@ public class TooltipManager : MonoBehaviour {
 
     private void Update() {
         if(ObjShown != null && !ObjShown.activeSelf) {
-            Hide();
+            Hide(ObjShown);
         }
     }
     public void Show(string content, string header = "", GameObject obj = null) {
@@ -24,8 +24,10 @@ public class TooltipManager : MonoBehaviour {
         instance.tooltip.gameObject.SetActive(true);
     }
 
-    public void Hide() {
-        ObjShown = null;
-        instance.tooltip.gameObject.SetActive(false);
+    public void Hide(GameObject obj) {
+        if(obj == ObjShown) {
+            ObjShown = null;
+            instance.tooltip.gameObject.SetActive(false);
+        }
     }
 }

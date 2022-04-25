@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8408312318651328891, guid: aa37814c1fbad2746bae26697fdd8216, type: 3}
   m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_FlipX: 0
@@ -101,6 +101,8 @@ MonoBehaviour:
   header: VIew Booster
   content: Increase your view range for 10 seconds
   sprite: {fileID: 0}
+  durationImage: {fileID: 0}
+  durationBackgroundImage: {fileID: 0}
   time: 10
 --- !u!61 &8811928437017863926
 BoxCollider2D:

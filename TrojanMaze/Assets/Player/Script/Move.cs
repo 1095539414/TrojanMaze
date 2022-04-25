@@ -45,7 +45,8 @@ public class Move : MonoBehaviour, iDamageable {
     public static float dmgBySword = 0f;
     public static float dmgByGun = 0f;
     public static Move _move;
-    public static bool speedPotionEffective;
+    public static float speedPotionTimer;
+    public static float viewPotionTimer;
 
     // footprints-related variables
     private Vector2 _prevPos;
@@ -84,7 +85,7 @@ public class Move : MonoBehaviour, iDamageable {
         _holdingProgressRendererR = holdingProgressR.GetComponent<Renderer>();
         _holdingProgressRendererT = holdingProgressT.GetComponent<Renderer>();
         _footPrintLeft = true;
-        speedPotionEffective = false;
+        speedPotionTimer = 0f;
     }
 
     void Update() {
@@ -181,6 +182,19 @@ public class Move : MonoBehaviour, iDamageable {
                 _hurtTimer = 0f;
             }
         }
+        if(speedPotionTimer > 0) {
+            speedPotionTimer -= Time.deltaTime;
+        } else {
+            speedPotionTimer = 0f;
+        }
+
+        if(viewPotionTimer > 0) {
+            viewPotionTimer -= Time.deltaTime;
+            FieldOfView.BoostViewDistance();
+        } else {
+            viewPotionTimer = 0f;
+            FieldOfView.ResetViewDistance();
+        }
     }
 
     IEnumerator TeleportBack() {
@@ -244,9 +258,8 @@ public class Move : MonoBehaviour, iDamageable {
 
 
     void Run() {
-
         Vector2 moveSpeed = new Vector2(moveInput.x * speed, moveInput.y * speed) * Time.deltaTime;
-        if(speedPotionEffective) {
+        if(speedPotionTimer > 0f) {
             moveSpeed = new Vector2(moveInput.x * increasedSpeed, moveInput.y * increasedSpeed) * Time.deltaTime;
         }
         _body.velocity = moveSpeed;

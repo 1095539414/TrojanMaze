@@ -17,9 +17,9 @@ public class State : MonoBehaviour {
 
     private List<BuffItem> buffs = new List<BuffItem>();
 
-    public void AddBuff(string name, Sprite sprite) {
+    public void AddBuff(string name, Sprite sprite, float time, string header = "", string content = "") {
         BuffItem bf = Instantiate(buffPrefab, buffTransform);
-        bf.Initialize(name, sprite);
+        bf.Initialize(name, sprite, time, header, content);
         buffs.Add(bf);
     }
 

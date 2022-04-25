@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5109143153236730000, guid: 3c69ec7d5b337284aab41aacb3de432f, type: 3}
   m_Color: {r: 0.5016994, g: 0.2565504, b: 0.6698113, a: 1}
   m_FlipX: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
   header: Armor
   content: Improve your maximum health
   sprite: {fileID: 0}
+  durationImage: {fileID: 0}
+  durationBackgroundImage: {fileID: 0}
   time: 10
   player: {fileID: 0}
 --- !u!114 &6212501795224278811
