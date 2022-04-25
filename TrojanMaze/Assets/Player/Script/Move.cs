@@ -469,7 +469,7 @@ public class Move : MonoBehaviour, iDamageable {
     }
 
     private void DealWithWeapon() {
-        if(_weaponTouching != null) {
+        if(!_teleporting && _weaponTouching != null) {
             if(!swordPivot.activeSelf && !gunPivot.activeSelf) {
                 if(_weaponTouching.CompareTag("gun")) {
                     PickupGun();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tower : MonoBehaviour {
     private Camera myCamera;
@@ -14,6 +15,11 @@ public class Tower : MonoBehaviour {
     void Start() {
         myCamera = GameManager.instance.MainCamera;
         gameObject.layer = 7;
+        if(SceneManager.GetActiveScene().buildIndex >= 5) {
+            boostCamera = 12f;
+        } else {
+            boostCamera = 8f;
+        }
     }
 
     // Update is called once per frame
@@ -51,7 +57,7 @@ public class Tower : MonoBehaviour {
             myCamera.orthographicSize = boostCamera;
             activate = 0f;
         }
-        if(myCamera.orthographicSize < initialCamera - 0.01f) {
+        if(myCamera.orthographicSize < initialCamera) {
             myCamera.orthographicSize = initialCamera;
             activate = 0f;
         }

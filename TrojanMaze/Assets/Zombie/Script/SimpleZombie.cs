@@ -17,7 +17,7 @@ public class SimpleZombie : Zombie {
 
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
-
+    [SerializeField] bool Boss = false;
     private Rigidbody2D _body;
     private NavMeshAgent _agent;
 
@@ -41,7 +41,7 @@ public class SimpleZombie : Zombie {
     private bool _dead = false;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-
+    private Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start() {
@@ -55,13 +55,17 @@ public class SimpleZombie : Zombie {
         _player = GameObject.FindWithTag("Player");
         _attackTime = _attackInterval;
         gameObject.layer = 7;
-
+        startPosition = transform.position;
         // set a random destination to start
         moveTo(GetRandomDest(), _speed, _acceleration);
         _fireTime = 0f;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        if(Boss) {
+            _attackDamage  = 0.1f;
+            _attackInterval = 1f;
+        }
     }
 
     // Update is called once per frame
@@ -74,6 +78,8 @@ public class SimpleZombie : Zombie {
         }
         _animator.SetBool("Attacking", _attacking);
         _animator.SetFloat("Speed", Vector3.Magnitude(_agent.velocity));
+
+
         if(_agent.velocity.x > 0) {
             Vector3 theScale = transform.localScale;
             if(theScale.x < 0) {
@@ -97,13 +103,18 @@ public class SimpleZombie : Zombie {
                 _attackTime = 0;
             }
         } else if(_target) {
-            if(_fireTime >= _fireInterval) {
+            if(!Boss && _fireTime >= _fireInterval) {
                 StartCoroutine(Throwing());
                 _fireTime = 0;
                 _fireInterval = Random.Range(4f, 7f);
             }
             // stop chasing when player is too far
-            moveTo(_target.transform.position, _speed * 2, _acceleration * 10);
+            if(Boss) {
+                moveTo(_target.transform.position, _speed * 4, _acceleration * 15);
+            } else {
+                moveTo(_target.transform.position, _speed * 2, _acceleration * 10);
+            }
+
             if(_agent.remainingDistance > _followRange) {
                 _target = null;
                 Idle();
@@ -135,6 +146,13 @@ public class SimpleZombie : Zombie {
         if(_agent.path.corners.Length > 1) {
             _direction = _agent.path.corners[1] - transform.position;
             _direction.Normalize();
+        }
+        if(Boss) {
+            if(Vector3.Distance(startPosition, transform.position) > 12f) {
+                moveTo(startPosition, _speed, _acceleration * 10f);
+                _attacking = false;
+                _target = null;
+            }
         }
     }
 
@@ -205,7 +223,9 @@ public class SimpleZombie : Zombie {
     }
 
     public override IEnumerator Hurt() {
-        _agent.velocity = Vector3.zero;
+        if(!Boss) {
+            _agent.velocity = Vector3.zero;
+        }
         _animator.SetBool("Hurt", true);
         yield return new WaitForSeconds(0.3f);
         _animator.SetBool("Hurt", false);

@@ -4630,6 +4630,8 @@ MonoBehaviour:
   itemDropRate: 0.2
   itemsToDrop:
   - {fileID: 7141577405830077290, guid: af25f8a1b790ca44f9298317541daf8f, type: 3}
+  - {fileID: 2517915667449049989, guid: 6f4d5abddc3fbd14c9d28ef6ddec984f, type: 3}
+  - {fileID: 8811928437017863925, guid: 787e10e47784f41bfb4fb4dd1b360278, type: 3}
   nextLevelHints:
   - {fileID: 3454619015156263675}
   - {fileID: 3454619014250423917}
@@ -4650,8 +4652,6 @@ MonoBehaviour:
   Quit: {fileID: 7224895879559456184}
   QuitPressed: {fileID: 2786416621782170096}
   ComingUp: {fileID: 19606927560374351}
-  lightRenderer: {fileID: 11400000, guid: 07675d54a7d2a254989c3b6ea3f3069d, type: 2}
-  darkRenderer: {fileID: 11400000, guid: 6ca073c8c62bf7749893deeeb1ce9b5b, type: 2}
 --- !u!114 &4963357625551818367
 MonoBehaviour:
   m_ObjectHideFlags: 0
