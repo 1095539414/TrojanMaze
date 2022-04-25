@@ -51,7 +51,7 @@ public class ScoreScript : MonoBehaviour
             2min ~ 6min: (6*60 - time)* 500 / (4*60)
             >=6min: 0
         */
-        int timeScore = time < 2*60 ? 500 : (time > 6*60 ? 0 : (int)((6*60 - time) * 500 / 4*60));
+        int timeScore = time < 120 ? 500 : (time > 360 ? 0 : (int)((360 - time) * 500 / 240));
         int resistanceScore = (int)(100*Move.totalHpReduced + 10*Move.dmgByGun + 10*Move.dmgBySword);
         return hitScore +  timeScore + resistanceScore;
     }
