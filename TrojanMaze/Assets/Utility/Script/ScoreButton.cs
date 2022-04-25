@@ -25,11 +25,11 @@ public class ScoreButton : MonoBehaviour {
 
     public void PrintScore() {
         GameManager.instance.ScoreTextUI.text =
-            "Zombies killed: " + ScoreScript.GetKilledZombies() +
-            "\n" + "Time spent: " + ScoreScript.GetTimeSpent() +
-            "\n" + "Resistance ability: " + 10 * Move.totalHpReduced +
-            "\n" + "Gun Damage: " + Move.dmgByGun +
-            "\n" + "Sword Damage: " + Move.dmgBySword +
+            "Zombies Killed: " + ScoreScript.GetKilledZombies() +
+            "\n" + "Time Spent: " + ScoreScript.GetTimeSpent() +
+            "\n" + "Resistance Ability: " + (int)(10 * Move.totalHpReduced) +
+            "\n" + "Gun Damage: " + (int)Move.dmgByGun +
+            "\n" + "Sword Damage: " + (int)Move.dmgBySword +
             "\n" + "Overall Score: " + ScoreScript.GetOverallScore();
     }
 }
