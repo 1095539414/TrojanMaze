@@ -16,6 +16,7 @@ public class Exit : MonoBehaviour {
         GameObject[] hint = GameManager.instance.nextLevelHints;
         if(other.tag == "Player" && other.GetComponent<SpriteRenderer>().isVisible) {
             Time.timeScale = 0f;
+            SoundManager.PlaySound("success");
             GameManager.instance.PassUI.SetActive(true);
             GameManager.instance.ComingUp.SetActive(
                 SceneManager.GetActiveScene().buildIndex < hint.Length - 1
